@@ -1,0 +1,41 @@
+html{
+     margin: 0;
+    height: 100%;
+    width: 100%;
+    scroll-behavior: smooth;
+}
+body{
+    margin: 0;
+    height: 100%;
+    width: 100%;
+    color: $main-text;
+    font-family: "Montserrat", "Noto Sans JP", sans-serif;
+}
+main{
+    padding-top: $header-height;
+    @include pc{
+    padding-top: 70px;
+}
+
+}
+input{
+    box-sizing: border-box;
+    border:none;
+    font-size: 16px;
+}
+div,span,p,h1,h2,h3,h4,h5,li,a{
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    word-break: break-word;
+}
+
+textarea{
+    border:none;
+    box-sizing: border-box;
+    font-size: 16px;
+    padding: 16px;
+}
+
+a:visited{
+    color: none;
+}
