@@ -18,3 +18,12 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('/mypage', 'MypageController@index')->name('mypage');
+
+    // メールアドレス確認メールを送信
+    Route::get('/changeEmail', 'ChangeEmailController@index')->name('changeEmail');
+    Route::get('/reset/{token}', 'ChangeEmailController@reset');
+    Route::post('/email', 'ChangeEmailController@sendChangeEmailLink');
+});
