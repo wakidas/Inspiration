@@ -1,42 +1,40 @@
 const mix = require('laravel-mix');
-const path = require('path');
-require('laravel-mix-eslint');
-require('laravel-mix-stylelint');
+
+mix.webpackConfig({
+    module: {
+        rules: [{
+            test: /\.scss/,
+            enforce: 'pre',
+            loader: 'import-glob-loader'
+        }]
+    }
+})
 
 /*
  |--------------------------------------------------------------------------
  | Mix Asset Management
  |--------------------------------------------------------------------------
  |
- | Mix provides a clean, fluent API for defining some Webpack build steps
+ | Mix provides a clean, fluent AI for defining some Webpack build steps
  | for your Laravel application. By default, we are compiling the Sass
  | file for the application as well as bundling up all the JS files.
  |
  */
-
-const styleLintPlugin = require('stylelint-webpack-plugin');
-mix.webpackConfig({
-    plugins: [
-        new styleLintPlugin({
-            files: ['**/*.scss'],
-            configFile: path.join(__dirname, '.stylelintrc.js'),
-            syntax: 'scss'
-        })
-    ]
-}).eslint();
-
 mix.js('resources/js/app.js', 'public/js')
-    .sass('resources/sass/app.scss', 'public/css')
+    .sass('resources/sass/common.scss', 'public/css')
     .sourceMaps()
-    .browserSync({
-        files: [
+    .browserSync({ // ここから
+        https: false, // httpsのサイトをproxyするならtrueをセット
+        files: [ // チェックするファイルは下記で十分ではないかな。
             './resources/**/*',
             './app/**/*',
             './config/**/*',
             './routes/**/*',
-            './public/**/*',
+            './public/**/*'
         ],
         proxy: {
-            target: 'http://127.0.0.1:8000/'
-        }
+            target: 'http://127.0.0.1:8000' // 最後に/は不要
+        },
+        open: true, //BrowserSync起動時にブラウザを開かない
+        reloadOnRestart: true //BrowserSync起動時にブラウザにリロード命令おくる
     });
