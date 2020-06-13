@@ -1,9 +1,9 @@
 <?php
 
-namespace App;
+namespace inspiration;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Notifications\ChangeEmail;
+use inspiration\Notifications\ChangeEmail;
 use Illuminate\Notifications\Notifiable;
 
 class EmailReset extends Model

@@ -1,4 +1,4 @@
-<a href="{{ config('app.url') }}">sotsuken</a>
+<a href="{{ config('app.url') }}">Inspiration</a>
 <p>
     下記のURLをクリックして新しいメールアドレスを確定してください。<br>
 </p>

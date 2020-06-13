@@ -1,11 +1,12 @@
 <?php
 
-namespace App;
+namespace inspiration;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use App\Notifications\PasswordResetNotification;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use inspiration\Notifications\PasswordResetNotification;
 
 class User extends Authenticatable
 {
@@ -37,6 +38,14 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * 削除済みユーザー以外を表示する
+     */
+    use SoftDeletes;
+
+    protected $table = 'users';
+    protected $dates = ['deleted_at'];
 
     /**
      * パスワードリセット通知の送信をオーバーライド
