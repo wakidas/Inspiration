@@ -11,16 +11,19 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'HomeController@index')->name('home');
 
 Auth::routes();
+
+//Oauthログイン
+Route::get('/login/{provider}', 'Auth\LoginController@redirectToProvider');
 
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/mypage', 'MypageController@index')->name('mypage');
+
+    Route::get('/users/delete/{id}', 'UserController@delete');
 
     //パスワード変更
     Route::get('changepassword', 'HomeController@showChangePasswordForm');
