@@ -1,11 +1,31 @@
+
+@charset "utf-8";
 // Fonts
 @import url('https://fonts.googleapis.com/css?family=Nunito');
 
-//foundation
-@import 'foundation/reset';
-@import 'foundation/variables';
-@import 'foundation/layout';
+// =========================================
+// Foundation
+// =========================================
+@import "foundation/_variables.scss";
+@import "foundation/_reset.scss";
+@import "foundation/_layout.scss";
 
-//project
+// =========================================
+// layout
+// =========================================
+@import "layout/*.scss";
 
-//component
+// =========================================
+// Component
+// =========================================
+// @import "object/component/*.scss";
+
+// =========================================
+// Project
+// =========================================
+@import "object/project/*.scss";
+
+// =========================================
+// Utility
+// =========================================
+@import "object/utility/*.scss";

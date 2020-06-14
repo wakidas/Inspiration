@@ -21,7 +21,7 @@ mix.webpackConfig({
  |
  */
 mix.js('resources/js/app.js', 'public/js')
-    .sass('resources/sass/common.scss', 'public/css')
+    .sass('resources/sass/app.scss', 'public/css')
     .sourceMaps()
     .browserSync({ // ここから
         https: false, // httpsのサイトをproxyするならtrueをセット

@@ -1,0 +1,22 @@
+.p-header{
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 25px;
+    box-shadow: 0 -10px 15px 0 rgba(0, 0, 0, .5);
+}
+.p-header__logo{
+
+}
+.p-header__nav__list{
+    display: flex;
+    align-items: center;
+}
+.p-header__nav__item{
+    list-style: none;
+    &.p-header__nav__item--register{
+        padding: 15px 30px;
+        border: 2px solid $main-cl;
+        border-radius: 30px;
+        margin-left: 20px;
+    }
+}

@@ -8,16 +8,13 @@ body{
     margin: 0;
     height: 100%;
     width: 100%;
-    color: $main-text;
+    color: $main-tx;
     font-family: "Montserrat", "Noto Sans JP", sans-serif;
 }
 main{
-    padding-top: $header-height;
-    @include pc{
-    padding-top: 70px;
+   
 }
 
-}
 input{
     box-sizing: border-box;
     border:none;

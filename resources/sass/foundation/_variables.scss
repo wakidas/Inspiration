@@ -7,22 +7,23 @@ $font-size-base: 0.9rem;
 $line-height-base: 1.6;
 
 // Colors
-$blue: #3490dc;
-$indigo: #6574cd;
-$purple: #9561e2;
-$pink: #f66d9b;
-$red: #e3342f;
-$orange: #f6993f;
-$yellow: #ffed4a;
-$green: #38c172;
-$teal: #4dc0b5;
-$cyan: #6cb2eb;
+$main-cl: #FFBC61;
+
+$main-tx: #333333;
 
 // メディアクエリ
-$pc: 768px; // PC
+// Breakpoint ブレイクポイント
+$breakpoints:(
+  'xs': 'screen and (max-width: 375px)',
+  'sm': 'screen and (max-width: 475px)',
+  'md': 'screen and (max-width: 768px)',
+  'lg': 'screen and (max-width: 1028px)',
+  'xl': 'screen and (max-width: 1230px)',
+) !default;
 
-@mixin pc {
-  @media (min-width: ($pc)) {
+// @mixinでメディアクエリを呼び出す
+@mixin mq($breakpoint) {
+  @media #{map-get($breakpoints, $breakpoint)} {
     @content;
   }
 }
