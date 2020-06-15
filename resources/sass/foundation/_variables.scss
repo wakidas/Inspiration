@@ -8,6 +8,7 @@ $line-height-base: 1.6;
 
 // Colors
 $main-cl: #FFBC61;
+$bg-cl: #FFF8EA;
 
 $main-tx: #333333;
 
@@ -15,7 +16,7 @@ $main-tx: #333333;
 // Breakpoint ブレイクポイント
 $breakpoints:(
   'xs': 'screen and (max-width: 375px)',
-  'sm': 'screen and (max-width: 475px)',
+  'sm': 'screen and (max-width: 480px)',
   'md': 'screen and (max-width: 768px)',
   'lg': 'screen and (max-width: 1028px)',
   'xl': 'screen and (max-width: 1230px)',
