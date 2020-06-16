@@ -15,13 +15,13 @@
                 <h3 class="p-top__fv__title__text">そのアイデア、<br>形にしませんか？</h3>
             </div>
             <div class="p-top__fv__sub">
-                <div class="p-top__fv__subText p-top__fv__subText--idea">Webサービスのアイデアはあるけど、実装スキルがない</div>
-                <div class="p-top__fv__subText p-top__fv__subText--skill">実装スキルはあるけど、サービスのアイデアはない</div>
+                <div class="p-top__fv__subText p-top__fv__subText--idea">「Webサービスのアイデアはあるけど、実装スキルがない」</div>
+                <div class="p-top__fv__subText p-top__fv__subText--skill">「実装スキルはあるけど、サービスのアイデアはない」</div>
             </div>
         </div>
     </div>
     <div class="p-top__fv__bottomHalf">
-        <h2>Webサービスアイデア販売プラットフォーム</h2>
+        <h2>Webサービス<br class="sp_only">アイデア販売プラットフォーム</h2>
     </div>
     <div class="p-top__fv__toIdea">
         <a href="" class="c-button__link">アイデアを見る</a>
