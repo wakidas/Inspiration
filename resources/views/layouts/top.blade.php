@@ -11,12 +11,12 @@
             <img src="images/top_fv.svg" alt="fv画像">
         </div>
         <div class="p-top__fv__textWrap">
-            <div>
-                <h3 class="p-top__fv__mainMsg">そのアイデア、<br>形にしませんか？</h3>
+            <div class="p-top__fv__title">
+                <h3 class="p-top__fv__title__text">そのアイデア、<br>形にしませんか？</h3>
             </div>
-            <div class="p-top__fv__textWrap">
-                <div class="p-top__fv__text p-top__fv__text--idea">Webサービスのアイデアはあるけど、実装スキルがない</div>
-                <div class="p-top__fv__text p-top__fv__text--skill">実装スキルはあるけど、サービスのアイデアはない</div>
+            <div class="p-top__fv__sub">
+                <div class="p-top__fv__subText p-top__fv__subText--idea">Webサービスのアイデアはあるけど、実装スキルがない</div>
+                <div class="p-top__fv__subText p-top__fv__subText--skill">実装スキルはあるけど、サービスのアイデアはない</div>
             </div>
         </div>
     </div>
