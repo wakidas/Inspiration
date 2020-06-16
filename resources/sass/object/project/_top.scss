@@ -129,37 +129,96 @@
 .p-top__about{
     margin: 120px 20px 0;
     background: $bg-cl;
+    @include mq(md) {
+        margin: 80px 0 0;
+    }
+    @include mq(sm) {
+        margin-top: 56px;
+    }
     .p-top__about__inner{
         padding: 72px 60px;
+        @include mq(md) {
+            padding: 56px 40px;
+        }
+        @include mq(sm) {
+            padding: 48px 24px;;
+        }
     }
     .p-top__about__title{
         font-size: 58px;
+        @include mq(md) {
+           font-size: 40px;
+        }
+        @include mq(sm) {
+            font-size: 32px;
+        }
     }
     .p-top__about__despriction{
         margin-top: 64px;
         line-height: 1.4;
+        @include mq(md) {
+            margin-top: 48px;
+        }
+        @include mq(sm) {
+            margin-top: 40px;
+        }
     }
     .p-top__about__despriction__text{
         font-size: 22px;
-        margin-top: 8px;
+        margin-top: 16px;
+         @include mq(md) {
+           font-size: 18px;
+        }
+        @include mq(sm) {
+            font-size: 16px;
+        }
     }
     .p-top__about__contents{
         display: flex;
         justify-content: space-between;
         margin-top: 120px;
+        @include mq(md) {
+            margin-top: 56px;
+        }
+        @include mq(sm) {
+            flex-direction: column;
+            margin-top: 40px;
+        }
     }
     .p-top__about__content{
         width: 45%;
         background: #ffffff;
         border-radius: 25px;
-        padding: 24px 5px;
-        .p-top__about__content--skill{
+        padding: 24px 8px;
+        @include mq(sm) {
+            width: auto;
+        }
+        &.p-top__about__content--skill{
             margin-left: 16px;
+            @include mq(sm) {
+                margin-left: 0;
+                margin-top: 32px;
+            }
         }
     }
     .p-top__about__content__title{
         font-size: 40px;
         text-align: center;
+        @include mq(sm) {
+            font-size: 32px;
+        }
+    }
+    .p-top__about__content__text{
+        margin-top: 16px;
+        text-align: center;
+        font-size: 22px;
+        line-height: 1.4;
+        @include mq(lg) {
+            font-size: 18px;
+        }
+        @include mq(sm) {
+            font-size: 16px;
+        }
     }
     .p-top__about__content__img{
         display: flex;
@@ -171,18 +230,15 @@
             @include mq(lg) {
                 margin-top: 50px;
             }
+            @include mq(md) {
+                margin-top: 32px;
+            }
         }
         img{
             width: 70%;
-        }
-    }
-    .p-top__about__content__text{
-        margin-top: 16px;
-        text-align: center;
-        font-size: 22px;
-        line-height: 1.4;
-        @include mq(lg) {
-            font-size: 18px;
+            @include mq(lg) {
+                width: 60%;
+            }
         }
     }
 }
