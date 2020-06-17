@@ -1,12 +1,20 @@
 .p-header{
-    padding: 15px 0;
+    padding: 15px 20px;
     box-shadow: 0 -10px 15px 0 rgba(0, 0, 0, .5);
     margin: 0 auto;
+    z-index: 1;    
+    position: fixed;
+    right: 0;
+    left: 0;
+    background: #fff;
+    @include mq(sm) {
+        padding: 15px 0;
+    }
     .p-header__inner{
         display: flex;
         justify-content: space-between;
         max-width: 1000px;
-        margin: 0 20px;
+        margin: 0 auto;
         @include mq(sm) {
             margin: 0 8px;
         }
