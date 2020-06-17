@@ -1,23 +1,28 @@
 .p-header{
-    padding: 15px 20px;
+    padding: 10px 24px 8px;
     box-shadow: 0 -10px 15px 0 rgba(0, 0, 0, .5);
     margin: 0 auto;
-    z-index: 1;    
+    z-index: 2;    
     position: fixed;
     right: 0;
     left: 0;
     background: rgba(256,256,256,.9);
     @include mq(sm) {
-        padding: 15px 0;
+        padding: 10px 0 8px;
     }
     .p-header__inner{
         display: flex;
         justify-content: space-between;
+        align-items: center;
         max-width: 1000px;
         margin: 0 auto;
         @include mq(sm) {
             margin: 0 8px;
         }
+    }
+    .p-header__logo{
+        display: flex;
+        align-items: center;
     }
     .p-header__logo__img{
         width: 250px;
@@ -34,6 +39,7 @@
     }
     .p-header__nav__item{
         list-style: none;
+        position: relative;
         @include mq(sm) {
             font-size: 12px;
         }
@@ -47,5 +53,80 @@
                 margin-left: 16px;
             }
         }
+        
     }
+    .p-header__icon{
+        img{
+            width: 40px;
+            border-radius: 50%;
+        }
+    }
+    .p-header__drawer{
+        list-style: none;
+        width: 220px;
+        display: none;
+        position: absolute;
+        right: 27px;
+        top: 27px;
+        background: #fff;
+        margin-top: 2rem;
+        z-index: 990;
+        @include mq(sm) {
+            position: fixed;
+            top: 27px;
+            left: 0;
+            right: 0;
+            width: auto;
+            height: 100%;
+        }
+    }
+    .p-header__drawer__item{
+        border-top: 1px solid #eee;
+        border-right: 1px solid #eee;
+        border-left: 1px solid #eee;
+        display: flex;
+        flex-direction: column;
+        @include mq(sm) {
+            padding: 8px 0;
+        }
+    }
+    .p-header__drawer__link{
+         margin: 0 auto 0 0;
+        padding: 12px 20px;
+        display: inline-block;
+        width: 100%;
+        color: #444;
+        text-align: left;
+        font-size: 14px;
+        box-sizing: border-box;
+        cursor: pointer;
+        background: none;
+        border: none;
+        outline: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        translate: all 0.3s;
+        @include mq(sm) {
+            padding: 16px 20px;
+            width: auto;
+        }
+        &:hover {
+            text-decoration: underline;
+            translate: all 0.3s;
+        }
+        &:visited{
+            color: #444;
+        }
+    }
+}
+//.p-header内にいないから外に配置
+.p-header__drawer__bg{
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 1;
 }

@@ -18,13 +18,32 @@
                     </li>
                     @endguest
                     @auth
-                    <li class="p-header__nav__item p-header__nav__item--register">
-                        @if($user->img)
-                        <img src="{{ asset('storage/' . $user->profile_photo) }}" alt="プロフィール画像" />
-                        @else
-                        <img src="{{ asset('/images/blank_profile.png') }}" alt="{{ $user->name. ' のプロフィール画像' }}">
-                        @endif
+                    <li class="p-header__nav__item">
+                        <div class="p-header__icon is-inactive" id="js-drawer__click-target">
+                            @if($user->img)
+                            <img src="{{ asset('storage/' . $user->profile_phot) }}" alt="プロフィール画像" />
+                            @else
+                            <img src="{{ asset('/images/noavatar.png') }}" alt="{{ $user->name. ' のプロフィール画像' }}">
+                            @endif
+                        </div>
+                        <ul class="p-header__drawer" id="js-drawer__menu">
+                            <li class="p-header__drawer__item">
+                                <a class="p-header__drawer__link" href="">マイページ</a>
+                            </li>
+                            <li class="p-header__drawer__item">
+                                <a class="p-header__drawer__link" href="">アイデア一覧</a>
+                                <a class="p-header__drawer__link" href="">アイデア投稿一覧</a>
+                            </li>
+                            <li class="p-header__drawer__item">
+                                <button form="logout-button" type="submit" class="p-header__drawer__link">
+                                    ログアウト
+                                </button>
+                            </li>
+                        </ul>
                     </li>
+                    <form id="logout-button" method="POST" action="{{ route('logout') }}"> {{--この行を編集--}}
+                        @csrf {{--この行を追加--}}
+                    </form>
                     @endauth
                 </ul>
             </nav>
@@ -63,4 +82,5 @@
     </div>
     </div>
 </header>
+<div class="p-header__drawer__bg" id="js-drawer__bg"></div>
 @endsection
