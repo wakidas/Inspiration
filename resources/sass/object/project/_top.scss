@@ -2,18 +2,21 @@
 // .p-top__fv
 // ========================
 .p-top__fv{
-    padding: 32px 45px 0 30px;
+    padding: 112px 45px 0 30px;
     @include mq(md) {
-        padding: 32px 30px 0;
+        padding: 112px 30px 0;
     }
     @include mq(sm) {
-        padding-top: 16px;
+        padding-top: 96px;
     }
     .p-top__fv__topHalf{
         display: flex;
         flex-direction: row-reverse;
         justify-content: space-between;
+        padding-right: 5vw;
+        padding-left: 3vw;
         @include mq(md) {
+            padding: 0;
             flex-direction: column;
             align-items: center;
 	    }
@@ -21,28 +24,36 @@
     .p-top__fv__img{
         position: relative;
         background: $bg-cl;
-        width: 45vw;
-        height: 45vw;
-        max-width: 450px;
-        max-height: 450px;
+        width: 35vw;
+        height: 35vw;
+        max-width: 350px;
+        max-height: 350px;
+        min-width: 225px;
+        min-height: 225px;
         border-radius: 50%;
+        margin-left: 24px;
         display: flex;
         justify-content: center;
+        z-index: -1;
         @include mq(sm) {
+            margin: 0;
 		    width: 60vw;
             height: 60vw;
 	    }
         img{
-            width: 50vw;
-            max-width: 600px;
+            width: 40vw;
+            max-width: 500px;
+            min-width: 265px;
             @include mq(sm) {
                 width: 70vw;
-                height: 70vw;
             }
         }
     }
     .p-top__fv__textWrap{
-        margin-top: 132px;
+        margin-top: 64px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
         @include mq(md) {
             margin-top: 24px;
         }
@@ -50,6 +61,7 @@
     .p-top__fv__title{
         font-size: 40px;
         letter-spacing: 5px;
+        line-height: 1.35;
         @include mq(lg) {
             font-size: 35px;
         }
@@ -61,23 +73,26 @@
         font-weight: bold;
     }
     .p-top__fv__sub{
-        margin-top: 132px;
+        margin-top: 16px;
         @include mq(md) {
-            margin-top: 32px;
+            margin-top: 8px;
 	    }
     }
     .p-top__fv__subText{
-        margin-top: 48px;
-        max-width: 420px;
-        font-size: 24px;
+        margin-top: 16px;
+        font-size: 16px;
+        line-height: 1.35;
         @include mq(md) {
-            margin-top: 16px;
-            font-size: 16px;
+            margin-top: 0;
         }
         @include mq(sm) {
             font-size: 14px;
         }
+        &.p-top__fv__subText--idea{
+            max-width: 440px;
+        }
         &.p-top__fv__subText--skill{
+            max-width: 430px;
             @include mq(md) {
                 display: none;
             }
@@ -90,7 +105,7 @@
         }
     }
     .p-top__fv__bottomHalf{
-        margin: 75px 0 0;
+        margin: 40px 0 0;
         font-size: 30px;
         text-align: center;
         line-height: 1.35;
@@ -100,7 +115,7 @@
         }
         @include mq(sm) {
             font-size: 18px;
-            margin-top: 24px;
+            margin-top: 16px;
         }
         .sp_only{
             display: none;
@@ -249,24 +264,77 @@
 .p-top__step{
     margin: 120px 20px 0;
     background: $bg-cl;
+    @include mq(md) {
+        margin: 80px 0 0;
+    }
+    @include mq(sm) {
+        margin-top: 56px;
+    }
     .p-top__step__inner{
         padding: 72px 60px;
+        @include mq(md) {
+            padding: 56px 40px;
+        }
+        @include mq(sm) {
+            padding: 48px 24px;
+        }
     }
     .p-top__step__title{
         font-size: 58px;
+        @include mq(md) {
+           font-size: 40px;
+        }
+        @include mq(sm) {
+            font-size: 32px;
+        }
+    }
+    .p-top__step__subTitle{
+        font-size: 20px;
+        margin-top: 32px;
+        @include mq(md) {
+           font-size: 18px;
+            margin-top: 24px;
+        }
+        @include mq(sm) {
+            font-size: 16px;
+            margin-top: 16px;
+        }
     }
     .p-top__step__items{
         display: flex;
         justify-content: space-between;
         margin-top: 56px;
+        @include mq(sm) {
+            flex-direction: column;
+            margin-top: 8px;
+            padding-left: 10vw;
+        }
     }
     .p-top__step__item{
-        width: 30%;
         position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        @include mq(sm) {
+            width: auto;
+            margin: 24px auto 0 0;
+            align-items: center;
+            flex-direction: row;
+        }
     }
     .p-top__step__item__count{
         font-size: 48px;
         position: absolute;
+        top: 0;
+        left: 0;
+        @include mq(md) {
+           font-size: 40px;
+        }
+        @include mq(sm) {
+            font-size: 24px;
+            top: 0;
+        }
     }
     .p-top__step__item__img{
         background: white;
@@ -276,20 +344,42 @@
         justify-content: center;
         align-items: center;
         border-radius: 50%;
+        max-width: 250px;
+        max-height: 250px;
+        @include mq(sm) {
+            margin-right: 32px;
+            width: 30vw;
+            height: 30vw;
+        }
         img{
             width: 50%;
         }
     }
     .p-top__step__item__title{
         font-size: 24px;
+        line-height: 1.35;
         margin-top: 24px;
         text-align: center;
+        @include mq(md) {
+           font-size: 22px;
+        }
+        @include mq(sm) {
+            font-size: 18px;
+            margin: auto;
+        }
     }
     .p-top__step__toRegister{
+        margin-top: 72px;
         display: flex;
         justify-content: center;
-        margin-top: 72px;
-
+        margin: 50px auto 0;
+        max-width: 380px;
+        @include mq(md) {
+            margin-top: 40px;
+        }
+         @include mq(sm) {
+            margin-top: 32px;
+        }
     }
 }
 
@@ -299,8 +389,19 @@
 .p-top__end{
     margin-top: 160px;
     padding-bottom: 160px;
+    .p-top__end__inner{
+        padding: 0 60px;
+        @include mq(md) {
+            padding: 0 40px;
+        }
+        @include mq(sm) {
+            padding: 0 24px;
+        }
+    }
     .p-top__end__toIdeas{
         display: flex;
         justify-content: center;
+        margin: 0 auto;
+        max-width: 380px;
     }
 }

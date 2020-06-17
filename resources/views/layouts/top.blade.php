@@ -71,6 +71,9 @@
         <div class="p-top__step__title">
             <h2>Step</h2>
         </div>
+        <div class="p-top__step__subTitle">
+            <p>３ステップでかんたんスタート！</p>
+        </div>
         <div class="p-top__step__items">
             <div class="p-top__step__item p-top__step__item--step1">
 
@@ -115,8 +118,10 @@
     </div>
 </section>
 <section class="p-top__end">
-    <div class="p-top__end__toIdeas">
-        <a href="" class="c-button__link">今すぐ始める</a>
+    <div class="p-top__end__inner">
+        <div class="p-top__end__toIdeas">
+            <a href="" class="c-button__link">今すぐ始める</a>
+        </div>
     </div>
 </section>
 
