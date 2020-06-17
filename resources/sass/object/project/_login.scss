@@ -1,0 +1,80 @@
+.p-login{
+    padding: 0 16px;
+    .p-login__logo{
+        img{
+            width: 250px;
+        }
+    }
+    .p-login__inner{
+        background: #fff;
+        max-width: 360px;
+        margin: 48px auto;
+        padding: 24px;
+        border-radius: 10px;
+        @include mq(sm) {
+            margin-top: 24px;
+        }
+    }
+    .p-login__title{
+        font-size: 24px;
+        margin-top: 24px;
+    }
+    .p-login__formGroup{
+        text-align: left;
+        margin-top: 24px;
+        &.p-login__formGroup--remember{
+            margin-top: 16px;
+            display: flex;
+        }
+    }
+    .p-login__formItem{
+        margin-top: 8px;
+    }
+    .p-login__formInput{
+        width: 100%;
+        padding: 16px;
+        border: 1px solid #eee;
+    }
+    .p-login__formLabel{
+        position: relative;
+        display: inline-block;
+        height: 16px;
+        line-height: 1.2;
+        padding-left: 24px;
+    }
+    .p-login__formLabel::before{
+        content: "";
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 15px;
+        height: 15px;
+        border-radius: 4px;
+        border: 1px solid #ccc;
+    }
+    .p-login__formLabel::after{
+        content: "";
+        display: block;
+        position: absolute;
+        top: 2px;
+        left: 5px;
+        width: 4px;
+        height: 8px;
+        transform: rotate(45deg);
+        border-bottom: 1px solid #fff;
+        border-right: 1px solid #fff;
+    }
+    .p-login__formInput{
+        &.p-login__formInput--remember{
+            display: none;
+        }
+    }
+    .p-login__formInput:checked + .p-login__formLabel::before{
+        background: $main-cl;
+        border: none;
+    }
+    .p-login__submit{
+        margin-top: 32px;
+    }
+}

@@ -34,7 +34,7 @@
         margin-left: 24px;
         display: flex;
         justify-content: center;
-        z-index: -1;
+        flex-shrink: 0;
         @include mq(sm) {
             margin: 0;
 		    width: 60vw;

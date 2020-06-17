@@ -150,6 +150,7 @@ body {
   height: 100%;
   width: 100%;
   color: #333333;
+  background: #FFF8EA;
   font-family: "Montserrat", "Noto Sans JP", sans-serif;
 }
 
@@ -189,9 +190,24 @@ a:visited {
   height: 120px;
 }
 
+.l-login {
+  text-align: center;
+  padding-top: 100px;
+}
+
+@media screen and (max-width: 480px) {
+  .l-login {
+    padding-top: 48px;
+  }
+}
+
 .l-container {
   max-width: 1000px;
   margin: 0 auto;
+}
+
+.l-color__white {
+  background: #ffffff;
 }
 
 .c-button__link {
@@ -202,6 +218,15 @@ a:visited {
   justify-content: center;
   align-items: center;
   border-radius: 30px;
+}
+
+.c-button__submit {
+  background: #FFBC61;
+  border-radius: 3px;
+  width: 200px;
+  height: 50px;
+  font-size: 16px;
+  border: none;
 }
 
 .p-footer {
@@ -220,7 +245,7 @@ a:visited {
   position: fixed;
   right: 0;
   left: 0;
-  background: #fff;
+  background: rgba(255, 255, 255, 0.9);
 }
 
 @media screen and (max-width: 480px) {
@@ -287,6 +312,99 @@ a:visited {
   }
 }
 
+.p-login {
+  padding: 0 16px;
+}
+
+.p-login .p-login__logo img {
+  width: 250px;
+}
+
+.p-login .p-login__inner {
+  background: #fff;
+  max-width: 360px;
+  margin: 48px auto;
+  padding: 24px;
+  border-radius: 10px;
+}
+
+@media screen and (max-width: 480px) {
+  .p-login .p-login__inner {
+    margin-top: 24px;
+  }
+}
+
+.p-login .p-login__title {
+  font-size: 24px;
+  margin-top: 24px;
+}
+
+.p-login .p-login__formGroup {
+  text-align: left;
+  margin-top: 24px;
+}
+
+.p-login .p-login__formGroup.p-login__formGroup--remember {
+  margin-top: 16px;
+  display: flex;
+}
+
+.p-login .p-login__formItem {
+  margin-top: 8px;
+}
+
+.p-login .p-login__formInput {
+  width: 100%;
+  padding: 16px;
+  border: 1px solid #eee;
+}
+
+.p-login .p-login__formLabel {
+  position: relative;
+  display: inline-block;
+  height: 16px;
+  line-height: 1.2;
+  padding-left: 24px;
+}
+
+.p-login .p-login__formLabel::before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 15px;
+  height: 15px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+.p-login .p-login__formLabel::after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 2px;
+  left: 5px;
+  width: 4px;
+  height: 8px;
+  transform: rotate(45deg);
+  border-bottom: 1px solid #fff;
+  border-right: 1px solid #fff;
+}
+
+.p-login .p-login__formInput.p-login__formInput--remember {
+  display: none;
+}
+
+.p-login .p-login__formInput:checked + .p-login__formLabel::before {
+  background: #FFBC61;
+  border: none;
+}
+
+.p-login .p-login__submit {
+  margin-top: 32px;
+}
+
 .p-top__fv {
   padding: 112px 45px 0 30px;
 }
@@ -332,7 +450,7 @@ a:visited {
   margin-left: 24px;
   display: flex;
   justify-content: center;
-  z-index: -1;
+  flex-shrink: 0;
 }
 
 @media screen and (max-width: 480px) {

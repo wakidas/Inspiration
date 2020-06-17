@@ -7,3 +7,12 @@
     align-items: center;
     border-radius: 30px;
 }
+
+.c-button__submit{
+    background: $main-cl;
+    border-radius: 3px;
+    width: 200px;
+    height: 50px;
+    font-size: 16px;
+    border: none;
+}
