@@ -6,7 +6,7 @@
     position: fixed;
     right: 0;
     left: 0;
-    background: #fff;
+    background: rgba(256,256,256,.9);
     @include mq(sm) {
         padding: 15px 0;
     }
