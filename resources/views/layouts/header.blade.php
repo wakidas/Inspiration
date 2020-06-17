@@ -10,10 +10,10 @@
             <nav class="p-header__nav">
                 <ul class="p-header__nav__list">
                     <li class="p-header__nav__item p-header__nav__item--login">
-                        <a href="">ログイン</a>
+                        <a href="/login">ログイン</a>
                     </li>
                     <li class="p-header__nav__item p-header__nav__item--register">
-                        <a href="">新規登録</a>
+                        <a href="/register">新規登録</a>
                     </li>
                 </ul>
             </nav>
