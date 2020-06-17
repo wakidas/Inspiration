@@ -9,12 +9,23 @@
             </h1>
             <nav class="p-header__nav">
                 <ul class="p-header__nav__list">
+                    @guest
                     <li class="p-header__nav__item p-header__nav__item--login">
                         <a href="/login">ログイン</a>
                     </li>
                     <li class="p-header__nav__item p-header__nav__item--register">
                         <a href="/register">新規登録</a>
                     </li>
+                    @endguest
+                    @auth
+                    <li class="p-header__nav__item p-header__nav__item--register">
+                        @if($user->img)
+                        <img src="{{ asset('storage/' . $user->profile_photo) }}" alt="プロフィール画像" />
+                        @else
+                        <img src="{{ asset('/images/blank_profile.png') }}" alt="{{ $user->name. ' のプロフィール画像' }}">
+                        @endif
+                    </li>
+                    @endauth
                 </ul>
             </nav>
             {{-- <div class="collapse navbar-collapse" id="navbarSupportedContent">
