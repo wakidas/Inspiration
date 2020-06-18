@@ -4,7 +4,7 @@
         <div class="p-header__inner">
             <h1 class="p-header__logo">
                 <a class="" href="{{ url('/') }}">
-                    <img class="p-header__logo__img" src="images/logo.png" alt="Inspiration">
+                    <img class="p-header__logo__img" src="/images/logo.png" alt="Inspiration">
                 </a>
             </h1>
             <nav class="p-header__nav">

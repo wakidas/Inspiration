@@ -24,9 +24,9 @@ export default {
       setTimeout(() => {
         this.show = true;
       }, 1000);
-      setTimeout(() => {
-        this.show = false;
-      }, 5000);
+      // setTimeout(() => {
+      //   this.show = false;
+      // }, 5000);
     }
   },
   mounted() {

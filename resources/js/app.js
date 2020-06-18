@@ -6,7 +6,8 @@
 import jquery from "jquery";
 window.$ = jquery;
 
-import LoginForm from "./components/LoginForm";
+import LoginForm from "./components/auth/LoginForm";
+import PasswordEmail from "./components/auth/PasswordEmail";
 import FlashMessage from "./components/FlashMessage";
 
 require('./components/footerFixed');
@@ -21,6 +22,7 @@ const app = new Vue({
     el: "#app",
     components: {
         LoginForm,
+        PasswordEmail,
         FlashMessage
     }
 });
