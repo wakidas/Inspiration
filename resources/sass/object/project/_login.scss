@@ -3,6 +3,9 @@
     .p-login__logo{
         img{
             width: 250px;
+            @include mq(sm) {
+                width: 200px;
+            }
         }
     }
     .p-login__inner{
@@ -73,6 +76,17 @@
     .p-login__formInput:checked + .p-login__formLabel::before{
         background: $main-cl;
         border: none;
+    }
+    .p-login__passreset{
+        text-align: left;
+        margin-top: 24px;
+    }
+    .p-login__resetLink{
+        color: $main-cl;
+        text-decoration: underline;
+        &:visited{
+            color: $main-cl;
+        }
     }
     .p-login__submit{
         margin-top: 32px;

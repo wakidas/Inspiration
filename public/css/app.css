@@ -197,7 +197,7 @@ a:visited {
 
 @media screen and (max-width: 480px) {
   .l-login {
-    padding-top: 48px;
+    padding-top: 32px;
   }
 }
 
@@ -450,6 +450,12 @@ a:visited {
   width: 250px;
 }
 
+@media screen and (max-width: 480px) {
+  .p-login .p-login__logo img {
+    width: 200px;
+  }
+}
+
 .p-login .p-login__inner {
   background: #fff;
   max-width: 360px;
@@ -529,6 +535,20 @@ a:visited {
 .p-login .p-login__formInput:checked + .p-login__formLabel::before {
   background: #FFBC61;
   border: none;
+}
+
+.p-login .p-login__passreset {
+  text-align: left;
+  margin-top: 24px;
+}
+
+.p-login .p-login__resetLink {
+  color: #FFBC61;
+  text-decoration: underline;
+}
+
+.p-login .p-login__resetLink:visited {
+  color: #FFBC61;
 }
 
 .p-login .p-login__submit {

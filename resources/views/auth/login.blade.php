@@ -11,7 +11,7 @@
             <div class="p-login__title">ログイン</div>
 
             <login-form :old="{{ json_encode(Session::getOldInput()) }}" :errors="{{ $errors }}"
-                endpoint="{{ route('login') }}">
+                endpoint-login="{{ route('login') }}" endpoint-request="{{ route('password.request') }}">
             </login-form>
         </div>
     </div>

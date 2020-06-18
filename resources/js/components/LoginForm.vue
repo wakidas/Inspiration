@@ -1,6 +1,6 @@
 <template>
   <div class="p-login__form">
-    <form method="POST" :action="endpoint">
+    <form method="POST" :action="endpointLogin">
       <input type="hidden" name="_token" :value="csrf" />
 
       <!-- メールアドレス -->
@@ -53,6 +53,13 @@
         <label class="p-login__formLabel" for="remember">ログインしたままにする</label>
       </div>
 
+      <div class="p-login__passreset">
+        パスワードを忘れた方は
+        <span>
+          <a :href="endpointRequest" class="p-login__resetLink">こちら</a>
+        </span>
+      </div>
+
       <!-- 送信ボタン -->
       <div class="p-login__submit">
         <button type="submit" class="c-button__submit">ログインする</button>
@@ -63,7 +70,7 @@
 
 <script>
 export default {
-  props: ["old", "errors", "endpoint"],
+  props: ["old", "errors", "endpointLogin", "endpointRequest"],
   data: function() {
     return {
       csrf: document
