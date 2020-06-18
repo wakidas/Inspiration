@@ -53,4 +53,9 @@ class LoginController extends Controller
             return redirect('/')->with('flash_message', 'ログインしました');
         }
     }
+
+    protected function loggedOut()
+    {
+        return redirect('/')->with('flash_message', 'ログアウトしました');
+    }
 }
