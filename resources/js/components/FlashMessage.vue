@@ -39,17 +39,13 @@ export default {
 </script>
 
 <style scoped>
-.fade-enter {
-  opacity: 0;
-  transform: translateY(-20px);
-}
 .fade-enter-active,
 .fade-leave-active {
   transition: all 1s;
 }
-
+.fade-enter,
 .fade-leave-to {
   opacity: 0;
-  transform: translateY(-20px);
+  transform: translateY(-20px) scale(0.9, 0.9);
 }
 </style>
