@@ -213,6 +213,38 @@ a:visited {
   }
 }
 
+.l-changeEmail {
+  padding-top: 68px;
+}
+
+@media screen and (max-width: 768px) {
+  .l-changeEmail {
+    padding-top: 58px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .l-changeEmail {
+    padding-top: 55px;
+  }
+}
+
+.l-changePassword {
+  padding-top: 68px;
+}
+
+@media screen and (max-width: 768px) {
+  .l-changePassword {
+    padding-top: 58px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .l-changePassword {
+    padding-top: 55px;
+  }
+}
+
 .l-footer {
   height: 120px;
 }
@@ -292,6 +324,44 @@ a:visited {
   padding-top: 0px;
   margin-right: 13px;
   width: 20px;
+}
+
+.p-changeEmail {
+  padding: 0 16px;
+  text-align: center;
+}
+
+.p-changeEmail .p-changeEmail__inner {
+  background: #ffffff;
+  max-width: 360px;
+  margin: 48px auto;
+  padding: 24px;
+  border-radius: 10px;
+}
+
+.p-changeEmail .p-changeEmail__title {
+  font-size: 24px;
+  margin-top: 24px;
+  line-height: 1.35;
+}
+
+.p-changeEmail .p-changeEmail__formGroup {
+  text-align: left;
+  margin-top: 24px;
+}
+
+.p-changeEmail .p-changeEmail__formItem {
+  margin-top: 8px;
+}
+
+.p-changeEmail .p-changeEmail__formInput {
+  width: 100%;
+  padding: 16px;
+  border: 1px solid #eee;
+}
+
+.p-changeEmail .p-changeEmail__submit {
+  margin-top: 32px;
 }
 
 .p-footer {

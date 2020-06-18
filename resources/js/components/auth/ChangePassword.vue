@@ -9,7 +9,7 @@
 
           <!-- 現在のパスワード -->
           <div class="p-changeEmail__formGroup">
-            <label for="current" class>新しいメールアドレスを入力してください。</label>
+            <label for="current" class>現在のパスワード</label>
             <div class="p-changeEmail__formItem">
               <input
                 id="current"
@@ -18,7 +18,6 @@
                 name="current-password"
                 v-model="currentPassword"
                 required
-                placeholder="現在のパスワード"
               />
 
               <span
@@ -34,7 +33,7 @@
 
           <!-- 新しいパスワード　-->
           <div class="p-changeEmail__formGroup">
-            <label for="password" class>新しいメールアドレスを入力してください。</label>
+            <label for="password" class>新しいパスワード</label>
             <div class="p-changeEmail__formItem">
               <input
                 id="password"
@@ -43,7 +42,7 @@
                 name="new-password"
                 v-model="newPassword"
                 required
-                placeholder="新しいパスワード"
+                placeholder="半角英数字8文字以上"
               />
 
               <span
@@ -59,7 +58,7 @@
 
           <!-- 新しいパスワード 確認　-->
           <div class="p-changeEmail__formGroup">
-            <label for="confirm" class>新しいメールアドレスを入力してください。</label>
+            <label for="confirm" class>新しいパスワード（再入力）</label>
             <div class="p-changeEmail__formItem">
               <input
                 id="confirm"
@@ -68,7 +67,7 @@
                 name="new-password_confirmation"
                 v-model="newPasswordConfirmation"
                 required
-                placeholder="新しいパスワード（再入力）"
+                placeholder="半角英数字8文字以上"
               />
 
               <span

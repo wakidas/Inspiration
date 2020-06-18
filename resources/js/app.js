@@ -9,6 +9,8 @@ window.$ = jquery;
 import LoginForm from "./components/auth/LoginForm";
 import PasswordEmail from "./components/auth/PasswordEmail";
 import PasswordReset from "./components/auth/PasswordReset";
+import ChangeEmail from "./components/auth/ChangeEmail";
+import ChangePassword from "./components/auth/ChangePassword";
 import FlashMessage from "./components/FlashMessage";
 
 require('./components/footerFixed');
@@ -25,6 +27,8 @@ const app = new Vue({
         LoginForm,
         PasswordEmail,
         PasswordReset,
+        ChangeEmail,
+        ChangePassword,
         FlashMessage
     }
 });

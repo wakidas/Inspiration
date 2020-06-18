@@ -26,8 +26,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/users/delete/{id}', 'UserController@delete');
 
     //パスワード変更
-    Route::get('changepassword', 'HomeController@showChangePasswordForm');
-    Route::post('changepassword', 'HomeController@changePassword')->name('changepassword');
+    Route::get('changepassword', 'ChangePasswordController@index');
+    Route::post('changepassword', 'ChangePasswordController@changePassword')->name('changepassword');
 
     // メールアドレス確認メールを送信
     Route::get('/changeEmail', 'ChangeEmailController@index')->name('changeEmail');

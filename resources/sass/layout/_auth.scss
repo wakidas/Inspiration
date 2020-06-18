@@ -15,3 +15,21 @@
         padding-top: 55px;
     }
 }
+.l-changeEmail{
+    padding-top: 68px;
+    @include mq(md) {
+        padding-top: 58px;
+    }
+    @include mq(sm) {
+        padding-top: 55px;
+    }
+}
+.l-changePassword{
+    padding-top: 68px;
+    @include mq(md) {
+        padding-top: 58px;
+    }
+    @include mq(sm) {
+        padding-top: 55px;
+    }
+}
