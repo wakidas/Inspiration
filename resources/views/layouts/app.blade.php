@@ -23,13 +23,12 @@
 
 <body>
     @yield('header')
-    {{-- フラッシュメッセージ --}}
-    @if (session('flash_message'))
-    <div class="c-header__sessionMessage js-sessionMessage" style="display: none;">
-        {!! session('flash_message') !!}
-    </div>
-    @endif
+
     <div id="app">
+        {{-- フラッシュメッセージ --}}
+        @if (session('flash_message'))
+        <flash-message message="{{ session('flash_message') }}"></flash-message>
+        @endif
         @yield('content')
     </div>
     @yield('footer')

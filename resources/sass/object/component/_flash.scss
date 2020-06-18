@@ -1,0 +1,23 @@
+.c-flash{
+    padding: 0 16px;
+    position: fixed;
+    top: 90px;
+    left: 0;
+    right: 0;
+    z-index: 1;
+    display: block;
+    text-align: right;
+    @include mq(md) {
+            top: 72px;
+        }
+    .c-flash__inner{
+        max-width: 360px;
+        margin: 0 auto;
+        box-sizing: border-box;
+        padding: 16px;
+        border-radius: 3px;
+        background: rgba(249,146,146,0.5);
+        color: white;
+        display: inline-block;
+    }
+}

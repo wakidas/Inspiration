@@ -7,6 +7,7 @@ import jquery from "jquery";
 window.$ = jquery;
 
 import LoginForm from "./components/LoginForm";
+import FlashMessage from "./components/FlashMessage";
 
 require('./components/footerFixed');
 require('./components/drawerMenu');
@@ -19,6 +20,7 @@ window.Vue = require('vue');
 const app = new Vue({
     el: "#app",
     components: {
-       LoginForm
+        LoginForm,
+        FlashMessage
     }
 });
