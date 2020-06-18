@@ -276,11 +276,22 @@ a:visited {
   box-sizing: border-box;
   padding: 16px;
   border-radius: 3px;
-  background: rgba(249, 146, 146, 0.5);
+  background: rgba(249, 146, 146, 0.9);
   color: white;
   display: inline-block;
   text-align: left;
   line-height: 1.35;
+}
+
+.c-flash .c-flash__text {
+  display: flex;
+  align-items: center;
+}
+
+.c-flash .c-flash__img {
+  padding-top: 0px;
+  margin-right: 13px;
+  width: 20px;
 }
 
 .p-footer {
@@ -608,6 +619,44 @@ a:visited {
 }
 
 .p-passwordEmail .p-passwordEmail__submit {
+  margin-top: 32px;
+}
+
+.p-passwordReset {
+  padding: 0 16px;
+  text-align: center;
+}
+
+.p-passwordReset .p-passwordReset__inner {
+  background: #ffffff;
+  max-width: 360px;
+  margin: 48px auto;
+  padding: 24px;
+  border-radius: 10px;
+}
+
+.p-passwordReset .p-passwordReset__title {
+  font-size: 24px;
+  margin-top: 24px;
+  line-height: 1.35;
+}
+
+.p-passwordReset .p-passwordReset__formGroup {
+  text-align: left;
+  margin-top: 24px;
+}
+
+.p-passwordReset .p-passwordReset__formItem {
+  margin-top: 8px;
+}
+
+.p-passwordReset .p-passwordReset__formInput {
+  width: 100%;
+  padding: 16px;
+  border: 1px solid #eee;
+}
+
+.p-passwordReset .p-passwordReset__submit {
   margin-top: 32px;
 }
 

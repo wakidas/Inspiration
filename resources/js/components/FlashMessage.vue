@@ -3,7 +3,10 @@
     <transition appear name="fade">
       <div class="c-flash" v-if="show">
         <div class="c-flash__inner">
-          <p>{{ Message }}</p>
+          <p class="c-flash__text">
+            <img class="c-flash__img" src="/images/flash-check.svg" alt="チェック" />
+            {{ Message }}
+          </p>
         </div>
       </div>
     </transition>

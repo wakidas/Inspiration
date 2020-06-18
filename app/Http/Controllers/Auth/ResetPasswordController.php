@@ -6,6 +6,7 @@ use inspiration\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ResetsPasswords;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Password;
+use Illuminate\Support\Facades\Log;
 
 class ResetPasswordController extends Controller
 {
@@ -47,6 +48,8 @@ class ResetPasswordController extends Controller
      */
     public function reset(Request $request)
     {
+        Log::debug('$request');
+        Log::debug($request);
         $request->validate($this->rules(), $this->validationErrorMessages());
 
         // Here we will attempt to reset the user's password. If it is successful we
