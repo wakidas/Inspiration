@@ -6,6 +6,7 @@
 import jquery from "jquery";
 window.$ = jquery;
 
+import RegisterForm from "./components/auth/RegisterForm";
 import LoginForm from "./components/auth/LoginForm";
 import PasswordEmail from "./components/auth/PasswordEmail";
 import PasswordReset from "./components/auth/PasswordReset";
@@ -29,6 +30,7 @@ const app = new Vue({
         PasswordReset,
         ChangeEmail,
         ChangePassword,
+        RegisterForm,
         FlashMessage
     }
 });

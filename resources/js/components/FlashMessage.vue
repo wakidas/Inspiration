@@ -46,6 +46,6 @@ export default {
 .fade-enter,
 .fade-leave-to {
   opacity: 0;
-  transform: translateY(-20px) scaleX(0.9);
+  transform: translateY(-20px);
 }
 </style>

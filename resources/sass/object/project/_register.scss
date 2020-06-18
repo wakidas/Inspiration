@@ -1,7 +1,7 @@
-.p-login{
+.p-register{
     padding: 0 16px;
     text-align: center;
-    .p-login__logo{
+    .p-register__logo{
         img{
             width: 250px;
             @include mq(sm) {
@@ -9,47 +9,47 @@
             }
         }
     }
-    .p-login__logo__link{
+    .p-register__logo__link{
         display: inline-block;
     }
-    .p-login__inner{
+    .p-register__inner{
         background: #fff;
         max-width: 360px;
         margin: 48px auto;
-        padding: 24px 24px 32px;
+        padding: 24px;
         border-radius: 10px;
         @include mq(sm) {
             margin-top: 24px;
         }
     }
-    .p-login__title{
+    .p-register__title{
         font-size: 24px;
         margin-top: 24px;
     }
-    .p-login__formGroup{
+    .p-register__formGroup{
         text-align: left;
         margin-top: 24px;
-        &.p-login__formGroup--remember{
+        &.p-register__formGroup--remember{
             margin-top: 16px;
             display: flex;
         }
     }
-    .p-login__formItem{
+    .p-register__formItem{
         margin-top: 8px;
     }
-    .p-login__formInput{
+    .p-register__formInput{
         width: 100%;
         padding: 16px;
         border: 1px solid #eee;
     }
-    .p-login__formLabel{
+    .p-register__formLabel{
         position: relative;
         display: inline-block;
         height: 16px;
         line-height: 1.2;
         padding-left: 24px;
     }
-    .p-login__formLabel::before{
+    .p-register__formLabel::before{
         content: "";
         display: block;
         position: absolute;
@@ -60,7 +60,7 @@
         border-radius: 4px;
         border: 1px solid #ccc;
     }
-    .p-login__formLabel::after{
+    .p-register__formLabel::after{
         content: "";
         display: block;
         position: absolute;
@@ -72,35 +72,35 @@
         border-bottom: 1px solid #fff;
         border-right: 1px solid #fff;
     }
-    .p-login__formInput{
-        &.p-login__formInput--remember{
+    .p-register__formInput{
+        &.p-register__formInput--remember{
             display: none;
         }
     }
-    .p-login__formInput:checked + .p-login__formLabel::before{
+    .p-register__formInput:checked + .p-register__formLabel::before{
         background: $main-cl;
         border: none;
     }
-    .p-login__passreset{
+    .p-register__passreset{
         text-align: left;
         margin-top: 24px;
     }
-    .p-login__resetLink{
+    .p-register__resetLink{
         color: $main-cl;
         text-decoration: underline;
         &:visited{
             color: $main-cl;
         }
     }
-    .p-login__submit{
+    .p-register__submit{
         margin-top: 32px;
         padding-bottom: 32px;
         border-bottom: 1px solid #ccc;
     }
-    .p-login__toRegister{
+    .p-register__toLogin{
         margin-top: 32px;
     }
-    .p-login__toRegister__link{
+    .p-register__toLogin__link{
         color: $main-cl;
         text-decoration: underline;
     }
