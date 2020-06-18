@@ -335,6 +335,20 @@ a:visited {
   width: 20px;
 }
 
+.c-formLabel {
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  padding: 3px 5px;
+  border-radius: 5px;
+  margin-left: 3px;
+  line-height: 1.1;
+}
+
+.c-formLabel.c-formLabel--required {
+  background: #FFBC61;
+}
+
 .p-changeEmail {
   padding: 0 16px;
   text-align: center;
@@ -609,6 +623,11 @@ a:visited {
 }
 
 .p-login .p-login__formLabel {
+  display: flex;
+  align-items: center;
+}
+
+.p-login .p-login__formCheck {
   position: relative;
   display: inline-block;
   height: 16px;
@@ -616,7 +635,7 @@ a:visited {
   padding-left: 24px;
 }
 
-.p-login .p-login__formLabel::before {
+.p-login .p-login__formCheck::before {
   content: "";
   display: block;
   position: absolute;
@@ -628,7 +647,7 @@ a:visited {
   border: 1px solid #ccc;
 }
 
-.p-login .p-login__formLabel::after {
+.p-login .p-login__formCheck::after {
   content: "";
   display: block;
   position: absolute;
@@ -645,7 +664,7 @@ a:visited {
   display: none;
 }
 
-.p-login .p-login__formInput:checked + .p-login__formLabel::before {
+.p-login .p-login__formInput:checked + .p-login__formCheck::before {
   background: #FFBC61;
   border: none;
 }
@@ -814,59 +833,8 @@ a:visited {
 }
 
 .p-register .p-register__formLabel {
-  position: relative;
-  display: inline-block;
-  height: 16px;
-  line-height: 1.2;
-  padding-left: 24px;
-}
-
-.p-register .p-register__formLabel::before {
-  content: "";
-  display: block;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 15px;
-  height: 15px;
-  border-radius: 4px;
-  border: 1px solid #ccc;
-}
-
-.p-register .p-register__formLabel::after {
-  content: "";
-  display: block;
-  position: absolute;
-  top: 2px;
-  left: 5px;
-  width: 4px;
-  height: 8px;
-  transform: rotate(45deg);
-  border-bottom: 1px solid #fff;
-  border-right: 1px solid #fff;
-}
-
-.p-register .p-register__formInput.p-register__formInput--remember {
-  display: none;
-}
-
-.p-register .p-register__formInput:checked + .p-register__formLabel::before {
-  background: #FFBC61;
-  border: none;
-}
-
-.p-register .p-register__passreset {
-  text-align: left;
-  margin-top: 24px;
-}
-
-.p-register .p-register__resetLink {
-  color: #FFBC61;
-  text-decoration: underline;
-}
-
-.p-register .p-register__resetLink:visited {
-  color: #FFBC61;
+  display: flex;
+  align-items: center;
 }
 
 .p-register .p-register__submit {

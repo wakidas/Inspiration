@@ -13,7 +13,10 @@
 
           <!-- メールアドレス -->
           <div class="p-login__formGroup">
-            <label for="email" class>メールアドレス</label>
+            <label for="email" class="p-login__formLabel">
+              メールアドレス
+              <span class="c-formLabel c-formLabel--required">必須</span>
+            </label>
             <div class="p-login__formItem">
               <input
                 id="email"
@@ -33,7 +36,10 @@
 
           <!-- パスワード -->
           <div class="p-login__formGroup">
-            <label for="password" class>パスワード</label>
+            <label for="password" class="p-login__formLabel">
+              パスワード
+              <span class="c-formLabel c-formLabel--required">必須</span>
+            </label>
             <div class="p-login__formItem">
               <input
                 id="password"
@@ -58,7 +64,7 @@
               name="remember"
               id="remember"
             />
-            <label class="p-login__formLabel" for="remember">ログインしたままにする</label>
+            <label class="p-login__formCheck" for="remember">ログインしたままにする</label>
           </div>
 
           <div class="p-login__passreset">

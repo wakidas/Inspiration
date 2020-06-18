@@ -13,7 +13,10 @@
 
           <!-- メールアドレス -->
           <div class="p-register__formGroup">
-            <label for="email" class>メールアドレス</label>
+            <label for="email" class="p-register__formLabel">
+              メールアドレス
+              <span class="c-formLabel c-formLabel--required">必須</span>
+            </label>
             <div class="p-register__formItem">
               <input
                 id="email"
@@ -33,7 +36,10 @@
 
           <!-- パスワード -->
           <div class="p-register__formGroup">
-            <label for="password" class>パスワード</label>
+            <label for="password" class="p-register__formLabel">
+              パスワード
+              <span class="c-formLabel c-formLabel--required">必須</span>
+            </label>
             <div class="p-register__formItem">
               <input
                 id="password"
@@ -52,7 +58,10 @@
 
           <!-- パスワード 再入力 -->
           <div class="p-register__formGroup">
-            <label for="password" class>パスワード（再入力）</label>
+            <label for="password" class="p-register__formLabel">
+              パスワード（再入力）
+              <span class="c-formLabel c-formLabel--required">必須</span>
+            </label>
             <div class="p-register__formItem">
               <input
                 id="password"
