@@ -15,14 +15,14 @@ class UsersTableSeeder extends Seeder
     {
         DB::table('users')->insert([
             [
-                'name' => 'きわっち１',
+                'name' => 'サンプルユーザー１',
                 'email' => 'ymnkknt301@yahoo.co.jp',
                 'password' => bcrypt('orange1212'),
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ],
             [
-                'name' => 'きわっち２',
+                'name' => 'サンプルユーザー２',
                 'email' => 'ymnkknt3@gmail.com',
                 'password' => bcrypt('orange1212'),
                 'created_at' => Carbon::now(),
