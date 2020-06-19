@@ -1,27 +1,27 @@
 <template>
-  <div class="p-login">
-    <div class="p-login__logo">
-      <a href="/" class="p-login__logo__link">
+  <div class="c-auth">
+    <div class="c-auth__logo">
+      <a href="/" class="c-auth__logo__link">
         <img src="/images/logo.png" alt="Inspiration" />
       </a>
     </div>
-    <div class="p-login__inner">
-      <div class="p-login__title">ログイン</div>
-      <div class="p-login__form">
+    <div class="c-auth__inner">
+      <div class="c-auth__title">ログイン</div>
+      <div class="c-auth__form">
         <form method="POST" :action="endpointLogin">
           <input type="hidden" name="_token" :value="csrf" />
 
           <!-- メールアドレス -->
-          <div class="p-login__formGroup">
-            <label for="email" class="p-login__formLabel">
+          <div class="c-auth__formGroup">
+            <label for="email" class="c-auth__formLabel">
               メールアドレス
-              <span class="c-formLabel c-formLabel--required">必須</span>
+              <span class="c-auth__formLabel__icon c-auth__formLabel__icon--required">必須</span>
             </label>
-            <div class="p-login__formItem">
+            <div class="c-auth__formItem">
               <input
                 id="email"
                 type="email"
-                class="p-login__formInput @error('email') is-invalid @enderror"
+                class="c-auth__formInput @error('email') is-invalid @enderror"
                 name="email"
                 v-model="email"
                 required
@@ -35,16 +35,16 @@
           </div>
 
           <!-- パスワード -->
-          <div class="p-login__formGroup">
-            <label for="password" class="p-login__formLabel">
+          <div class="c-auth__formGroup">
+            <label for="password" class="c-auth__formLabel">
               パスワード
-              <span class="c-formLabel c-formLabel--required">必須</span>
+              <span class="c-auth__formLabel__icon c-auth__formLabel__icon--required">必須</span>
             </label>
-            <div class="p-login__formItem">
+            <div class="c-auth__formItem">
               <input
                 id="password"
                 type="password"
-                class="p-login__formInput @error('password') is-invalid @enderror"
+                class="c-auth__formInput @error('password') is-invalid @enderror"
                 name="password"
                 v-model="password"
                 required
@@ -57,7 +57,7 @@
           </div>
 
           <!-- ログインしたままにする -->
-          <div class="p-login__formGroup p-login__formGroup--remember">
+          <div class="c-auth__formGroup p-login__formGroup p-login__formGroup--remember">
             <input
               class="p-login__formInput p-login__formInput--remember"
               type="checkbox"
@@ -75,7 +75,7 @@
           </div>
 
           <!-- 送信ボタン -->
-          <div class="p-login__submit">
+          <div class="c-auth__submit p-login__submit">
             <button type="submit" class="c-button__submit">ログインする</button>
           </div>
 

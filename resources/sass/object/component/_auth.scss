@@ -1,7 +1,7 @@
-.p-register{
+.c-auth{
     padding: 0 16px;
     text-align: center;
-    .p-register__logo{
+    .c-auth__logo{
         img{
             width: 250px;
             @include mq(sm) {
@@ -9,10 +9,10 @@
             }
         }
     }
-    .p-register__logo__link{
+    .c-auth__logo__link{
         display: inline-block;
     }
-    .p-register__inner{
+    .c-auth__inner{
         background: #fff;
         max-width: 360px;
         margin: 48px auto;
@@ -22,39 +22,49 @@
             margin-top: 24px;
         }
     }
-    .p-register__title{
+    .c-auth__title{
         font-size: 24px;
         margin-top: 24px;
     }
-    .p-register__formGroup{
+    .c-auth__formGroup{
         text-align: left;
         margin-top: 24px;
-        &.p-register__formGroup--remember{
+        &.c-auth__formGroup--remember{
             margin-top: 16px;
             display: flex;
         }
     }
-    .p-register__formItem{
+    .c-auth__formItem{
         margin-top: 8px;
     }
-    .p-register__formInput{
+    .c-auth__formInput{
         width: 100%;
         padding: 16px;
         border: 1px solid #eee;
     }
-    .p-register__formLabel{
+    .c-auth__formLabel{
         display: flex;
         align-items: center;
     }
-    .p-register__submit{
-        margin-top: 32px;
-        padding-bottom: 32px;
-        border-bottom: 1px solid #ccc;
+    .c-auth__formLabel__icon{
+        font-size: 12px;
+        display: flex;
+        align-items: center;
+        padding: 3px 5px;
+        border-radius: 5px;
+        margin-left: 3px;
+        line-height: 1.1;
+        &.c-auth__formLabel__icon--required{
+            background: $main-cl;
+        }
     }
-    .p-register__toLogin{
+    .c-auth__submit{
         margin-top: 32px;
     }
-    .p-register__toLogin__link{
+    .c-auth__toLogin{
+        margin-top: 32px;
+    }
+    .c-auth__toLogin__link{
         color: $main-cl;
         text-decoration: underline;
     }

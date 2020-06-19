@@ -1,20 +1,20 @@
 <template>
-  <div class="p-changeEmail">
-    <div class="p-changeEmail__inner">
-      <div class="p-changeEmail__title">パスワード変更</div>
+  <div class="c-auth">
+    <div class="c-auth__inner">
+      <div class="c-auth__title">パスワード変更</div>
 
-      <div class="p-changeEmail__form">
+      <div class="c-auth__form">
         <form method="POST" :action="endpoint">
           <input type="hidden" name="_token" :value="csrf" />
 
           <!-- 現在のパスワード -->
-          <div class="p-changeEmail__formGroup">
+          <div class="c-auth__formGroup">
             <label for="current" class>現在のパスワード</label>
-            <div class="p-changeEmail__formItem">
+            <div class="c-auth__formItem">
               <input
                 id="current"
                 type="password"
-                class="p-changeEmail__formInput"
+                class="c-auth__formInput"
                 name="current-password"
                 v-model="currentPassword"
                 required
@@ -32,13 +32,13 @@
           </div>
 
           <!-- 新しいパスワード　-->
-          <div class="p-changeEmail__formGroup">
+          <div class="c-auth__formGroup">
             <label for="password" class>新しいパスワード</label>
-            <div class="p-changeEmail__formItem">
+            <div class="c-auth__formItem">
               <input
                 id="password"
                 type="password"
-                class="p-changeEmail__formInput"
+                class="c-auth__formInput"
                 name="new-password"
                 v-model="newPassword"
                 required
@@ -57,13 +57,13 @@
           </div>
 
           <!-- 新しいパスワード 確認　-->
-          <div class="p-changeEmail__formGroup">
+          <div class="c-auth__formGroup">
             <label for="confirm" class>新しいパスワード（再入力）</label>
-            <div class="p-changeEmail__formItem">
+            <div class="c-auth__formItem">
               <input
                 id="confirm"
                 type="password"
-                class="p-changeEmail__formInput"
+                class="c-auth__formInput"
                 name="new-password_confirmation"
                 v-model="newPasswordConfirmation"
                 required
@@ -82,7 +82,7 @@
           </div>
 
           <!-- 送信ボタン -->
-          <div class="p-changeEmail__submit">
+          <div class="c-auth__submit">
             <button type="submit" class="c-button__submit">メール送信</button>
           </div>
         </form>

@@ -206,52 +206,16 @@ a:visited {
   }
 }
 
-.l-reset {
-  padding-top: 68px;
-}
-
-@media screen and (max-width: 768px) {
-  .l-reset {
-    padding-top: 58px;
-  }
-}
-
-@media screen and (max-width: 480px) {
-  .l-reset {
-    padding-top: 55px;
-  }
+.l-passReset {
+  padding-top: 88px;
 }
 
 .l-changeEmail {
-  padding-top: 68px;
-}
-
-@media screen and (max-width: 768px) {
-  .l-changeEmail {
-    padding-top: 58px;
-  }
-}
-
-@media screen and (max-width: 480px) {
-  .l-changeEmail {
-    padding-top: 55px;
-  }
+  padding-top: 88px;
 }
 
 .l-changePassword {
-  padding-top: 68px;
-}
-
-@media screen and (max-width: 768px) {
-  .l-changePassword {
-    padding-top: 58px;
-  }
-}
-
-@media screen and (max-width: 480px) {
-  .l-changePassword {
-    padding-top: 55px;
-  }
+  padding-top: 88px;
 }
 
 .l-footer {
@@ -265,6 +229,96 @@ a:visited {
 
 .l-color__white {
   background: #ffffff;
+}
+
+.c-auth {
+  padding: 0 16px;
+  text-align: center;
+}
+
+.c-auth .c-auth__logo img {
+  width: 250px;
+}
+
+@media screen and (max-width: 480px) {
+  .c-auth .c-auth__logo img {
+    width: 200px;
+  }
+}
+
+.c-auth .c-auth__logo__link {
+  display: inline-block;
+}
+
+.c-auth .c-auth__inner {
+  background: #fff;
+  max-width: 360px;
+  margin: 48px auto;
+  padding: 24px;
+  border-radius: 10px;
+}
+
+@media screen and (max-width: 480px) {
+  .c-auth .c-auth__inner {
+    margin-top: 24px;
+  }
+}
+
+.c-auth .c-auth__title {
+  font-size: 24px;
+  margin-top: 24px;
+}
+
+.c-auth .c-auth__formGroup {
+  text-align: left;
+  margin-top: 24px;
+}
+
+.c-auth .c-auth__formGroup.c-auth__formGroup--remember {
+  margin-top: 16px;
+  display: flex;
+}
+
+.c-auth .c-auth__formItem {
+  margin-top: 8px;
+}
+
+.c-auth .c-auth__formInput {
+  width: 100%;
+  padding: 16px;
+  border: 1px solid #eee;
+}
+
+.c-auth .c-auth__formLabel {
+  display: flex;
+  align-items: center;
+}
+
+.c-auth .c-auth__formLabel__icon {
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  padding: 3px 5px;
+  border-radius: 5px;
+  margin-left: 3px;
+  line-height: 1.1;
+}
+
+.c-auth .c-auth__formLabel__icon.c-auth__formLabel__icon--required {
+  background: #FFBC61;
+}
+
+.c-auth .c-auth__submit {
+  margin-top: 32px;
+}
+
+.c-auth .c-auth__toLogin {
+  margin-top: 32px;
+}
+
+.c-auth .c-auth__toLogin__link {
+  color: #FFBC61;
+  text-decoration: underline;
 }
 
 .c-button__link {
@@ -333,58 +387,6 @@ a:visited {
   padding-top: 0px;
   margin-right: 13px;
   width: 20px;
-}
-
-.c-formLabel {
-  font-size: 12px;
-  display: flex;
-  align-items: center;
-  padding: 3px 5px;
-  border-radius: 5px;
-  margin-left: 3px;
-  line-height: 1.1;
-}
-
-.c-formLabel.c-formLabel--required {
-  background: #FFBC61;
-}
-
-.p-changeEmail {
-  padding: 0 16px;
-  text-align: center;
-}
-
-.p-changeEmail .p-changeEmail__inner {
-  background: #ffffff;
-  max-width: 360px;
-  margin: 48px auto;
-  padding: 24px;
-  border-radius: 10px;
-}
-
-.p-changeEmail .p-changeEmail__title {
-  font-size: 24px;
-  margin-top: 24px;
-  line-height: 1.35;
-}
-
-.p-changeEmail .p-changeEmail__formGroup {
-  text-align: left;
-  margin-top: 24px;
-}
-
-.p-changeEmail .p-changeEmail__formItem {
-  margin-top: 8px;
-}
-
-.p-changeEmail .p-changeEmail__formInput {
-  width: 100%;
-  padding: 16px;
-  border: 1px solid #eee;
-}
-
-.p-changeEmail .p-changeEmail__submit {
-  margin-top: 32px;
 }
 
 .p-footer {
@@ -564,70 +566,7 @@ a:visited {
   z-index: 1;
 }
 
-.p-login {
-  padding: 0 16px;
-  text-align: center;
-}
-
-.p-login .p-login__logo img {
-  width: 250px;
-}
-
-@media screen and (max-width: 480px) {
-  .p-login .p-login__logo img {
-    width: 200px;
-  }
-}
-
-.p-login .p-login__logo__link {
-  display: inline-block;
-}
-
-.p-login .p-login__inner {
-  background: #fff;
-  max-width: 360px;
-  margin: 48px auto;
-  padding: 24px 24px 32px;
-  border-radius: 10px;
-}
-
-@media screen and (max-width: 480px) {
-  .p-login .p-login__inner {
-    margin-top: 24px;
-  }
-}
-
-.p-login .p-login__title {
-  font-size: 24px;
-  margin-top: 24px;
-}
-
-.p-login .p-login__formGroup {
-  text-align: left;
-  margin-top: 24px;
-}
-
-.p-login .p-login__formGroup.p-login__formGroup--remember {
-  margin-top: 16px;
-  display: flex;
-}
-
-.p-login .p-login__formItem {
-  margin-top: 8px;
-}
-
-.p-login .p-login__formInput {
-  width: 100%;
-  padding: 16px;
-  border: 1px solid #eee;
-}
-
-.p-login .p-login__formLabel {
-  display: flex;
-  align-items: center;
-}
-
-.p-login .p-login__formCheck {
+.p-login__formCheck {
   position: relative;
   display: inline-block;
   height: 16px;
@@ -635,7 +574,7 @@ a:visited {
   padding-left: 24px;
 }
 
-.p-login .p-login__formCheck::before {
+.p-login__formCheck::before {
   content: "";
   display: block;
   position: absolute;
@@ -647,7 +586,7 @@ a:visited {
   border: 1px solid #ccc;
 }
 
-.p-login .p-login__formCheck::after {
+.p-login__formCheck::after {
   content: "";
   display: block;
   position: absolute;
@@ -660,196 +599,45 @@ a:visited {
   border-right: 1px solid #fff;
 }
 
-.p-login .p-login__formInput.p-login__formInput--remember {
+.p-login__formInput.p-login__formInput--remember {
   display: none;
 }
 
-.p-login .p-login__formInput:checked + .p-login__formCheck::before {
+.p-login__formInput:checked + .p-login__formCheck::before {
   background: #FFBC61;
   border: none;
 }
 
-.p-login .p-login__passreset {
+.p-login__passreset {
   text-align: left;
   margin-top: 24px;
 }
 
-.p-login .p-login__resetLink {
+.p-login__resetLink {
   color: #FFBC61;
   text-decoration: underline;
 }
 
-.p-login .p-login__resetLink:visited {
+.p-login__resetLink:visited {
   color: #FFBC61;
 }
 
-.p-login .p-login__submit {
-  margin-top: 32px;
+.p-login__submit {
   padding-bottom: 32px;
   border-bottom: 1px solid #ccc;
 }
 
-.p-login .p-login__toRegister {
+.p-login__toRegister {
   margin-top: 32px;
 }
 
-.p-login .p-login__toRegister__link {
+.p-login__toRegister__link {
   color: #FFBC61;
   text-decoration: underline;
 }
 
-.p-passwordEmail {
-  padding: 0 16px;
-  text-align: center;
-}
-
-.p-passwordEmail .p-passwordEmail__inner {
-  background: #ffffff;
-  max-width: 360px;
-  margin: 48px auto;
-  padding: 24px;
-  border-radius: 10px;
-}
-
-.p-passwordEmail .p-passwordEmail__title {
-  font-size: 24px;
-  margin-top: 24px;
-  line-height: 1.35;
-}
-
-.p-passwordEmail .p-passwordEmail__formGroup {
-  text-align: left;
-  margin-top: 24px;
-}
-
-.p-passwordEmail .p-passwordEmail__formItem {
-  margin-top: 8px;
-}
-
-.p-passwordEmail .p-passwordEmail__formInput {
-  width: 100%;
-  padding: 16px;
-  border: 1px solid #eee;
-}
-
-.p-passwordEmail .p-passwordEmail__submit {
-  margin-top: 32px;
-}
-
-.p-passwordReset {
-  padding: 0 16px;
-  text-align: center;
-}
-
-.p-passwordReset .p-passwordReset__inner {
-  background: #ffffff;
-  max-width: 360px;
-  margin: 48px auto;
-  padding: 24px;
-  border-radius: 10px;
-}
-
-.p-passwordReset .p-passwordReset__title {
-  font-size: 24px;
-  margin-top: 24px;
-  line-height: 1.35;
-}
-
-.p-passwordReset .p-passwordReset__formGroup {
-  text-align: left;
-  margin-top: 24px;
-}
-
-.p-passwordReset .p-passwordReset__formItem {
-  margin-top: 8px;
-}
-
-.p-passwordReset .p-passwordReset__formInput {
-  width: 100%;
-  padding: 16px;
-  border: 1px solid #eee;
-}
-
-.p-passwordReset .p-passwordReset__submit {
-  margin-top: 32px;
-}
-
-.p-register {
-  padding: 0 16px;
-  text-align: center;
-}
-
-.p-register .p-register__logo img {
-  width: 250px;
-}
-
-@media screen and (max-width: 480px) {
-  .p-register .p-register__logo img {
-    width: 200px;
-  }
-}
-
-.p-register .p-register__logo__link {
-  display: inline-block;
-}
-
-.p-register .p-register__inner {
-  background: #fff;
-  max-width: 360px;
-  margin: 48px auto;
-  padding: 24px;
-  border-radius: 10px;
-}
-
-@media screen and (max-width: 480px) {
-  .p-register .p-register__inner {
-    margin-top: 24px;
-  }
-}
-
-.p-register .p-register__title {
-  font-size: 24px;
-  margin-top: 24px;
-}
-
-.p-register .p-register__formGroup {
-  text-align: left;
-  margin-top: 24px;
-}
-
-.p-register .p-register__formGroup.p-register__formGroup--remember {
-  margin-top: 16px;
-  display: flex;
-}
-
-.p-register .p-register__formItem {
-  margin-top: 8px;
-}
-
-.p-register .p-register__formInput {
-  width: 100%;
-  padding: 16px;
-  border: 1px solid #eee;
-}
-
-.p-register .p-register__formLabel {
-  display: flex;
-  align-items: center;
-}
-
-.p-register .p-register__submit {
-  margin-top: 32px;
-  padding-bottom: 32px;
-  border-bottom: 1px solid #ccc;
-}
-
-.p-register .p-register__toLogin {
-  margin-top: 32px;
-}
-
-.p-register .p-register__toLogin__link {
+.p-login__toRegister__link:visited {
   color: #FFBC61;
-  text-decoration: underline;
 }
 
 .p-top__fv {

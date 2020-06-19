@@ -1,20 +1,20 @@
 <template>
-  <div class="p-changeEmail">
-    <div class="p-changeEmail__inner">
-      <div class="p-changeEmail__title">メールアドレス変更</div>
+  <div class="c-auth">
+    <div class="c-auth__inner">
+      <div class="c-auth__title">メールアドレス変更</div>
 
-      <div class="p-changeEmail__form">
+      <div class="c-auth__form">
         <form method="POST" :action="endpoint">
           <input type="hidden" name="_token" :value="csrf" />
 
           <!-- メールアドレス -->
-          <div class="p-changeEmail__formGroup">
+          <div class="c-auth__formGroup">
             <label for="email" class>新しいメールアドレスを入力してください。</label>
-            <div class="p-changeEmail__formItem">
+            <div class="c-auth__formItem">
               <input
                 id="new_email"
                 type="email"
-                class="p-changeEmail__formInput @error('email') is-invalid @enderror"
+                class="c-auth__formInput @error('email') is-invalid @enderror"
                 name="new_email"
                 v-model="new_email"
                 required
@@ -34,7 +34,7 @@
           </div>
 
           <!-- 送信ボタン -->
-          <div class="p-changeEmail__submit">
+          <div class="c-auth__submit">
             <button type="submit" class="c-button__submit">メール送信</button>
           </div>
         </form>
