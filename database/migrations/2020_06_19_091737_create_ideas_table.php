@@ -22,6 +22,7 @@ class CreateIdeasTable extends Migration
             $table->unsignedBigInteger('user_id');
             $table->string('img')->nullable();
             $table->decimal('price', 10, 0);
+            $table->softDeletes();
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
