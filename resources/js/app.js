@@ -1,19 +1,26 @@
-/**
- * First we will load all of this project's JavaScript dependencies which
- * includes Vue and other libraries. It is a great starting point when
- * building robust, powerful web applications using Vue and Laravel.
- */
 import jquery from "jquery";
 window.$ = jquery;
 
+// =====================================
+// Vueコンポーネント
+// =====================================
+//共通
+import FlashMessage from "./components/FlashMessage";
+
+//ユーザー認証関係
 import RegisterForm from "./components/auth/RegisterForm";
 import LoginForm from "./components/auth/LoginForm";
 import PasswordEmail from "./components/auth/PasswordEmail";
 import PasswordReset from "./components/auth/PasswordReset";
 import ChangeEmail from "./components/auth/ChangeEmail";
 import ChangePassword from "./components/auth/ChangePassword";
-import FlashMessage from "./components/FlashMessage";
 
+//アイデアページ
+import ArticleIndex from "./components/ideas/ArticleIndex";
+
+// =====================================
+// jsファイル
+// =====================================
 require('./components/footerFixed');
 require('./components/drawerMenu');
 
@@ -25,12 +32,13 @@ window.Vue = require('vue');
 const app = new Vue({
     el: "#app",
     components: {
+        FlashMessage,
         LoginForm,
         PasswordEmail,
         PasswordReset,
         ChangeEmail,
         ChangePassword,
         RegisterForm,
-        FlashMessage
+        ArticleIndex,
     }
 });

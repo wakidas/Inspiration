@@ -6,3 +6,10 @@
 .l-color__white{
     background: #ffffff;
 }
+
+.l-main{
+    padding-top: 70px;
+    @include mq(sm) {
+        padding-top: 60px;
+    }
+}

@@ -22,7 +22,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     //プレフィックス：アイデア
     Route::prefix('ideas')->name('ideas.')->group(function () {
-        Route::get('/index', 'IdeaController@index')->name('index');
+        Route::get('/', 'IdeasController@index')->name('index');
     });
 
 

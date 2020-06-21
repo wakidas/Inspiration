@@ -18,12 +18,14 @@ class CreateIdeasTable extends Migration
             $table->string('title');
             $table->string('description');
             $table->string('body');
+            $table->unsignedBigInteger('category_id');
             $table->unsignedBigInteger('user_id');
             $table->string('img')->nullable();
-            $table->decimal('default_price', 10, 0);
+            $table->decimal('price', 10, 0);
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
         });
     }
 

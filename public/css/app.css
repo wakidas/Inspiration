@@ -231,6 +231,16 @@ a:visited {
   background: #ffffff;
 }
 
+.l-main {
+  padding-top: 70px;
+}
+
+@media screen and (max-width: 480px) {
+  .l-main {
+    padding-top: 60px;
+  }
+}
+
 .c-auth {
   padding: 0 16px;
   text-align: center;
@@ -1240,6 +1250,107 @@ a:visited {
   justify-content: center;
   margin: 0 auto;
   max-width: 380px;
+}
+
+.p-ideasList {
+  background: #fff;
+}
+
+.p-ideas .p-ideas__searchBox {
+  padding: 16px;
+}
+
+.p-ideas .p-ideas__search.p-ideas__search--price {
+  width: 45%;
+}
+
+@media screen and (max-width: 480px) {
+  .p-ideas .p-ideas__search.p-ideas__search--price {
+    width: 100%;
+  }
+}
+
+.p-ideas .p-ideas__search.p-ideas__search--date {
+  width: 45%;
+}
+
+@media screen and (max-width: 480px) {
+  .p-ideas .p-ideas__search.p-ideas__search--date {
+    width: 100%;
+    margin-top: 16px;
+  }
+}
+
+.p-ideas .p-ideas__search__bottom {
+  margin-top: 16px;
+  display: flex;
+}
+
+@media screen and (max-width: 480px) {
+  .p-ideas .p-ideas__search__bottom {
+    display: block;
+  }
+}
+
+.p-ideas .p-ideas__search__price {
+  display: flex;
+  justify-content: space-between;
+}
+
+.p-ideas .p-ideas__search__price__input {
+  width: 45%;
+}
+
+.p-ideas .p-ideas__search__date {
+  display: flex;
+  justify-content: space-between;
+}
+
+.p-ideas .p-ideas__search__date__input {
+  width: 45%;
+}
+
+.p-ideas .p-ideas__searchBox__check {
+  display: none;
+}
+
+.p-ideas .p-ideas__searchBox__label {
+  position: relative;
+  display: inline-block;
+  height: 16px;
+  line-height: 1.2;
+  padding-left: 24px;
+}
+
+.p-ideas .p-ideas__searchBox__label::before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 15px;
+  height: 15px;
+  border-radius: 4px;
+  background: #fff;
+  border: 1px solid #FFBC61;
+}
+
+.p-ideas .p-ideas__searchBox__label::after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 2px;
+  left: 5px;
+  width: 4px;
+  height: 8px;
+  transform: rotate(45deg);
+  border-bottom: 1px solid #fff;
+  border-right: 1px solid #fff;
+}
+
+.p-ideas .p-ideas__searchBox__check:checked + .p-ideas__searchBox__label::before {
+  background: #FFBC61;
+  border: none;
 }
 
 .u-mt0 {
