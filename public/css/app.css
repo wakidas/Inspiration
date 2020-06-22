@@ -399,6 +399,63 @@ a:visited {
   width: 20px;
 }
 
+.c-idea__card {
+  border: 1px solid #FFBC61;
+  max-width: 400px;
+  margin: 32px auto 0;
+  padding: 16px;
+  background: #FFF8EA;
+  border-radius: 10px;
+}
+
+.c-idea__card .c-idea__card__img {
+  width: 100%;
+  height: 48vw;
+  max-height: 278px;
+}
+
+.c-idea__card .c-idea__card__img img {
+  width: 100%;
+  height: 100%;
+}
+
+.c-idea__card .c-idea__card__priceAndDate {
+  display: flex;
+  justify-content: space-between;
+}
+
+.c-idea__card .c-idea__card__likeAndReview {
+  display: flex;
+  justify-content: space-between;
+}
+
+.c-idea__card .c-idea__card__user {
+  display: flex;
+  align-items: center;
+}
+
+.c-idea__card .c-idea__card__user__img {
+  width: 50px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.c-idea__card .c-idea__card__user__img img {
+  width: 100%;
+}
+
+.c-idea__card .c-idea__card__user__name {
+  margin-left: 8px;
+}
+
+.c-idea__card .c-idea__card__like {
+  display: flex;
+}
+
+.c-idea__card .c-idea__card__like .c-idea__card__like__img {
+  width: 20px;
+}
+
 .p-footer {
   background: #555555;
   height: 100%;
@@ -1254,6 +1311,8 @@ a:visited {
 
 .p-ideasList {
   background: #fff;
+  padding: 32px 10px 0;
+  margin-top: 32px;
 }
 
 .p-ideas .p-ideas__searchBox {

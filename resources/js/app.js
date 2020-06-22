@@ -16,7 +16,8 @@ import ChangeEmail from "./components/auth/ChangeEmail";
 import ChangePassword from "./components/auth/ChangePassword";
 
 //アイデアページ
-import ArticleIndex from "./components/ideas/ArticleIndex";
+import IdeasSearchBox from "./components/ideas/IdeasSearchBox";
+import IdeasList from "./components/ideas/IdeasList";
 
 // =====================================
 // jsファイル
@@ -39,6 +40,7 @@ const app = new Vue({
         ChangeEmail,
         ChangePassword,
         RegisterForm,
-        ArticleIndex,
+        IdeasSearchBox,
+        IdeasList,
     }
 });

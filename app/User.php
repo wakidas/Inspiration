@@ -7,6 +7,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use inspiration\Notifications\PasswordResetNotification;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class User extends Authenticatable
 {
@@ -46,6 +47,13 @@ class User extends Authenticatable
 
     protected $table = 'users';
     protected $dates = ['deleted_at'];
+
+
+    public function ideas(): HasMany
+    {
+        return $this->hasMany('inspiration\Idea');
+    }
+
 
     /**
      * パスワードリセット通知の送信をオーバーライド
