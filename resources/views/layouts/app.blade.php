@@ -19,6 +19,9 @@
     <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+    {{-- favicon --}}
+    <link rel="icon" href="images/favicon.ico">
 </head>
 
 <body>
