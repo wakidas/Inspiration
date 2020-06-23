@@ -25,7 +25,7 @@
             <h2>Webサービス<br class="sp_only">アイデア販売プラットフォーム</h2>
         </div>
         <div class="p-top__fv__toIdea">
-            <a href="" class="c-button__link">アイデアを見る</a>
+            <a href="{{ route('ideas.index') }}" class="c-button__link">アイデアを見る</a>
         </div>
     </section>
 
