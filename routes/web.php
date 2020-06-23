@@ -13,8 +13,9 @@
 
 Route::get('/', 'HomeController@index')->name('home');
 Auth::routes();
-
+// =================================================
 //ログインユーザーのみ
+// =================================================
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/mypage', 'MypageController@index')->name('mypage');
 
@@ -22,7 +23,6 @@ Route::group(['middleware' => 'auth'], function () {
 
     //プレフィックス：アイデア
     Route::prefix('ideas')->name('ideas.')->group(function () {
-        Route::get('/', 'IdeasController@index')->name('index');
     });
 
 
@@ -34,4 +34,11 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/changeEmail', 'ChangeEmailController@index')->name('changeEmail');
     Route::get('/reset/{token}', 'ChangeEmailController@reset');
     Route::post('/email', 'ChangeEmailController@sendChangeEmailLink');
+});
+
+// =================================================
+//未ログインユーザー
+// =================================================
+Route::prefix('ideas')->name('ideas.')->group(function () {
+    Route::get('/', 'IdeasController@index')->name('index');
 });
