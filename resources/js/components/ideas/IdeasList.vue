@@ -7,8 +7,8 @@
       <div class="c-idea__card__priceAndDate">
         <div class="c-idea__card__price">¥ {{Idea.price}}</div>
         <div class="c-idea__card__date">
-          <div class="c-idea__card__created">投稿日: {{ Idea.created_at }}</div>
-          <div class="c-idea__card__updated">更新日: {{Idea.updated_at}}</div>
+          <div class="c-idea__card__created">投稿日: {{ formatDatetime(Idea.updated_at) }}</div>
+          <div class="c-idea__card__updated">更新日: {{ formatDatetime(Idea.updated_at) }}</div>
         </div>
       </div>
       <div class="c-idea__card__title">{{Idea.title}}</div>
@@ -32,6 +32,8 @@
   </div>
 </template>
 <script>
+import moment from "moment";
+
 export default {
   props: {
     idea: {
@@ -60,6 +62,11 @@ export default {
     },
     likesCount() {
       return this.LikesCount ? this.LikesCount : 0;
+    },
+    formatDatetime: function() {
+      return function(date) {
+        return moment(date).format("YY/MM/DD");
+      };
     }
   }
 };

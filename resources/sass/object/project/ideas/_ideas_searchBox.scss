@@ -3,6 +3,13 @@
         padding: 16px;
     }
     .p-ideas__searchBox__body{
+        display: flex;
+        flex-wrap: wrap;
+        margin-top: 8px;
+    }
+    .p-ideas__searchBox__category{
+        padding-right: 24px;
+        margin-top: 8px;
     }
     .p-ideas__search{
         &.p-ideas__search--category{
@@ -17,12 +24,15 @@
             width: 45%;
             @include mq(sm) {
                 width: 100%;
-                margin-top: 16px;
+                margin-top: 24px;
             }
+        }
+        .p-ideas__search__title{
+            font-size: 18px;
         }
     }
     .p-ideas__search__bottom{
-        margin-top: 16px;
+        margin-top: 24px;
         display: flex;
         @include mq(sm) {
             display: block;
@@ -31,17 +41,25 @@
     .p-ideas__search__price{
         display: flex;
         justify-content: space-between;
+        align-items: center;
+        margin-top: 8px;
     }
     .p-ideas__search__price__input{
         width: 45%;
+        padding: 8px;
+        border: 1px solid #ffeacc;
     }
     .p-ideas__search__date{
         display: flex;
         justify-content: space-between;
+        align-items: center;
+        margin-top: 8px;
     }
     .p-ideas__search__date__input{
         width: 45%;
+        border: 1px solid #ffeacc;
     }
+
     .p-ideas__searchBox__check{
         display: none;
     }
@@ -62,7 +80,7 @@
         height: 15px;
         border-radius: 4px;
         background: #fff;
-        border: 1px solid $main-cl;
+        border: 1px solid #ffeacc;
     }
     .p-ideas__searchBox__label::after{
         content: "";
@@ -73,11 +91,19 @@
         width: 4px;
         height: 8px;
         transform: rotate(45deg);
-        border-bottom: 1px solid #fff;
-        border-right: 1px solid #fff;
+        border-bottom: 2px solid #fff;
+        border-right: 2px solid #fff;
+        transition: background-color .3s;
     }
     .p-ideas__searchBox__check:checked + .p-ideas__searchBox__label::before{
         background: $main-cl;
+        transition: background-color .3s;
         border: none;
+    }
+    .p-ideas__searchBox__submit {
+        width: 25%;
+        border-radius: 5px;
+        margin: 24px 0 0 auto;
+        height: 32px;
     }
 }

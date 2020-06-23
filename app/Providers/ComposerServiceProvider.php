@@ -5,6 +5,7 @@ namespace inspiration\Providers;
 use Illuminate\Support\ServiceProvider;
 use inspiration\Http\ViewComposers\UserComposer;
 use Illuminate\Support\Facades\View;
+use inspiration\Http\ViewComposers\CategoryComposer;
 
 class ComposerServiceProvider extends ServiceProvider
 {
@@ -25,11 +26,9 @@ class ComposerServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        // 連想配列で渡します
-        // キーにコンポーザーを指定し、値にビューを指定します（ワイルドカードも使えます）
-        // この場合、layoutsディレクトリ配下のビューテンプレートが読み込まれた場合にUserComposerを読み込む（＝$userが作られる）という設定の仕方になります
         View::composers([
-            UserComposer::class    => 'layouts.*'
+            UserComposer::class    => '*',
+            CategoryComposer::class => '*'
         ]);
     }
 }

@@ -3,6 +3,7 @@
 namespace inspiration\Http\Controllers;
 
 use Illuminate\Http\Request;
+use inspiration\Category;
 use inspiration\Idea;
 
 class IdeasController extends Controller
