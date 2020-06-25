@@ -15,6 +15,17 @@ use Illuminate\Support\Facades\Log;
  */
 class IdeasController extends Controller
 {
+
+    /**
+     * 初期化時にアイデアのモデルを返す
+     *
+     * @return object アイデアのモデルを返す
+     */
+    public function __construct()
+    {
+        // $this->authorizeResource(Idea::class, 'idea');
+    }
+
     /**
      * アイデア一覧ページへアクセスする
      *
@@ -44,7 +55,7 @@ class IdeasController extends Controller
     }
 
     /**
-     * DBへの新規登録メソッド
+     * アイデアの新規登録メソッド
      *
      * @param array $request バリデーション通過したpostの内容
      * @var object $user ログインユーザー情報
@@ -71,5 +82,17 @@ class IdeasController extends Controller
         $idea->save();
 
         return redirect()->route('ideas.index')->with('flash_message', 'アイデアを投稿しました！');
+    }
+
+    /**
+     * アイデアの編集メソッド
+     */
+    public function edit($id)
+    {
+        $idea = Idea::find($id);
+
+        return view('ideas.edit', [
+            'idea' => $idea,
+        ]);
     }
 }

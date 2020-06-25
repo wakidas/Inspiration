@@ -71,7 +71,7 @@
         position: absolute;
         top: 0;
         right: 0;
-        display: none;
+        display: flex;
         z-index: 1;
         img{
             width: 20px;
@@ -82,7 +82,7 @@
         width: 200px;
         height: 200px;
         display: inline-block;
-        background-image: url('/images/noimage.png');
+        // background-image: url('/images/noimage.png');
         background-repeat: no-repeat;
         background-size: contain;
         background-position: center;
