@@ -304,20 +304,6 @@ a:visited {
   align-items: center;
 }
 
-.c-auth .c-auth__formLabel__icon {
-  font-size: 12px;
-  display: flex;
-  align-items: center;
-  padding: 3px 5px;
-  border-radius: 5px;
-  margin-left: 3px;
-  line-height: 1.1;
-}
-
-.c-auth .c-auth__formLabel__icon.c-auth__formLabel__icon--required {
-  background: #FFBC61;
-}
-
 .c-auth .c-auth__submit {
   width: 200px;
   height: 50px;
@@ -401,6 +387,25 @@ a:visited {
   padding-top: 0px;
   margin-right: 13px;
   width: 20px;
+}
+
+.c-icon__formLabel {
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  padding: 3px 5px;
+  border-radius: 5px;
+  margin-left: 3px;
+  line-height: 1.1;
+}
+
+.c-icon__formLabel.c-icon__formLabel--required {
+  background: #FFBC61;
+}
+
+.c-icon__formLabel.c-icon__formLabel--optional {
+  background: #333;
+  color: #ffffff;
 }
 
 .c-idea__card {
@@ -1314,6 +1319,117 @@ a:visited {
   justify-content: center;
   margin: 0 auto;
   max-width: 380px;
+}
+
+.p-create {
+  padding: 0 10px;
+}
+
+.p-create .p-create__inner {
+  background: #fff;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 32px;
+  box-sizing: border-box;
+}
+
+.p-create .p-create__formGroup {
+  text-align: left;
+  margin-top: 24px;
+}
+
+.p-create .p-create__formItem {
+  margin-top: 8px;
+}
+
+.p-create .p-create__formLabel {
+  display: flex;
+  align-items: center;
+}
+
+.p-create .p-create__formItem.p-create__formItem--category {
+  position: relative;
+  display: inline-block;
+}
+
+.p-create .p-create__formItem.p-create__formItem--category::after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+  top: 62%;
+  transform: translate(0, -50%) rotate(90deg);
+  right: 17px;
+  box-sizing: border-box;
+  width: 8px;
+  height: 8px;
+  border: 8px solid transparent;
+  border-left: 8px solid #333;
+}
+
+.p-create .p-create__formItem.p-create__formItem--price {
+  width: 200px;
+}
+
+.p-create .p-create__formInput {
+  width: 100%;
+  padding: 16px 40px 16px 16px;
+  border: 1px solid #eee;
+  background: #fff;
+  font-size: 16px;
+}
+
+.p-create .p-create__priceWrap {
+  display: flex;
+  align-items: flex-end;
+}
+
+.p-create .p-create__price__text {
+  margin-left: 8px;
+}
+
+.p-create .p-create__imgInput {
+  display: none;
+}
+
+.p-create .p-create__imgWrap {
+  display: inline-block;
+  position: relative;
+}
+
+.p-create .p-create__imgDelete {
+  background: #999;
+  width: 40px;
+  height: 40px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: none;
+  z-index: 1;
+}
+
+.p-create .p-create__imgDelete img {
+  width: 20px;
+  height: 20px;
+}
+
+.p-create .p-create__imgLabel {
+  width: 200px;
+  height: 200px;
+  display: inline-block;
+  background-image: url("/images/noimage.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  position: relative;
+}
+
+.p-create .p-create__submit {
+  width: 30%;
+  height: 50px;
+  margin: 64px auto 0;
 }
 
 .p-ideasList {

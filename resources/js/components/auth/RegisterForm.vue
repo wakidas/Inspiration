@@ -15,7 +15,7 @@
           <div class="c-auth__formGroup">
             <label for="email" class="c-auth__formLabel">
               メールアドレス
-              <span class="c-auth__formLabel__icon c-auth__formLabel__icon--required">必須</span>
+              <span class="c-icon__formLabel c-icon__formLabel--required">必須</span>
             </label>
             <div class="c-auth__formItem">
               <input
@@ -38,7 +38,7 @@
           <div class="c-auth__formGroup">
             <label for="password" class="c-auth__formLabel">
               パスワード
-              <span class="c-auth__formLabel__icon c-auth__formLabel__icon--required">必須</span>
+              <span class="c-icon__formLabel c-icon__formLabel--required">必須</span>
             </label>
             <div class="c-auth__formItem">
               <input
@@ -60,7 +60,7 @@
           <div class="c-auth__formGroup">
             <label for="password" class="c-auth__formLabel">
               パスワード（再入力）
-              <span class="c-auth__formLabel__icon c-auth__formLabel__icon--required">必須</span>
+              <span class="c-icon__formLabel c-icon__formLabel--required">必須</span>
             </label>
             <div class="c-auth__formItem">
               <input

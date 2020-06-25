@@ -1,0 +1,16 @@
+.c-icon__formLabel{
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    padding: 3px 5px;
+    border-radius: 5px;
+    margin-left: 3px;
+    line-height: 1.1;
+    &.c-icon__formLabel--required{
+        background: $main-cl;
+    }
+    &.c-icon__formLabel--optional{
+        background: #333;
+        color: #ffffff;
+    }
+}

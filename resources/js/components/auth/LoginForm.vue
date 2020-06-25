@@ -15,13 +15,13 @@
           <div class="c-auth__formGroup">
             <label for="email" class="c-auth__formLabel">
               メールアドレス
-              <span class="c-auth__formLabel__icon c-auth__formLabel__icon--required">必須</span>
+              <span class="c-icon__formLabel c-icon__formLabel--required">必須</span>
             </label>
             <div class="c-auth__formItem">
               <input
                 id="email"
                 type="email"
-                class="c-auth__formInput @error('email') is-invalid @enderror"
+                class="c-auth__formInput"
                 name="email"
                 v-model="email"
                 required
@@ -38,7 +38,7 @@
           <div class="c-auth__formGroup">
             <label for="password" class="c-auth__formLabel">
               パスワード
-              <span class="c-auth__formLabel__icon c-auth__formLabel__icon--required">必須</span>
+              <span class="c-icon__formLabel c-icon__formLabel--required">必須</span>
             </label>
             <div class="c-auth__formItem">
               <input

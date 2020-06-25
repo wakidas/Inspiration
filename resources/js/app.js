@@ -1,5 +1,9 @@
+// =====================================
+// 共通モジュール
+// =====================================
 import jquery from "jquery";
 window.$ = jquery;
+window.Vue = require('vue');
 
 // =====================================
 // Vueコンポーネント
@@ -18,16 +22,13 @@ import ChangePassword from "./components/auth/ChangePassword";
 //アイデアページ
 import IdeasSearchBox from "./components/ideas/IdeasSearchBox";
 import IdeasList from "./components/ideas/IdeasList";
+import IdeasForm from "./components/ideas/IdeasForm";
 
 // =====================================
 // jsファイル
 // =====================================
 require('./components/footerFixed');
 require('./components/drawerMenu');
-
-window.Vue = require('vue');
-
-
 
 //vueコンポーネントを使用する
 const app = new Vue({
@@ -42,5 +43,6 @@ const app = new Vue({
         RegisterForm,
         IdeasSearchBox,
         IdeasList,
+        IdeasForm,
     }
 });

@@ -23,6 +23,9 @@ Route::group(['middleware' => 'auth'], function () {
 
     //プレフィックス：アイデア
     Route::prefix('ideas')->name('ideas.')->group(function () {
+        // 一旦未ログインに
+        Route::get('/create', 'IdeasController@create')->name('create');
+        Route::post('/create', 'IdeasController@store')->name('store');
     });
 
 

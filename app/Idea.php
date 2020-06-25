@@ -17,6 +17,10 @@ class Idea extends Model
     protected $table = 'ideas';
     protected $dates = ['deleted_at'];
 
+    protected $fillable = [
+        'title', 'category_id', 'description', 'body', 'price'
+    ];
+
     public function user(): BelongsTo //user()はリレーションメソッド
     {
         //記事と記事を書いたユーザ＝は多対1の関係なのでその場合は「belongsTo」メソッドを使用する。
