@@ -9,7 +9,8 @@
             <ideas-search-box :categories='@json($categories)'></ideas-search-box>
             <div class="p-ideasList">
                 @foreach ($ideas as $idea)
-                <ideas-list :idea='@json($idea)' :user='@json($idea->user)' :likesCount='@json($idea->likesCount)'>
+                <ideas-list :idea='@json($idea)' :user='@json($idea->user)' :category='@json($idea->category)'
+                    :likesCount='@json($idea->likesCount)'>
                 </ideas-list>
                 @endforeach
             </div>

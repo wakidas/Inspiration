@@ -1,6 +1,7 @@
 <template>
   <div class="c-idea__card">
     <div class="c-idea__card__inner">
+      <div class="c-idea__card__category">{{Category.name}}</div>
       <div class="c-idea__card__img">
         <img :src="ideaImg" alt />
       </div>
@@ -16,7 +17,7 @@
       <div class="c-idea__card__likeAndReview">
         <div class="c-idea__card__like">
           <div class="c-idea__card__like__img">
-            <img src="images/like-icon_w.svg" alt="いいねアイコン" />
+            <img src="/images/like-icon_w.svg" alt="いいねアイコン" />
           </div>
           <div class="c-idea__card__like__count">{{ likesCount }}</div>
         </div>
@@ -42,6 +43,9 @@ export default {
     user: {
       type: Object
     },
+    category: {
+      type: Object
+    },
     like: {
       type: Object
     }
@@ -50,15 +54,18 @@ export default {
     return {
       Idea: this.idea,
       User: this.user,
+      Category: this.category,
       LikesCount: this.likesCount
     };
   },
   computed: {
     userImg() {
-      return this.User.img !== null ? this.User.img : "images/noavatar.png";
+      return this.User.img !== null ? this.User.img : "/images/noavatar.png";
     },
     ideaImg() {
-      return this.Idea.img !== null ? this.Idea.img : "images/noimage.png";
+      return this.Idea.img !== null
+        ? "/storage/" + this.Idea.img
+        : "/images/noimage.png";
     },
     likesCount() {
       return this.LikesCount ? this.LikesCount : 0;

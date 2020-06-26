@@ -21,7 +21,7 @@ class Idea extends Model
         'title', 'category_id', 'description', 'body', 'price'
     ];
 
-    public function user(): BelongsTo //user()はリレーションメソッド
+    public function user(): BelongsTo
     {
         //記事と記事を書いたユーザ＝は多対1の関係なのでその場合は「belongsTo」メソッドを使用する。
         return $this->belongsTo('inspiration\User');
@@ -30,6 +30,11 @@ class Idea extends Model
     public function likes(): BelongsToMany
     {
         return $this->belongsToMany('inspiration\User', 'likes')->withTimestamps();
+    }
+
+    public function category()
+    {
+        return $this->belongsTo('inspiration\Category');
     }
 
     public function isLikedBy(?User $user): bool
