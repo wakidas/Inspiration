@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use inspiration\Category;
 use inspiration\Idea;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Log;
 
 /**
@@ -76,7 +77,7 @@ class IdeasController extends Controller
 
         if ($postImg) {
             $path = $postImg->store('public/idea_images');
-            $idea->img = str_replace('public/', 'storage/', $path);
+            $idea->img = str_replace('public/', '', $path);
         }
 
         $idea->save();
@@ -86,6 +87,8 @@ class IdeasController extends Controller
 
     /**
      * アイデアの編集メソッド
+     * 
+     * @return Response アイデア編集ページの表示
      */
     public function edit($id)
     {
@@ -94,5 +97,41 @@ class IdeasController extends Controller
         return view('ideas.edit', [
             'idea' => $idea,
         ]);
+    }
+
+    /**
+     * アイデアの更新メソッド
+     *
+     * @param array $request バリデーション通過したpostの内容
+     * @var object $user ログインユーザー情報
+     * @var object $postImg postされた画像の情報
+     * @var object $idea  newされた新規アイデアのインスタンス
+     * @return Response アイデア一覧ページの表示
+     */
+    public function update(Request $request, $id)
+    {
+        Log::debug('$request');
+        Log::debug($request);
+        $user = Auth::user();
+        $postImg = $request->img;
+        $deleteFlg = $request->deleteFlg;
+
+        $idea = Idea::find($id);
+        $idea->fill($request->all());
+        $idea->user_id = $user->id;
+
+        if ($postImg) {
+            Storage::delete('public/' . $idea->img);
+            $path = $postImg->store('public/idea_images');
+            $idea->img = str_replace('public/', '', $path);
+        }
+        if ($deleteFlg) {
+            Storage::delete('public/' . $idea->img);
+            $idea->img = null;
+        }
+
+        $idea->save();
+
+        return redirect()->route('ideas.index')->with('flash_message', 'アイデアを投稿しました！');
     }
 }

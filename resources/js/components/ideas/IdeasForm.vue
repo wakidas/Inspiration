@@ -55,7 +55,7 @@
           <textarea
             name="description"
             type="text"
-            class="p-create__formInput"
+            class="p-create__formInput p-create__formInput--description"
             v-model="description"
             required
           ></textarea>
@@ -76,7 +76,13 @@
           <span class="c-icon__formLabel c-icon__formLabel--required">必須</span>
         </label>
         <div class="p-create__formItem">
-          <textarea name="body" type="text" class="p-create__formInput" v-model="body" required></textarea>
+          <textarea
+            name="body"
+            type="text"
+            class="p-create__formInput p-create__formInput--body"
+            v-model="body"
+            required
+          ></textarea>
           <span class="c-error" role="alert" v-for="value in error.body" :key="value.body">
             <strong>{{ value }}</strong>
           </span>
@@ -238,7 +244,7 @@ export default {
       // 画像読み込み
       fileReader.readAsDataURL(file);
       this.setImgFlg();
-      this.deleteFlg = "";
+      this.deleteFlg = null;
     },
 
     // ===============================

@@ -1,11 +1,14 @@
 .p-create{
-    padding: 0 10px;
+    padding:40px;
     .p-create__inner{
         background: #fff;
         max-width: 1000px;
         margin: 0 auto;
         padding: 32px;
         box-sizing: border-box;
+    }
+    .p-create__title{
+        font-size: 24px;
     }
     .p-create__formGroup{
         text-align: left;
@@ -46,6 +49,12 @@
         border: 1px solid #eee;
         background: #fff;
         font-size: 16px;
+        &.p-create__formInput--description{
+            height: 110px;
+        }
+        &.p-create__formInput--body{
+            height: 300px;
+        }
     }
     .p-create__priceWrap{
         display: flex;
@@ -60,6 +69,7 @@
     .p-create__imgWrap{
         display: inline-block;
         position: relative;
+        border: 1px solid #eee;
     }
     .p-create__imgDelete{
         background: #999;
@@ -82,7 +92,6 @@
         width: 200px;
         height: 200px;
         display: inline-block;
-        // background-image: url('/images/noimage.png');
         background-repeat: no-repeat;
         background-size: contain;
         background-position: center;
