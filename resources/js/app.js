@@ -23,6 +23,7 @@ import ChangePassword from "./components/auth/ChangePassword";
 import IdeasSearchBox from "./components/ideas/IdeasSearchBox";
 import IdeasList from "./components/ideas/IdeasList";
 import IdeasForm from "./components/ideas/IdeasForm";
+import IdeasShow from "./components/ideas/IdeasShow";
 
 // =====================================
 // jsファイル
@@ -44,5 +45,6 @@ const app = new Vue({
         IdeasSearchBox,
         IdeasList,
         IdeasForm,
+        IdeasShow,
     }
 });

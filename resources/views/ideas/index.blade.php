@@ -10,7 +10,7 @@
             <div class="p-ideasList">
                 @foreach ($ideas as $idea)
                 <ideas-list :idea='@json($idea)' :user='@json($idea->user)' :category='@json($idea->category)'
-                    :likesCount='@json($idea->likesCount)'>
+                    :likesCount='@json($idea->likesCount)' endpoint='{{route('ideas.show',$idea->id)}}'>
                 </ideas-list>
                 @endforeach
             </div>

@@ -134,4 +134,18 @@ class IdeasController extends Controller
 
         return redirect()->route('ideas.index')->with('flash_message', 'アイデアを投稿しました！');
     }
+
+    /**
+     * アイデア詳細ページへアクセスする
+     *
+     * @var array $idea アイデアデータ
+     * @return Response アイデア詳細ページの表示
+     */
+    public function show($id)
+    {
+        $idea = Idea::find($id);
+        return view('ideas.show', [
+            'idea' => $idea,
+        ]);
+    }
 }

@@ -28,6 +28,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('/create', 'IdeasController@store')->name('store');
         Route::get('/{id}/edit', 'IdeasController@edit')->name('edit');
         Route::post('/{id}/edit', 'IdeasController@update')->name('update');
+        Route::get('/{id}', 'IdeasController@show')->name('show');
     });
 
 
