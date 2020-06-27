@@ -1,10 +1,10 @@
 <template>
   <div class="p-ideasShow__buttons">
     <div class="p-ideasShow__like">
-      <a href="javascript:void(0)" class>気になるリストへ追加</a>
+      <a href="javascript:void(0)" class="p-ideasShow__button p-ideasShow__button--like">気になるリストへ追加</a>
     </div>
     <div class="p-ideasShow__buy">
-      <a href="javascript:void(0)" class>購入する</a>
+      <a href="javascript:void(0)" class="p-ideasShow__button p-ideasShow__button--buy">購入する</a>
     </div>
   </div>
 </template>

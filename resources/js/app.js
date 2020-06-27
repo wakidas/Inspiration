@@ -6,7 +6,7 @@ window.$ = jquery;
 window.Vue = require('vue');
 
 // =====================================
-// Vueコンポーネント
+// Vueコンポーネントのインポート
 // =====================================
 //共通
 import FlashMessage from "./components/FlashMessage";
@@ -31,7 +31,9 @@ import IdeasShow from "./components/ideas/IdeasShow";
 require('./components/footerFixed');
 require('./components/drawerMenu');
 
-//vueコンポーネントを使用する
+require('./components/filter');
+
+//vueコンポーネンとの宣言
 const app = new Vue({
     el: "#app",
     components: {
@@ -46,5 +48,5 @@ const app = new Vue({
         IdeasList,
         IdeasForm,
         IdeasShow,
-    }
+    },
 });
