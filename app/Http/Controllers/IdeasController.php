@@ -148,4 +148,31 @@ class IdeasController extends Controller
             'idea' => $idea,
         ]);
     }
+
+    /**
+     * いいね登録
+     *
+     * 
+     * 
+     */
+    public function like(Request $request, $id)
+    {
+        $idea = Idea::find($id);
+        $idea->likes()->detach($request->user()->id);
+        $idea->likes()->attach($request->user()->id);
+
+        return [
+            'countLikes' => $idea->count_likes,
+        ];
+    }
+
+    public function unlike(Request $request, $id)
+    {
+        $idea = Idea::find($id);
+        $idea->likes()->detach($request->user()->id);
+
+        return [
+            'countLikes' => $idea->count_likes,
+        ];
+    }
 }

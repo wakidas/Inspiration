@@ -32,11 +32,23 @@
           <div class="p-ideasShow__like"></div>
         </li>
         <li class="p-ideasShow__item">
-          <IdeasShowButtons></IdeasShowButtons>
+          <IdeasShowButtons
+            @like="like"
+            :initial-is-liked-by="this.isLikedBy"
+            :initial-count-likes="this.initialCountLikes"
+            :authorized="this.authorized"
+            :endpoint="this.endpoint"
+          ></IdeasShowButtons>
         </li>
         <li class="p-ideasShow__item">レビュー</li>
         <li class="p-ideasShow__item">
-          <IdeasShowButtons></IdeasShowButtons>
+          <IdeasShowButtons
+            @like="like"
+            :initial-is-liked-by="this.isLikedBy"
+            :initial-count-likes="this.initialCountLikes"
+            :authorized="this.authorized"
+            :endpoint="this.endpoint"
+          ></IdeasShowButtons>
         </li>
       </ul>
     </div>
@@ -45,6 +57,7 @@
 
 <script>
 import IdeasShowButtons from "./IdeasShowButtons";
+import axios from "axios";
 
 export default {
   name: "IdeasShow",
@@ -54,12 +67,29 @@ export default {
     },
     category: {
       type: Object
+    },
+    initialIsLikedBy: {
+      type: Boolean,
+      default: false
+    },
+    initialCountLikes: {
+      type: Number,
+      default: 0
+    },
+    authorized: {
+      type: Boolean,
+      default: false
+    },
+    endpoint: {
+      type: String
     }
   },
   data() {
     return {
       Idea: this.idea,
-      Category: this.category
+      Category: this.category,
+      Authorized: this.authorized,
+      isLikedBy: this.initialIsLikedBy
     };
   },
   computed: {
@@ -67,6 +97,21 @@ export default {
       return this.Idea.img !== null
         ? "/storage/" + this.Idea.img
         : "/images/noimage.png";
+    }
+  },
+  methods: {
+    async like() {
+      console.log("親のlike!");
+      const response = await axios.put(this.endpoint);
+
+      this.isLikedBy = true;
+      this.countLikes = response.data.countLikes;
+    },
+    async unlike() {
+      const response = await axios.delete(this.endpoint);
+
+      this.isLikedBy = false;
+      this.countLikes = response.data.countLikes;
     }
   },
   components: {
