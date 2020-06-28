@@ -18,7 +18,7 @@ import axios from "axios";
 
 export default {
   props: {
-    initialIsLikedBy: {
+    isLikedBy: {
       type: Boolean,
       default: false
     },
@@ -33,11 +33,6 @@ export default {
     endpoint: {
       type: String
     }
-  },
-  data() {
-    return {
-      isLikedBy: this.initialIsLikedBy
-    };
   },
   computed: {
     likeButtonText() {
@@ -58,22 +53,13 @@ export default {
           return false;
         }
       }
-
       this.isLikedBy ? this.unlike() : this.like();
     },
     async like() {
-      console.log("子のlike!");
       this.$emit("like");
-      // const response = await axios.put(this.endpoint);
-
-      // this.isLikedBy = true;
-      // this.countLikes = response.data.countLikes;
     },
     async unlike() {
-      const response = await axios.delete(this.endpoint);
-
-      this.isLikedBy = false;
-      this.countLikes = response.data.countLikes;
+      this.$emit("unlike");
     }
   }
 };

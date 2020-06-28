@@ -34,17 +34,32 @@
         <li class="p-ideasShow__item">
           <IdeasShowButtons
             @like="like"
-            :initial-is-liked-by="this.isLikedBy"
+            @unlike="unlike"
+            :is-liked-by="this.isLikedBy"
             :initial-count-likes="this.initialCountLikes"
             :authorized="this.authorized"
             :endpoint="this.endpoint"
           ></IdeasShowButtons>
         </li>
-        <li class="p-ideasShow__item">レビュー</li>
+        <li class="p-ideasShow__item">
+          <div class="p-ideasShow__review">
+            <div class="p-ideasShow__review__title">レビューを投稿する</div>
+            <form action="/comments/create" method="POST">
+              <input type="hidden" name="_token" :value="csrf" />
+              <input type="hidden" name="idea_id" :value="idea.id" />
+
+              <div class="p-ideasShow__review__rate"></div>
+              <div class="p-ideasShow__review__comment">
+                <textarea name="comment" id cols="30" rows="10"></textarea>
+              </div>
+            </form>
+          </div>
+        </li>
         <li class="p-ideasShow__item">
           <IdeasShowButtons
             @like="like"
-            :initial-is-liked-by="this.isLikedBy"
+            @unlike="unlike"
+            :is-liked-by="this.isLikedBy"
             :initial-count-likes="this.initialCountLikes"
             :authorized="this.authorized"
             :endpoint="this.endpoint"
@@ -86,6 +101,9 @@ export default {
   },
   data() {
     return {
+      csrf: document
+        .querySelector('meta[name="csrf-token"]')
+        .getAttribute("content"),
       Idea: this.idea,
       Category: this.category,
       Authorized: this.authorized,

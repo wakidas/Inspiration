@@ -16,17 +16,6 @@ use Illuminate\Support\Facades\Log;
  */
 class IdeasController extends Controller
 {
-
-    /**
-     * 初期化時にアイデアのモデルを返す
-     *
-     * @return object アイデアのモデルを返す
-     */
-    public function __construct()
-    {
-        // $this->authorizeResource(Idea::class, 'idea');
-    }
-
     /**
      * アイデア一覧ページへアクセスする
      *
