@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Idea extends Model
 {
@@ -42,5 +43,22 @@ class Idea extends Model
         return $user
             ? (bool) $this->likes->where('id', $user->id)->count()
             : false;
+    }
+
+    public function orders(): BelongsToMany
+    {
+        return $this->belongsToMany('inspiration\User', 'orders')->withTimestamps();
+    }
+
+    public function isOrderedBy(?User $user): bool
+    {
+        return $user
+            ? (bool) $this->orders->where('id', $user->id)->count()
+            : false;
+    }
+
+    public function reviews(): HasMany
+    {
+        return $this->hasMany('inspiration\Review');
     }
 }

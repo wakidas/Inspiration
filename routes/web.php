@@ -21,7 +21,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/users/delete/{id}', 'UserController@delete');
 
-    //プレフィックス：アイデア
+    //プレフィックス：ideas
     Route::prefix('ideas')->name('ideas.')->group(function () {
         Route::get('/create', 'IdeasController@create')->name('create');
         Route::post('/create', 'IdeasController@store')->name('store');
@@ -30,8 +30,13 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/{id}', 'IdeasController@show')->name('show');
         Route::put('/{id}/like', 'IdeasController@like')->name('like');
         Route::delete('/{id}/like', 'IdeasController@unlike')->name('unlike');
+        Route::post('/{id}/buy', 'IdeasController@buy')->name('buy');
     });
 
+    //プレフィックス：comments
+    Route::prefix('reviews')->name('reviews.')->group(function () {
+        Route::post('/create', 'ReviewsController@store')->name('store');
+    });
 
     //パスワード変更
     Route::get('changepassword', 'ChangePasswordController@index');

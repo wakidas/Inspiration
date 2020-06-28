@@ -133,8 +133,11 @@ class IdeasController extends Controller
     public function show($id)
     {
         $idea = Idea::find($id);
+        $reviews = Idea::with('reviews', 'reviews.user')->where('ideas.id', $id)->get();
+
         return view('ideas.show', [
             'idea' => $idea,
+            'reviews' => $reviews,
         ]);
     }
 
@@ -163,5 +166,16 @@ class IdeasController extends Controller
         return [
             'countLikes' => $idea->count_likes,
         ];
+    }
+
+    public function buy(Request $request, $id)
+    {
+        Log::debug('buy!!! $request');
+        Log::debug($request);
+
+        $idea = Idea::find($id);
+        $idea->orders()->attach($request->user()->id);
+
+        return redirect()->back();
     }
 }

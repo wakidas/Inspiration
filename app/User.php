@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use inspiration\Notifications\PasswordResetNotification;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class User extends Authenticatable
 {
@@ -52,6 +53,10 @@ class User extends Authenticatable
     public function ideas(): HasMany
     {
         return $this->hasMany('inspiration\Idea');
+    }
+    public function reviews(): HasOne
+    {
+        return $this->hasOne('inspiration\Review');
     }
 
 

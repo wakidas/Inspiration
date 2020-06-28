@@ -37,23 +37,57 @@
             @unlike="unlike"
             :is-liked-by="this.isLikedBy"
             :initial-count-likes="this.initialCountLikes"
+            :is-ordered-by="this.isOrderedBy"
             :authorized="this.authorized"
             :endpoint="this.endpoint"
+            :endpoint-buy="endpointBuy"
           ></IdeasShowButtons>
         </li>
-        <li class="p-ideasShow__item">
-          <div class="p-ideasShow__review">
-            <div class="p-ideasShow__review__title">レビューを投稿する</div>
-            <form action="/comments/create" method="POST">
-              <input type="hidden" name="_token" :value="csrf" />
-              <input type="hidden" name="idea_id" :value="idea.id" />
+        <li class="p-ideasShow__item p-ideasShow__item--review">
+          <ul class="p-ideasShowReview">
+            <li>
+              <div class="p-ideasShowReview__title">レビューを投稿する</div>
+              <form action="/reviews/create" method="POST">
+                <input type="hidden" name="_token" :value="csrf" />
+                <input type="hidden" name="idea_id" :value="idea.id" />
+                <input type="hidden" name="user_id" :value="idea.user_id" />
 
-              <div class="p-ideasShow__review__rate"></div>
-              <div class="p-ideasShow__review__comment">
-                <textarea name="comment" id cols="30" rows="10"></textarea>
-              </div>
-            </form>
-          </div>
+                <div class="p-ideasShowReview__rate">
+                  <input type="hidden" name="rate" :value="rating" />
+                  <star-rating v-model="rating" :star-size="30" :fixed-points="1"></star-rating>
+                </div>
+                <div class="p-ideasShowReview__comment">
+                  <textarea
+                    class="p-ideasShowReview__comment__textarea"
+                    name="comment"
+                    id
+                    cols="30"
+                    rows="10"
+                  ></textarea>
+                </div>
+                <!-- 送信ボタン -->
+                <div class="p-ideasShowReview__submit">
+                  <button type="submit" class="c-button__submit">投稿する</button>
+                </div>
+              </form>
+            </li>
+            <li>
+              <ul class="p-ideasShowReview__list">
+                <li v-for="item in Reviews" :key="item.id">
+                  {{ item.id }}
+                  <div class="p-ideasShowReview__rate">
+                    <star-rating
+                      v-model="item.rate"
+                      :read-only="true"
+                      :star-size="30"
+                      :fixed-points="1"
+                    ></star-rating>
+                  </div>
+                  <div class="p-ideasShowReview__body">{{ item.comment }}</div>
+                </li>
+              </ul>
+            </li>
+          </ul>
         </li>
         <li class="p-ideasShow__item">
           <IdeasShowButtons
@@ -61,8 +95,10 @@
             @unlike="unlike"
             :is-liked-by="this.isLikedBy"
             :initial-count-likes="this.initialCountLikes"
+            :is-ordered-by="this.isOrderedBy"
             :authorized="this.authorized"
             :endpoint="this.endpoint"
+            :endpoint-buy="endpointBuy"
           ></IdeasShowButtons>
         </li>
       </ul>
@@ -73,6 +109,7 @@
 <script>
 import IdeasShowButtons from "./IdeasShowButtons";
 import axios from "axios";
+import StarRating from "vue-star-rating";
 
 export default {
   name: "IdeasShow",
@@ -83,6 +120,9 @@ export default {
     category: {
       type: Object
     },
+    reviews: {
+      type: Object
+    },
     initialIsLikedBy: {
       type: Boolean,
       default: false
@@ -91,11 +131,18 @@ export default {
       type: Number,
       default: 0
     },
+    initialIsOrderedBy: {
+      type: Boolean,
+      default: false
+    },
     authorized: {
       type: Boolean,
       default: false
     },
     endpoint: {
+      type: String
+    },
+    endpointBuy: {
       type: String
     }
   },
@@ -106,8 +153,12 @@ export default {
         .getAttribute("content"),
       Idea: this.idea,
       Category: this.category,
+      Reviews: this.reviews[0].reviews,
       Authorized: this.authorized,
-      isLikedBy: this.initialIsLikedBy
+      isLikedBy: this.initialIsLikedBy,
+      // isOrderedBy: this.initialIsOrderedBy,
+      isOrderedBy: false,
+      rating: 0
     };
   },
   computed: {
@@ -119,7 +170,6 @@ export default {
   },
   methods: {
     async like() {
-      console.log("親のlike!");
       const response = await axios.put(this.endpoint);
 
       this.isLikedBy = true;
@@ -133,7 +183,8 @@ export default {
     }
   },
   components: {
-    IdeasShowButtons
+    IdeasShowButtons,
+    StarRating
   }
 };
 </script>
