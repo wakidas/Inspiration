@@ -9,6 +9,9 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use inspiration\Notifications\PasswordResetNotification;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+
+use Illuminate\Support\Facades\Log;
 
 class User extends Authenticatable
 {
@@ -58,7 +61,10 @@ class User extends Authenticatable
     {
         return $this->hasOne('inspiration\Review');
     }
-
+    public function orders(): BelongsToMany
+    {
+        return $this->belongsToMany('inspiration\User', 'orders')->withTimestamps();
+    }
 
     /**
      * パスワードリセット通知の送信をオーバーライド
@@ -69,5 +75,24 @@ class User extends Authenticatable
     public function sendPasswordResetNotification($token)
     {
         $this->notify(new PasswordResetNotification($token));
+    }
+
+
+    public function buyEmail($options)
+    {
+        Log::debug('<<<<<<<<  buyEmail  >>>>>>>>>');
+        Log::debug('$options');
+        Log::debug($options);
+
+        $thisOrder = Order::join('users', 'orders.user_id', 'users.id')
+            ->where('orders.id', $options->id)
+            ->select('orders.id as o_id', 'name', 'email')
+            ->first();
+        $order = Order::with('ideas')->where('orders.id', $options->id)->first();
+        Log::debug('$thisOrder');
+        Log::debug($thisOrder);
+        Log::debug('$order');
+        Log::debug($order);
+        $thisOrder->notify(new \inspiration\Notifications\BuyIdea());
     }
 }

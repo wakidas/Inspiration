@@ -166,7 +166,9 @@ export default {
       type: Array
     },
     idea: {
-      type: Object
+      type: Object,
+      required: false,
+      default: () => ({})
     }
   },
   data() {
@@ -176,7 +178,6 @@ export default {
         .getAttribute("content"),
 
       Categories: this.categories,
-      // Category: '選択してください',
       title: this.old.title ? this.old.title : this.idea.title,
       category: this.old.category_id
         ? this.old.category_id

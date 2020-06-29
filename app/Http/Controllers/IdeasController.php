@@ -5,6 +5,8 @@ namespace inspiration\Http\Controllers;
 use Illuminate\Http\Request;
 use inspiration\Category;
 use inspiration\Idea;
+use inspiration\User;
+use inspiration\Order;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Log;
@@ -171,11 +173,21 @@ class IdeasController extends Controller
     public function buy(Request $request, $id)
     {
         Log::debug('buy!!! $request');
+        Log::debug('buy!!! $request');
         Log::debug($request);
+
+
 
         $idea = Idea::find($id);
         $idea->orders()->attach($request->user()->id);
 
-        return redirect()->back();
+        //購入者にメール送信する
+        Log::debug('buyメール送るよ');
+        $order = Order::latest()->first();
+        Log::debug('$order');
+        Log::debug($order);
+        User::find($order->user_id)->buyEmail($order);
+
+        return redirect()->route('ideas.show', $id)->with('flash_message', 'アイデアを購入しました！');
     }
 }
