@@ -31,7 +31,7 @@
                                 <a class="p-header__drawer__link" href="">マイページ</a>
                             </li>
                             <li class="p-header__drawer__item">
-                                <a class="p-header__drawer__link" href="">アイデア一覧</a>
+                                <a class="p-header__drawer__link" href="{{ route('ideas.index') }}">アイデア一覧</a>
                                 <a class="p-header__drawer__link" href="{{ route('ideas.create') }}">アイデア新規投稿</a>
                             </li>
                             <li class="p-header__drawer__item">
