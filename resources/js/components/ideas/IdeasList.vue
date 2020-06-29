@@ -20,9 +20,22 @@
             <div class="c-idea__card__like__img">
               <img src="/images/like-icon_w.svg" alt="いいねアイコン" />
             </div>
-            <div class="c-idea__card__like__count">{{ likesCount }}</div>
+            <div class="c-idea__card__like__count">{{ countLikes}}</div>
           </div>
-          <div class="c-idea__card__review">{{Idea.description}}</div>
+          <div class="c-idea__card__review">
+            <div class="c-idea__card__review__rate">{{ this.Rate }}</div>
+            <div class="c-idea__card__review__rate">
+              <star-rating
+                v-model="this.Rate"
+                :read-only="true"
+                :star-size="10"
+                :fixed-points="1"
+                :show-rating="false"
+                :increment="0.1"
+              ></star-rating>
+            </div>
+            <div class="c-idea__card__review__rate">( {{ this.ReviewCount }} )</div>
+          </div>
         </div>
         <div class="c-idea__card__user">
           <div class="c-idea__card__user__img">
@@ -35,6 +48,7 @@
   </div>
 </template>
 <script>
+import StarRating from "vue-star-rating";
 import moment from "moment";
 
 export default {
@@ -51,8 +65,15 @@ export default {
     category: {
       type: Object
     },
-    like: {
-      type: Object
+    likesCount: {
+      type: Object,
+      required: false
+    },
+    avgRate: {
+      type: Number
+    },
+    reviewCount: {
+      type: Number
     }
   },
   data() {
@@ -60,7 +81,9 @@ export default {
       Idea: this.idea,
       User: this.user,
       Category: this.category,
-      LikesCount: this.likesCount
+      LikesCount: this.likesCount,
+      Rate: this.avgRate,
+      ReviewCount: this.reviewCount
     };
   },
   computed: {
@@ -72,7 +95,7 @@ export default {
         ? "/storage/" + this.Idea.img
         : "/images/noimage.png";
     },
-    likesCount() {
+    countLikes() {
       return this.LikesCount ? this.LikesCount : 0;
     },
     formatDatetime: function() {
@@ -80,6 +103,9 @@ export default {
         return moment(date).format("YY/MM/DD");
       };
     }
+  },
+  components: {
+    StarRating
   }
 };
 </script>

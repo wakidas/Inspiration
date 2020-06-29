@@ -484,6 +484,10 @@ a:visited {
   width: 20px;
 }
 
+.c-idea__card .c-idea__card__review {
+  display: flex;
+}
+
 .p-footer {
   background: #555555;
   height: 100%;
