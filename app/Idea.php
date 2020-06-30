@@ -45,9 +45,9 @@ class Idea extends Model
             : false;
     }
 
-    public function orders(): HasMany
+    public function orders(): BelongsToMany
     {
-        return $this->hasMany('inspiration\Order');
+        return $this->belongsToMany('inspiration\User','orders')->withTimestamps();
     }
 
     public function isOrderedBy(?User $user): bool

@@ -15,4 +15,8 @@ class Review extends Model
     {
         return $this->belongsTo('inspiration\User');
     }
+    public function idea(): BelongsTo
+    {
+        return $this->belongsTo('inspiration\Idea');
+    }
 }

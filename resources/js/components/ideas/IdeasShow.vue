@@ -121,7 +121,7 @@ export default {
       type: Object
     },
     reviews: {
-      type: Object
+      type: Array
     },
     initialIsLikedBy: {
       type: Boolean,

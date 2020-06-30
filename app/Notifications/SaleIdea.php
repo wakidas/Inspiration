@@ -7,13 +7,11 @@ use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use inspiration\Order;
-use Illuminate\Support\Facades\Log;
 
-class BuyIdea extends Notification
+class SaleIdea extends Notification
 {
     use Queueable;
-
-    protected $title = 'Inspiration:アイデアを購入しました。';
+    protected $title = 'Inspiration:出品中のアイデアが購入されました。';
 
     /**
      * Create a new notification instance.
@@ -44,15 +42,13 @@ class BuyIdea extends Notification
      */
     public function toMail($notifiable)
     {
-        Log::debug('notifiable');
-        Log::debug($notifiable);
         $order = Order::with('ideas','users')->latest()->first();
 
         return (new MailMessage)
             ->subject($this->title)
             ->action('Notification Action', url('/'))
             ->view(
-                'emails.buyEmail',
+                'emails.saleEmail',
                 [
                     'order' => $order
                 ]

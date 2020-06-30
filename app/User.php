@@ -80,19 +80,32 @@ class User extends Authenticatable
 
     public function buyEmail($options)
     {
-        Log::debug('<<<<<<<<  buyEmail  >>>>>>>>>');
+        $order = Order::with('users')->where('id',$options->id)->first()->users;
+
+        $order->notify(new \inspiration\Notifications\BuyIdea());
+    }
+
+    public function saleEmail($options)
+    {
+        Log::debug('<<<<<<<< User.php  saleEmail  >>>>>>>>>');
         Log::debug('$options');
         Log::debug($options);
 
-        $thisOrder = Order::join('users', 'orders.user_id', 'users.id')
-            ->where('orders.id', $options->id)
-            ->select('orders.id as o_id', 'name', 'email')
-            ->first();
-        $order = Order::with('ideas')->where('orders.id', $options->id)->first();
-        Log::debug('$thisOrder');
-        Log::debug($thisOrder);
+        $order = Order::with('users')->where('id',$options->id)->first()->users;
         Log::debug('$order');
         Log::debug($order);
-        $thisOrder->notify(new \inspiration\Notifications\BuyIdea());
+        $order->notify(new \inspiration\Notifications\SaleIdea());
+    }
+
+    public function postReview($options)
+    {
+        Log::debug('<<<<<<<< User.php  postReview  >>>>>>>>>');
+        Log::debug('$options');
+        Log::debug($options);
+
+        $review = Review::with('users')->where('id',$options->id)->first()->users;
+        Log::debug('$review');
+        Log::debug($review);
+        $review->notify(new \inspiration\Notifications\PostReview());
     }
 }

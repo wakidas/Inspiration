@@ -12,10 +12,10 @@ class Order extends Model
 
     public function ideas()
     {
-        return $this->belongsToMany('inspiration\Ideas');
+        return $this->belongsTo('inspiration\Idea', 'idea_id', 'id');
     }
     public function users()
     {
-        return $this->belongsToMany('inspiration\User');
+        return $this->belongsTo('inspiration\User', 'user_id', 'id');
     }
 }

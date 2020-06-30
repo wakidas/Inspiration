@@ -27,12 +27,11 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('/create', 'IdeasController@store')->name('store');
         Route::get('/{id}/edit', 'IdeasController@edit')->name('edit');
         Route::post('/{id}/edit', 'IdeasController@update')->name('update');
-        Route::get('/{id}', 'IdeasController@show')->name('show');
         Route::put('/{id}/like', 'IdeasController@like')->name('like');
         Route::delete('/{id}/like', 'IdeasController@unlike')->name('unlike');
         Route::post('/{id}/buy', 'IdeasController@buy')->name('buy');
     });
-
+    
     //プレフィックス：comments
     Route::prefix('reviews')->name('reviews.')->group(function () {
         Route::post('/create', 'ReviewsController@store')->name('store');
@@ -41,7 +40,7 @@ Route::group(['middleware' => 'auth'], function () {
     //パスワード変更
     Route::get('changepassword', 'ChangePasswordController@index');
     Route::post('changepassword', 'ChangePasswordController@changePassword')->name('changepassword');
-
+    
     // メールアドレス確認メールを送信
     Route::get('/changeEmail', 'ChangeEmailController@index')->name('changeEmail');
     Route::get('/reset/{token}', 'ChangeEmailController@reset');
@@ -53,4 +52,5 @@ Route::group(['middleware' => 'auth'], function () {
 // =================================================
 Route::prefix('ideas')->name('ideas.')->group(function () {
     Route::get('/', 'IdeasController@index')->name('index');
+    Route::get('/{id}', 'IdeasController@show')->name('show');
 });

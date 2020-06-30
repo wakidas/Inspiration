@@ -173,10 +173,7 @@ class IdeasController extends Controller
     public function buy(Request $request, $id)
     {
         Log::debug('buy!!! $request');
-        Log::debug('buy!!! $request');
         Log::debug($request);
-
-
 
         $idea = Idea::find($id);
         $idea->orders()->attach($request->user()->id);
@@ -184,9 +181,11 @@ class IdeasController extends Controller
         //購入者にメール送信する
         Log::debug('buyメール送るよ');
         $order = Order::latest()->first();
+        // $order->with('ideas','users')->get();
         Log::debug('$order');
         Log::debug($order);
         User::find($order->user_id)->buyEmail($order);
+        User::find($order->ideas->user_id)->saleEmail($order);
 
         return redirect()->route('ideas.show', $id)->with('flash_message', 'アイデアを購入しました！');
     }
