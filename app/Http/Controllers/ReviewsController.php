@@ -4,6 +4,8 @@ namespace inspiration\Http\Controllers;
 
 use Illuminate\Http\Request;
 use inspiration\Review;
+use inspiration\User;
+
 use Illuminate\Support\Facades\Auth;
 
 use Illuminate\Support\Facades\Log;
@@ -29,6 +31,8 @@ class ReviewsController extends Controller
         $review->idea_id = $request->idea_id;
         $review->user_id = $request->user_id;
         $review->save();
+
+        User::find($review->idea->user_id)->postReview($review);
 
         return redirect()->back()->with('flash_message', 'レビューを投稿しました！');
     }

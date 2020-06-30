@@ -19,4 +19,12 @@ class Review extends Model
     {
         return $this->belongsTo('inspiration\Idea');
     }
+    public function ideas()
+    {
+        return $this->belongsTo('inspiration\Idea', 'idea_id', 'id');
+    }
+    public function users()
+    {
+        return $this->belongsTo('inspiration\User', 'user_id', 'id');
+    }
 }
