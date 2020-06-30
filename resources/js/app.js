@@ -25,6 +25,9 @@ import IdeasList from "./components/ideas/IdeasList";
 import IdeasForm from "./components/ideas/IdeasForm";
 import IdeasShow from "./components/ideas/IdeasShow";
 
+//ユーザーページ
+import UsersProfile from "./components/users/UsersProfile";
+
 // =====================================
 // jsファイル
 // =====================================
@@ -48,5 +51,6 @@ const app = new Vue({
         IdeasList,
         IdeasForm,
         IdeasShow,
+        UsersProfile,
     },
 });

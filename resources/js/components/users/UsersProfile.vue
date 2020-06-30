@@ -1,0 +1,44 @@
+<template>
+<div class="p-usersProfile">
+    <div class="p-usersProfile__img">
+        <img :src="userImg" alt="">
+    </div>
+    <div class="p-usersProfile__name">
+        <p>{{User.name}}</p>
+    </div>
+    <div class="p-usersProfile__edit" v-if="IsAuthCheck">
+        <a href="">編集</a>
+    </div>
+
+</div>
+</template>
+<script>
+export default {
+  props: {
+    isAuthCheck:{
+        type:Boolean,
+    },
+    user:{
+        type:Object,
+    }
+  },
+  data() {
+    return {
+      csrf: document
+        .querySelector('meta[name="csrf-token"]')
+        .getAttribute("content"),
+      IsAuthCheck: this.isAuthCheck,
+      User: this.user,
+    };
+  },
+  computed: {
+    userImg() {
+      return this.User.img !== null ? this.User.img : "/images/noavatar.png";
+    },
+  },
+  methods: { },
+  mounted() {
+    
+  }
+};
+</script>

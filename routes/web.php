@@ -19,7 +19,9 @@ Auth::routes();
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/mypage', 'MypageController@index')->name('mypage');
 
-    Route::get('/users/delete/{id}', 'UserController@delete');
+    Route::prefix('users')->name('users.')->group(function () {
+        Route::get('/delete/{id}', 'UserController@delete')->name('delete');
+    });
 
     //プレフィックス：ideas
     Route::prefix('ideas')->name('ideas.')->group(function () {
@@ -48,9 +50,13 @@ Route::group(['middleware' => 'auth'], function () {
 });
 
 // =================================================
-//未ログインユーザー
+//未ログインユーザー閲覧可
 // =================================================
 Route::prefix('ideas')->name('ideas.')->group(function () {
     Route::get('/', 'IdeasController@index')->name('index');
     Route::get('/{id}', 'IdeasController@show')->name('show');
+});
+
+Route::prefix('users')->name('users.')->group(function () {
+    Route::get('/{id}', 'UserController@show')->name('show');
 });
