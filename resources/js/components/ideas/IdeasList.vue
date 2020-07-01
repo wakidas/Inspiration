@@ -88,7 +88,7 @@ export default {
   },
   computed: {
     userImg() {
-      return this.User.img !== null ? this.User.img : "/images/noavatar.png";
+      return this.User.img !== null ? "/storage/" + this.User.img : "/images/noavatar.png";
     },
     ideaImg() {
       return this.Idea.img !== null

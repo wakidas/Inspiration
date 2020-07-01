@@ -1,0 +1,108 @@
+.p-usersEdit{
+    padding:40px;
+    .p-usersEdit__inner{
+        background: #fff;
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 64px 32px;
+        box-sizing: border-box;
+    }
+    .p-usersEdit__form{
+        margin-top: 40px;
+    }
+    .p-usersEdit__title{
+        font-size: 24px;
+        text-align: center;
+    }
+    .p-usersEdit__formGroup{
+        text-align: left;
+        margin-top: 24px;
+        &.p-usersEdit__formGroup--img{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+    }
+    .p-usersEdit__formItem{
+        margin-top: 8px;
+    }
+    .p-usersEdit__formLabel{
+        display: flex;
+        align-items: center;
+    }
+    .p-usersEdit__formItem{
+        &.p-usersEdit__formItem--category{
+            position: relative;
+            display: inline-block;
+            &::after{
+                content: "";
+                position: absolute;
+                pointer-events: none;
+                top: 62%;
+                transform: translate(0, -50%) rotate(90deg);
+                right: 17px;
+                box-sizing: border-box;
+                width: 8px;
+                height: 8px;
+                border: 8px solid transparent;
+                border-left: 8px solid #333;
+            }
+        }
+        &.p-usersEdit__formItem--price{
+            width: 200px;
+        }
+    }
+    .p-usersEdit__formInput{
+        width: 100%;
+        padding: 16px 40px 16px 16px;
+        border: 1px solid #eee;
+        background: #fff;
+        font-size: 16px;
+        &.p-usersEdit__formInput--description{
+            height: 110px;
+        }
+        &.p-usersEdit__formInput--body{
+            height: 300px;
+        }
+    }
+    .p-usersEdit__imgInput{
+        display: none;
+    }
+    .p-usersEdit__imgWrap{
+        display: inline-block;
+        position: relative;
+        margin-top: 8px;
+    }
+    .p-usersEdit__imgDelete{
+        background: #999;
+        width: 40px;
+        height: 40px;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        position: absolute;
+        top: 0;
+        right: 0;
+        display: flex;
+        z-index: 1;
+        img{
+            width: 20px;
+            height: 20px;
+        }
+    }
+    .p-usersEdit__imgLabel{
+        width: 200px;
+        height: 200px;
+        display: inline-block;
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: center;
+        position: relative;
+        border-radius: 50%;
+    }
+    .p-usersEdit__submit{
+        width: 30%;
+        height: 50px;
+        margin: 64px auto 0;
+    }
+}

@@ -7,7 +7,7 @@
         <p>{{User.name}}</p>
     </div>
     <div class="p-usersProfile__edit" v-if="IsAuthCheck">
-        <a href="">編集</a>
+        <a :href="endpoint">編集</a>
     </div>
 
 </div>
@@ -20,6 +20,9 @@ export default {
     },
     user:{
         type:Object,
+    },
+    endpoint:{
+        type: String
     }
   },
   data() {
@@ -33,7 +36,7 @@ export default {
   },
   computed: {
     userImg() {
-      return this.User.img !== null ? this.User.img : "/images/noavatar.png";
+      return this.User.img !== null ? "/storage/"+this.User.img : "/images/noavatar.png";
     },
   },
   methods: { },

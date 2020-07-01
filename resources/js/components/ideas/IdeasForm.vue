@@ -124,7 +124,7 @@
             <label
               for="image"
               class="p-create__imgLabel js-create__imgLabel"
-              :style="{ backgroundImage: backgroundImage}"
+              :style="{ backgroundImage: uploadImage}"
             >
               <input type="hidden" id="js-img__deleteFlg" name="deleteFlg" v-model="deleteFlg" />
               <input
@@ -191,7 +191,7 @@ export default {
       price: this.old.price ? this.old.price : this.idea.price,
       img: this.idea.img,
       imgFlg: "",
-      backgroundImage: "",
+      uploadImage: "",
       deleteFlg: "",
       error: {
         title: this.errors.title,
@@ -201,7 +201,6 @@ export default {
       }
     };
   },
-  computed: {},
   methods: {
     // ===============================
     //imgFlgのセット
@@ -217,11 +216,11 @@ export default {
     // ===============================
     //背景画像のセット
     // ===============================
-    setBackgroundImage() {
-      this.backgroundImage = this.img
+    setInitialBackgroundImage() {
+      this.uploadImage = this.img
         ? "url(/storage/" + this.img + ")"
         : "url('/images/noimage.png')";
-      return this.backgroundImage;
+      return this.uploadImage;
     },
     // ===============================
     //画像アップロード時に発火。
@@ -234,16 +233,12 @@ export default {
       let deleteFlg = $("#js-img__deleteFlg");
       let fileReader = new FileReader();
 
-      fileReader.onload = function(event) {
-        //読み込んだデータをbackground-imageに設定
-        $previewArea.css(
-          "background-image",
-          "url(" + event.target.result + ")"
-        );
+      fileReader.onload = (event)=> {
+        this.uploadImage =  "url('" + event.target.result + "')";
       };
-
       // 画像読み込み
       fileReader.readAsDataURL(file);
+
       this.setImgFlg();
       this.deleteFlg = null;
     },
@@ -258,14 +253,13 @@ export default {
       $fileInput.val("");
       this.img = "";
       this.setImgFlg();
-      this.setBackgroundImage();
-
+      this.uploadImage = "url('/images/noimage.png')";
       this.deleteFlg = 1;
     }
   },
   mounted() {
     this.setImgFlg();
-    this.setBackgroundImage();
+    this.setInitialBackgroundImage();
   }
 };
 </script>
