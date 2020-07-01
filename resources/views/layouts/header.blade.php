@@ -21,14 +21,14 @@
                     <li class="p-header__nav__item">
                         <div class="p-header__icon is-inactive" id="js-drawer__click-target">
                             @if($user->img)
-                            <img src="{{ asset('storage/' . $user->profile_phot) }}" alt="プロフィール画像" />
+                            <img src="{{ asset('storage/' . $user->img) }}" alt="プロフィール画像" />
                             @else
                             <img src="{{ asset('/images/noavatar.png') }}" alt="{{ $user->name. ' のプロフィール画像' }}">
                             @endif
                         </div>
                         <ul class="p-header__drawer" id="js-drawer__menu">
                             <li class="p-header__drawer__item">
-                                <a class="p-header__drawer__link" href="">マイページ</a>
+                                <a class="p-header__drawer__link" href="{{ route('users.show',$user->id)}}">マイページ</a>
                             </li>
                             <li class="p-header__drawer__item">
                                 <a class="p-header__drawer__link" href="{{ route('ideas.index') }}">アイデア一覧</a>
