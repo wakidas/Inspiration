@@ -56,6 +56,7 @@ Route::group(['middleware' => 'auth'], function () {
 // =================================================
 Route::prefix('ideas')->name('ideas.')->group(function () {
     Route::get('/', 'IdeasController@index')->name('index');
+    Route::post('/', 'IdeasController@index')->name('index');
     Route::get('/{id}', 'IdeasController@show')->name('show');
 });
 

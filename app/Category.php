@@ -12,4 +12,9 @@ class Category extends Model
      * @var string
      */
     protected $table = 'categories';
+
+    public function ideas()
+    {
+        return $this->belongsToMany('inspiration\Idea');
+    }
 }

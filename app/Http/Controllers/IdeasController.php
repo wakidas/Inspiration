@@ -24,11 +24,43 @@ class IdeasController extends Controller
      * @var array $ideas アイデア一覧データ
      * @return Response アイデア一覧ページの表示
      */
-    public function index()
+    public function index(Request $request)
     {
-        $ideas = Idea::all();
+        Log::debug('「「「「「「「「「「「　　index   」」」」」」」」」」」」」」');
+        Log::debug('$request');
+        Log::debug($request);
+
+        /**
+         * 検索機能
+         */
+        $post_category = $request->get('category') ? $request->get('category') : "";
+        $post_price = $request->get('price') ? $request->get('price') : "";
+        $post_date = $request->get('date') ? $request->get('date') : "";
+        $postData = [];
+        $postData['category'] = $post_category;
+        $postData['price'] = $post_price;
+        $postData['date'] = $post_date;
+
+
+        Log::debug($post_category);
+        Log::debug($post_price);
+        Log::debug($post_date);
+        
+        if (!empty($post_category) || !empty($post_price) || !empty($post_date)){
+            Log::debug('ifのほう①');
+            $ideas = Idea::getSearchData($request)->get();
+        }else{
+            Log::debug('elseのほう');
+            $ideas = Idea::all();
+        }
+
         return view('ideas.index', [
             'ideas' => $ideas,
+            'postData' => $postData,
+
+            // 'post_category' => $post_category,
+            // 'post_price' => $post_price,
+            // 'post_date' => $post_date,
         ]);
     }
 
