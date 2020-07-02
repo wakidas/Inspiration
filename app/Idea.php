@@ -101,9 +101,9 @@ class Idea extends Model
             if( !empty($date_from) && !empty($date_untill) ){
                 $ideas->whereBetween("created_at",[$date_from,$date_untill]);
             } else if(!empty($date_from)){
-                $ideas->where("date",'>=',$date_from);
+                $ideas->where("created_at",'>=',$date_from);
             } else if(!empty($date_untill)){
-                $ideas->where("date",'<=',$date_untill);
+                $ideas->where("created_at",'<=',$date_untill);
             }
         }
 

@@ -6,6 +6,13 @@ window.$ = jquery;
 window.Vue = require('vue');
 
 // =====================================
+// jsファイル
+// =====================================
+require('./components/footerFixed');
+require('./components/drawerMenu');
+
+require('./components/filter');
+// =====================================
 // Vueコンポーネントのインポート
 // =====================================
 //共通
@@ -29,13 +36,6 @@ import IdeasShow from "./components/ideas/IdeasShow";
 import UsersProfile from "./components/users/UsersProfile";
 import UsersEdit from "./components/users/UsersEdit";
 
-// =====================================
-// jsファイル
-// =====================================
-require('./components/footerFixed');
-require('./components/drawerMenu');
-
-require('./components/filter');
 
 //vueコンポーネンとの宣言
 const app = new Vue({

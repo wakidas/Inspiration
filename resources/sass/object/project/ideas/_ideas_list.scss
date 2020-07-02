@@ -1,4 +1,22 @@
 .p-ideasList{
     background: #fff;
-    padding: 32px 10px 0;
+    padding: 64px 10px 64px;
+    .p-ideasList__inner{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        max-width: 1000px;
+        margin: 0 auto;
+        @include mq(lg) {
+            display: block;
+        }
+    }
+    .p-ideasList__title{
+        font-size: 24px;
+        text-align: center;
+    }
+    .p-ideasList__noItem{
+        width: 100%;
+        text-align: center;
+    }
 }

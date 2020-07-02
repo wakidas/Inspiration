@@ -1,5 +1,6 @@
-.p-ideas{
-    .p-ideas__searchBox{
+.p-ideas__searchBox{
+    padding: 16px 32px;
+    @include mq(sm) {
         padding: 16px;
     }
     .p-ideas__searchBox__body{
@@ -12,28 +13,27 @@
         margin-top: 8px;
     }
     .p-ideas__search{
-        &.p-ideas__search--category{
-        }
         &.p-ideas__search--price{
-            width: 45%;
+            width: 48%;
             @include mq(sm) {
                 width: 100%;
             }
         }
         &.p-ideas__search--date{
-            width: 45%;
-            @include mq(sm) {
-                width: 100%;
-                margin-top: 24px;
-            }
+        width: 48%;
+        @include mq(sm) {
+            width: 100%;
+            margin-top: 24px;
+        }
         }
         .p-ideas__search__title{
             font-size: 18px;
         }
     }
-    .p-ideas__search__bottom{
+    .p-ideas__search__priceDate{
         margin-top: 24px;
         display: flex;
+        justify-content: space-between;
         @include mq(sm) {
             display: block;
         }

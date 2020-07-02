@@ -30,37 +30,27 @@ class IdeasController extends Controller
         Log::debug('$request');
         Log::debug($request);
 
-        /**
-         * 検索機能
-         */
+        
+        // 検索機能
+        
         $post_category = $request->get('category') ? $request->get('category') : "";
         $post_price = $request->get('price') ? $request->get('price') : "";
         $post_date = $request->get('date') ? $request->get('date') : "";
+        
         $postData = [];
         $postData['category'] = $post_category;
         $postData['price'] = $post_price;
         $postData['date'] = $post_date;
-
-
-        Log::debug($post_category);
-        Log::debug($post_price);
-        Log::debug($post_date);
         
         if (!empty($post_category) || !empty($post_price) || !empty($post_date)){
-            Log::debug('ifのほう①');
-            $ideas = Idea::getSearchData($request)->get();
+            $ideas = Idea::getSearchData($request)->paginate(10);
         }else{
-            Log::debug('elseのほう');
-            $ideas = Idea::all();
+            $ideas = Idea::paginate(10);
         }
 
         return view('ideas.index', [
             'ideas' => $ideas,
             'postData' => $postData,
-
-            // 'post_category' => $post_category,
-            // 'post_price' => $post_price,
-            // 'post_date' => $post_date,
         ]);
     }
 

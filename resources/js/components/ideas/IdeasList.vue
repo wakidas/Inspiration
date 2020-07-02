@@ -1,5 +1,5 @@
 <template>
-  <div class="c-idea__card">
+  <div class="c-idea__card js-ideaCard">
     <a :href="endpoint">
       <div class="c-idea__card__inner">
         <div class="c-idea__card__category">{{Category.name}}</div>
@@ -7,7 +7,7 @@
           <img :src="ideaImg" alt />
         </div>
         <div class="c-idea__card__priceAndDate">
-          <div class="c-idea__card__price">¥ {{Idea.price}}</div>
+          <div class="c-idea__card__price">¥ {{ Idea.price | addComma }}</div>
           <div class="c-idea__card__date">
             <div class="c-idea__card__created">投稿日: {{ formatDatetime(Idea.updated_at) }}</div>
             <div class="c-idea__card__updated">更新日: {{ formatDatetime(Idea.updated_at) }}</div>
@@ -23,12 +23,12 @@
             <div class="c-idea__card__like__count">{{ countLikes}}</div>
           </div>
           <div class="c-idea__card__review">
-            <div class="c-idea__card__review__rate">{{ this.Rate }}</div>
+            <div class="c-idea__card__review__rate">{{ fixedRate }}</div>
             <div class="c-idea__card__review__rate">
               <star-rating
                 v-model="this.Rate"
                 :read-only="true"
-                :star-size="10"
+                :star-size="15"
                 :fixed-points="1"
                 :show-rating="false"
                 :increment="0.1"
@@ -102,6 +102,9 @@ export default {
       return function(date) {
         return moment(date).format("YY/MM/DD");
       };
+    },
+    fixedRate(){
+      return this.Rate ? this.Rate.toFixed(1) : "";
     }
   },
   components: {

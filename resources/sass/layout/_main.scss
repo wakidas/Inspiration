@@ -9,7 +9,12 @@
 
 .l-main{
     padding-top: 70px;
-    @include mq(lg) {
+    height: 100%;
+    @include mq(md) {
         padding-top: 60px;
     }
+}
+
+.l-ideas{
+    height: 100%;
 }

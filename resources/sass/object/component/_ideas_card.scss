@@ -1,10 +1,15 @@
 .c-idea__card{
     border: 1px solid $main-cl;
     max-width: 400px;
-    margin: 32px auto 0;
+    margin: 32px 32px 0;
     padding: 16px;
     background: $bg-cl;
     border-radius: 10px;
+    width: 40%;
+    @include mq(lg) {
+            width: auto;
+            margin: 32px auto 0;
+        }
     .c-idea__card__inner{
         position: relative;
     }
@@ -34,14 +39,39 @@
     .c-idea__card__priceAndDate{
         display: flex;
         justify-content: space-between;
+        align-items: flex-end;
+        margin-top: 8px;
+    }
+    .c-idea__card__price{
+        font-size: 22px;
+        font-weight: bold;
+        color: $main-cl;
+    }
+    .c-idea__card__date{
+        font-size: 12px;
+    }
+    .c-idea__card__updated{
+        margin-top: 4px;
+    }
+    .c-idea__card__title{
+        margin-top: 16px;
+        font-size: 18px;
+        font-weight: bold;
+    }
+    .c-idea__card__description{
+        margin-top: 8px;
+        line-height: 1.3;
+        height: 60px;
     }
     .c-idea__card__likeAndReview{
         display: flex;
         justify-content: space-between;
+        margin-top: 8px;
     }
     .c-idea__card__user{
         display: flex;
         align-items: center;
+        margin-top: 8px;
     }
     .c-idea__card__user__img{
         width: 50px;
@@ -56,17 +86,19 @@
     }
     .c-idea__card__like{
         display: flex;
+        align-items: center;
         .c-idea__card__like__img{
             width: 20px;
         }
         .c-idea__card__like__count{
-
+            margin-left: 8px;
         }
     }
     .c-idea__card__review{
         display: flex;
+        align-items: center;
     }
-    .c-idea__card__review{
-        
+    .c-idea__card__review__rate{
+        margin-left: 4px;
     }
 }

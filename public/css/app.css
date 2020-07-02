@@ -233,12 +233,17 @@ a:visited {
 
 .l-main {
   padding-top: 70px;
+  height: 100%;
 }
 
-@media screen and (max-width: 1028px) {
+@media screen and (max-width: 768px) {
   .l-main {
     padding-top: 60px;
   }
+}
+
+.l-ideas {
+  height: 100%;
 }
 
 .c-auth {
@@ -411,10 +416,18 @@ a:visited {
 .c-idea__card {
   border: 1px solid #FFBC61;
   max-width: 400px;
-  margin: 32px auto 0;
+  margin: 32px 32px 0;
   padding: 16px;
   background: #FFF8EA;
   border-radius: 10px;
+  width: 40%;
+}
+
+@media screen and (max-width: 1028px) {
+  .c-idea__card {
+    width: auto;
+    margin: 32px auto 0;
+  }
 }
 
 .c-idea__card .c-idea__card__inner {
@@ -450,16 +463,46 @@ a:visited {
 .c-idea__card .c-idea__card__priceAndDate {
   display: flex;
   justify-content: space-between;
+  align-items: flex-end;
+  margin-top: 8px;
+}
+
+.c-idea__card .c-idea__card__price {
+  font-size: 22px;
+  font-weight: bold;
+  color: #FFBC61;
+}
+
+.c-idea__card .c-idea__card__date {
+  font-size: 12px;
+}
+
+.c-idea__card .c-idea__card__updated {
+  margin-top: 4px;
+}
+
+.c-idea__card .c-idea__card__title {
+  margin-top: 16px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.c-idea__card .c-idea__card__description {
+  margin-top: 8px;
+  line-height: 1.3;
+  height: 60px;
 }
 
 .c-idea__card .c-idea__card__likeAndReview {
   display: flex;
   justify-content: space-between;
+  margin-top: 8px;
 }
 
 .c-idea__card .c-idea__card__user {
   display: flex;
   align-items: center;
+  margin-top: 8px;
 }
 
 .c-idea__card .c-idea__card__user__img {
@@ -478,14 +521,49 @@ a:visited {
 
 .c-idea__card .c-idea__card__like {
   display: flex;
+  align-items: center;
 }
 
 .c-idea__card .c-idea__card__like .c-idea__card__like__img {
   width: 20px;
 }
 
+.c-idea__card .c-idea__card__like .c-idea__card__like__count {
+  margin-left: 8px;
+}
+
 .c-idea__card .c-idea__card__review {
   display: flex;
+  align-items: center;
+}
+
+.c-idea__card .c-idea__card__review__rate {
+  margin-left: 4px;
+}
+
+.c-pagination {
+  margin: 64px;
+}
+
+.c-pagination .pagination {
+  display: flex;
+  list-style: none;
+  justify-content: center;
+}
+
+.c-pagination .page-item {
+  margin-left: 24px;
+  font-size: 24px;
+  border-radius: 50%;
+  display: flex;
+  height: 32px;
+  width: 32px;
+  align-items: center;
+  justify-content: center;
+}
+
+.c-pagination .page-item.active {
+  background: #FFBC61;
 }
 
 .p-footer {
@@ -1466,90 +1544,121 @@ a:visited {
 
 .p-ideasList {
   background: #fff;
-  padding: 32px 10px 0;
+  padding: 64px 10px 64px;
 }
 
-.p-ideas .p-ideas__searchBox {
-  padding: 16px;
+.p-ideasList .p-ideasList__inner {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  max-width: 1000px;
+  margin: 0 auto;
 }
 
-.p-ideas .p-ideas__searchBox__body {
+@media screen and (max-width: 1028px) {
+  .p-ideasList .p-ideasList__inner {
+    display: block;
+  }
+}
+
+.p-ideasList .p-ideasList__title {
+  font-size: 24px;
+  text-align: center;
+}
+
+.p-ideasList .p-ideasList__noItem {
+  width: 100%;
+  text-align: center;
+}
+
+.p-ideas__searchBox {
+  padding: 16px 32px;
+}
+
+@media screen and (max-width: 480px) {
+  .p-ideas__searchBox {
+    padding: 16px;
+  }
+}
+
+.p-ideas__searchBox .p-ideas__searchBox__body {
   display: flex;
   flex-wrap: wrap;
   margin-top: 8px;
 }
 
-.p-ideas .p-ideas__searchBox__category {
+.p-ideas__searchBox .p-ideas__searchBox__category {
   padding-right: 24px;
   margin-top: 8px;
 }
 
-.p-ideas .p-ideas__search.p-ideas__search--price {
-  width: 45%;
+.p-ideas__searchBox .p-ideas__search.p-ideas__search--price {
+  width: 48%;
 }
 
 @media screen and (max-width: 480px) {
-  .p-ideas .p-ideas__search.p-ideas__search--price {
+  .p-ideas__searchBox .p-ideas__search.p-ideas__search--price {
     width: 100%;
   }
 }
 
-.p-ideas .p-ideas__search.p-ideas__search--date {
-  width: 45%;
+.p-ideas__searchBox .p-ideas__search.p-ideas__search--date {
+  width: 48%;
 }
 
 @media screen and (max-width: 480px) {
-  .p-ideas .p-ideas__search.p-ideas__search--date {
+  .p-ideas__searchBox .p-ideas__search.p-ideas__search--date {
     width: 100%;
     margin-top: 24px;
   }
 }
 
-.p-ideas .p-ideas__search .p-ideas__search__title {
+.p-ideas__searchBox .p-ideas__search .p-ideas__search__title {
   font-size: 18px;
 }
 
-.p-ideas .p-ideas__search__bottom {
+.p-ideas__searchBox .p-ideas__search__priceDate {
   margin-top: 24px;
   display: flex;
+  justify-content: space-between;
 }
 
 @media screen and (max-width: 480px) {
-  .p-ideas .p-ideas__search__bottom {
+  .p-ideas__searchBox .p-ideas__search__priceDate {
     display: block;
   }
 }
 
-.p-ideas .p-ideas__search__price {
+.p-ideas__searchBox .p-ideas__search__price {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-top: 8px;
 }
 
-.p-ideas .p-ideas__search__price__input {
+.p-ideas__searchBox .p-ideas__search__price__input {
   width: 45%;
   padding: 8px;
   border: 1px solid #ffeacc;
 }
 
-.p-ideas .p-ideas__search__date {
+.p-ideas__searchBox .p-ideas__search__date {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-top: 8px;
 }
 
-.p-ideas .p-ideas__search__date__input {
+.p-ideas__searchBox .p-ideas__search__date__input {
   width: 45%;
   border: 1px solid #ffeacc;
 }
 
-.p-ideas .p-ideas__searchBox__check {
+.p-ideas__searchBox .p-ideas__searchBox__check {
   display: none;
 }
 
-.p-ideas .p-ideas__searchBox__label {
+.p-ideas__searchBox .p-ideas__searchBox__label {
   position: relative;
   display: inline-block;
   height: 16px;
@@ -1557,7 +1666,7 @@ a:visited {
   padding-left: 24px;
 }
 
-.p-ideas .p-ideas__searchBox__label::before {
+.p-ideas__searchBox .p-ideas__searchBox__label::before {
   content: "";
   display: block;
   position: absolute;
@@ -1570,7 +1679,7 @@ a:visited {
   border: 1px solid #ffeacc;
 }
 
-.p-ideas .p-ideas__searchBox__label::after {
+.p-ideas__searchBox .p-ideas__searchBox__label::after {
   content: "";
   display: block;
   position: absolute;
@@ -1584,13 +1693,13 @@ a:visited {
   transition: background-color 0.3s;
 }
 
-.p-ideas .p-ideas__searchBox__check:checked + .p-ideas__searchBox__label::before {
+.p-ideas__searchBox .p-ideas__searchBox__check:checked + .p-ideas__searchBox__label::before {
   background: #FFBC61;
   transition: background-color 0.3s;
   border: none;
 }
 
-.p-ideas .p-ideas__searchBox__submit {
+.p-ideas__searchBox .p-ideas__searchBox__submit {
   width: 25%;
   border-radius: 5px;
   margin: 24px 0 0 auto;
