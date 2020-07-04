@@ -10,4 +10,9 @@ class MypageController extends Controller
     {
         return view('mypage.index');
     }
+
+    public function settings()
+    {
+        return view('mypage.settings');
+    }
 }

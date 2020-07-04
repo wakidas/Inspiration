@@ -1,0 +1,12 @@
+.c-link__settings__toEdit{
+    font-size: 14px;
+    font-weight: normal;
+    text-decoration: underline;
+    color: $accent-cl;
+    &:visited{
+        color: $accent-cl;
+    }
+    &.c-link__settings__toEdit--img{
+        margin-top: 24px;
+    }
+}

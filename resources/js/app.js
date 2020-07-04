@@ -36,6 +36,8 @@ import IdeasShow from "./components/ideas/IdeasShow";
 import UsersProfile from "./components/users/UsersProfile";
 import UsersEdit from "./components/users/UsersEdit";
 
+//マイページ
+import MypageSettings from "./components/mypage/MypageSettings";
 
 //vueコンポーネンとの宣言
 const app = new Vue({
@@ -54,5 +56,6 @@ const app = new Vue({
         IdeasShow,
         UsersProfile,
         UsersEdit,
+        MypageSettings
     },
 });

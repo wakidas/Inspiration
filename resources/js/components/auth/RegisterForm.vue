@@ -8,9 +8,31 @@
     <div class="c-auth__inner">
       <div class="c-auth__title">新規登録</div>
       <div class="c-auth__form">
-        <form method="POST" :action="endpointLogin">
+        <form method="POST" :action="endpointRegiter">
           <input type="hidden" name="_token" :value="csrf" />
 
+          <!-- ユーザー名 -->
+          <div class="c-auth__formGroup">
+            <label for="email" class="c-auth__formLabel">
+              ユーザー名
+              <span class="c-icon__formLabel c-icon__formLabel--required">必須</span>
+            </label>
+            <div class="c-auth__formItem">
+              <input
+                id="name"
+                type="name"
+                class="c-auth__formInput"
+                name="name"
+                v-model="name"
+                required
+                autocomplete="name"
+              />
+
+              <span class="c-error" role="alert" v-for="value in error.email" :key="value.email">
+                <strong>{{ value }}</strong>
+              </span>
+            </div>
+          </div>
           <!-- メールアドレス -->
           <div class="c-auth__formGroup">
             <label for="email" class="c-auth__formLabel">
@@ -58,17 +80,17 @@
 
           <!-- パスワード 再入力 -->
           <div class="c-auth__formGroup">
-            <label for="password" class="c-auth__formLabel">
+            <label for="password_confirm" class="c-auth__formLabel">
               パスワード（再入力）
               <span class="c-icon__formLabel c-icon__formLabel--required">必須</span>
             </label>
             <div class="c-auth__formItem">
               <input
-                id="password"
+                id="password_confirm"
                 type="password"
                 class="c-auth__formInput"
-                name="password-confirm"
-                v-model="passwordConfirm"
+                name="password_confirmation"
+                v-model="password_confirmation"
                 required
               />
             </div>
@@ -92,15 +114,16 @@
 
 <script>
 export default {
-  props: ["old", "errors", "endpointLogin", "endpointRequest"],
+  props: ["old", "errors", "endpointRegiter", "endpointRequest"],
   data: function() {
     return {
       csrf: document
         .querySelector('meta[name="csrf-token"]')
         .getAttribute("content"),
+      name: this.old.name,
       email: this.old.email,
       password: "",
-      passwordConfirm: "",
+      password_confirmation: "",
       error: {
         email: this.errors.email,
         password: this.errors.password

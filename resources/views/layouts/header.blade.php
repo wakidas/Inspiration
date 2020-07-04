@@ -35,6 +35,9 @@
                                 <a class="p-header__drawer__link" href="{{ route('ideas.create') }}">アイデア新規投稿</a>
                             </li>
                             <li class="p-header__drawer__item">
+                                <a class="p-header__drawer__link" href="{{ route('mypage.settings') }}">アカウント設定</a>
+                            </li>
+                            <li class="p-header__drawer__item">
                                 <button form="logout-button" type="submit" class="p-header__drawer__link">
                                     ログアウト
                                 </button>

@@ -233,7 +233,6 @@ a:visited {
 
 .l-main {
   padding-top: 70px;
-  height: 100%;
 }
 
 @media screen and (max-width: 768px) {
@@ -539,6 +538,21 @@ a:visited {
 
 .c-idea__card .c-idea__card__review__rate {
   margin-left: 4px;
+}
+
+.c-link__settings__toEdit {
+  font-size: 14px;
+  font-weight: normal;
+  text-decoration: underline;
+  color: #F99292;
+}
+
+.c-link__settings__toEdit:visited {
+  color: #F99292;
+}
+
+.c-link__settings__toEdit.c-link__settings__toEdit--img {
+  margin-top: 24px;
 }
 
 .c-pagination {
@@ -1805,6 +1819,66 @@ a:visited {
   pointer-events: none;
 }
 
+.p-settings {
+  max-width: 600px;
+  margin: 64px auto;
+  background: #fff;
+}
+
+.p-settings .p-settings__inner {
+  margin: 0 auto;
+  max-width: 300px;
+  text-align: center;
+  padding: 64px 0;
+}
+
+.p-settings .p-settings__title {
+  font-size: 24px;
+}
+
+.p-settings .p-settings__label {
+  font-weight: bold;
+}
+
+.p-settings .p-settings__items {
+  text-align: left;
+}
+
+.p-settings .p-settings__list {
+  list-style: none;
+  margin-top: 40px;
+}
+
+.p-settings .p-settings__list:first-of-type {
+  margin-top: 0;
+}
+
+.p-settings .p-settings__list.p-settings__list--img {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.p-settings .p-settings__imgWrap {
+  width: 250px;
+  height: 250px;
+  margin: 24px auto 0;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.p-settings .p-settings__imgWrap img {
+  width: 100%;
+}
+
+.p-settings .p-settings__text {
+  margin-top: 12px;
+}
+
+.p-settings .p-settings__withdraw {
+  text-decoration: underline;
+}
+
 .p-usersEdit {
   padding: 40px;
 }
@@ -1961,6 +2035,56 @@ a:visited {
   border-radius: 3px;
   display: inline-block;
   line-height: 1.1;
+}
+
+.p-withdraw {
+  margin-top: 64px;
+  padding: 0 8px;
+  text-align: center;
+}
+
+.p-withdraw .sp_only {
+  display: none;
+}
+
+@media screen and (max-width: 480px) {
+  .p-withdraw .sp_only {
+    display: inline;
+  }
+}
+
+.p-withdraw .p-withdraw__title {
+  font-size: 24px;
+  line-height: 1.3;
+}
+
+@media screen and (max-width: 480px) {
+  .p-withdraw .p-withdraw__title {
+    font-size: 20px;
+  }
+}
+
+.p-withdraw .p-withdraw__action {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 24px;
+}
+
+.p-withdraw .p-withdraw__delete {
+  background: #FFBC61;
+  border: none;
+  border-radius: 5px;
+  padding: 4px 8px;
+}
+
+.p-withdraw .p-withdraw__delete button {
+  font-size: 16px;
+}
+
+.p-withdraw .p-withdraw__cansel {
+  display: inline-block;
+  margin-left: 16px;
 }
 
 .u-mt0 {
