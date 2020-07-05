@@ -44,7 +44,12 @@ Route::group(['middleware' => 'auth'], function () {
 
     //プレフィックス：mypage
     Route::prefix('mypage')->name('mypage.')->group(function () {
+        Route::get('/', 'MypageController@index')->name('index');
         Route::get('/settings', 'MypageController@settings')->name('settings');
+        Route::get('/boughts', 'MypageController@boughts')->name('boughts');
+        Route::get('/likes', 'MypageController@likes')->name('likes');
+        Route::get('/myIdeas', 'MypageController@myIdeas')->name('myIdeas');
+        Route::get('/reviews', 'MypageController@reviews')->name('reviews');
     });
 
     //パスワード変更

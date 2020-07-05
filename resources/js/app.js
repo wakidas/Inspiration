@@ -10,6 +10,7 @@ window.Vue = require('vue');
 // =====================================
 require('./components/footerFixed');
 require('./components/drawerMenu');
+require('./components/setBodyBgColor');
 
 require('./components/filter');
 // =====================================
@@ -38,6 +39,9 @@ import UsersEdit from "./components/users/UsersEdit";
 
 //マイページ
 import MypageSettings from "./components/mypage/MypageSettings";
+import MypageTabs from "./components/mypage/MypageTabs";
+import MypageIdeas from "./components/mypage/MypageIdeas";
+import MypageReviews from "./components/mypage/MypageReviews";
 
 //vueコンポーネンとの宣言
 const app = new Vue({
@@ -56,6 +60,9 @@ const app = new Vue({
         IdeasShow,
         UsersProfile,
         UsersEdit,
-        MypageSettings
+        MypageSettings,
+        MypageTabs,
+        MypageIdeas,
+        MypageReviews
     },
 });

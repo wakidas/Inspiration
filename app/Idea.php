@@ -49,7 +49,7 @@ class Idea extends Model
 
     public function orders(): BelongsToMany
     {
-        return $this->belongsToMany('inspiration\User','orders')->withTimestamps();
+        return $this->belongsToMany('inspiration\User', 'orders')->withTimestamps();
     }
 
     public function isOrderedBy(?User $user): bool
@@ -67,43 +67,43 @@ class Idea extends Model
 
     public function categories()
     {
-        return $this->belongsTo('inspiration\Category','category_id','id','category_id');
+        return $this->belongsTo('inspiration\Category', 'category_id', 'id', 'category_id');
     }
 
     public static function getSearchData($request)
     {
         $ideas = Idea::query();
 
-        if(!empty($request->get('category'))){
+        if (!empty($request->get('category'))) {
             $categorieIds = $request->get('category');
             $ideas->whereHas('categories', function ($query) use ($categorieIds) {
                 $query->whereIn('category_id', $categorieIds);
             });
         }
 
-        if(!empty($request->get('price'))){
+        if (!empty($request->get('price'))) {
             $price_from = $request->price['from'] ? $request->price['from'] : "";
             $price_untill = $request->price['untill'] ? $request->price['untill'] : "";
 
-            if( !empty($price_from) && !empty($price_untill) ){
-                $ideas->whereBetween("price",[$price_from,$price_untill]);
-            } else if(!empty($price_from)){
-                $ideas->where("price",'>=',$price_from);
-            } else if(!empty($price_untill)){
-                $ideas->where("price",'<=',$price_untill);
+            if (!empty($price_from) && !empty($price_untill)) {
+                $ideas->whereBetween("price", [$price_from, $price_untill]);
+            } else if (!empty($price_from)) {
+                $ideas->where("price", '>=', $price_from);
+            } else if (!empty($price_untill)) {
+                $ideas->where("price", '<=', $price_untill);
             }
         }
-        
-        if(!empty($request->get('date'))){
+
+        if (!empty($request->get('date'))) {
             $date_from = $request->date['from'] ? $request->date['from'] : "";
-            $date_untill = $request->date['untill'] ? $request->date['untill'] :"";
-            
-            if( !empty($date_from) && !empty($date_untill) ){
-                $ideas->whereBetween("created_at",[$date_from,$date_untill]);
-            } else if(!empty($date_from)){
-                $ideas->where("created_at",'>=',$date_from);
-            } else if(!empty($date_untill)){
-                $ideas->where("created_at",'<=',$date_untill);
+            $date_untill = $request->date['untill'] ? $request->date['untill'] : "";
+
+            if (!empty($date_from) && !empty($date_untill)) {
+                $ideas->whereBetween("created_at", [$date_from, $date_untill]);
+            } else if (!empty($date_from)) {
+                $ideas->where("created_at", '>=', $date_from);
+            } else if (!empty($date_untill)) {
+                $ideas->where("created_at", '<=', $date_untill);
             }
         }
 

@@ -8,6 +8,10 @@ class Like extends Model
 {
     public function ideas()
     {
-        return $this->belongsToMany('inspiration\Idea');
+        return $this->belongsTo('inspiration\Idea', 'idea_id', 'id');
+    }
+    public function idea()
+    {
+        return $this->belongsTo('inspiration\Idea');
     }
 }

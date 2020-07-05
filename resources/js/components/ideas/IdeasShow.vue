@@ -50,7 +50,7 @@
               <form action="/reviews/create" method="POST">
                 <input type="hidden" name="_token" :value="csrf" />
                 <input type="hidden" name="idea_id" :value="idea.id" />
-                <input type="hidden" name="user_id" :value="idea.user_id" />
+                <input type="hidden" name="user_id" :value="userId" />
 
                 <div class="p-ideasShowReview__rate">
                   <input type="hidden" name="rate" :value="rating" />
@@ -117,6 +117,9 @@ export default {
     idea: {
       type: Object
     },
+    userId: {
+      type: Number
+    },
     category: {
       type: Object
     },
@@ -156,7 +159,6 @@ export default {
       Reviews: this.reviews[0].reviews,
       Authorized: this.authorized,
       isLikedBy: this.initialIsLikedBy,
-      // isOrderedBy: this.initialIsOrderedBy,
       isOrderedBy: false,
       rating: 0
     };

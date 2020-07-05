@@ -9,11 +9,19 @@
 
 .l-main{
     padding-top: 70px;
-    @include mq(md) {
+    @include mq(lg) {
         padding-top: 60px;
     }
 }
 
 .l-ideas{
     height: 100%;
+}
+
+.l-tabs{
+    width: 100%;
+    padding: 0 8px;
+    box-sizing: border-box;
+    max-width: 600px;
+    margin: 0 auto;
 }

@@ -1,0 +1,56 @@
+.p-mypage__reviews{
+    padding: 0 16px;
+    max-width: 600px;
+    margin: 64px auto 0;
+    .p-mypage__reviews__title{
+        font-size: 18px;
+        display: flex;
+        align-items: flex-end;
+    }
+    .p-mypage__reviews__toAll{
+        display: inline-block;
+        margin-left: 8px;
+        color: #999;
+        font-size: 14px;
+    }
+    .p-mypage__reviews__items{
+        margin-top: 16px;
+    }
+    .p-mypage__reviews__item{
+        padding: 16px 0;
+        border-top: 1px solid #eee;
+        border-bottom: 1px solid #eee;
+        margin-top: -1px;
+    }
+    .p-mypage__reviews__user{
+        display: flex;
+        align-items: center;
+    }
+    .p-mypage__reviews__userImg{
+        display: flex;
+        width: 50px;
+        height: 50px;
+        justify-content: center;
+        align-items: center;
+        img{
+            width: 100%;
+        }
+    }
+    .p-mypage__reviews__userName{
+        margin-left: 16px;
+    }
+    .p-mypage__reviews__idea{
+        margin-top: 24px;
+    }
+    .p-mypage__reviews__toIdeaShow{
+        margin-top: 8px;
+        line-height: 1.1;
+        padding: 6px 12px;
+        background: #FFBC61;
+        border-radius: 15px;
+        display: inline-block;
+        @include mq(sm) {
+            font-size: 14px;
+        }
+    }
+}

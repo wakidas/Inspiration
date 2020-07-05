@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use inspiration\Notifications\PasswordResetNotification;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 use Illuminate\Support\Facades\Log;
@@ -57,13 +58,22 @@ class User extends Authenticatable
     {
         return $this->hasMany('inspiration\Idea');
     }
-    public function reviews(): HasOne
-    {
-        return $this->hasOne('inspiration\Review');
-    }
     public function orders(): BelongsToMany
     {
         return $this->belongsToMany('inspiration\User', 'orders')->withTimestamps();
+    }
+    public function hasOrders() //: BelongsTo
+    {
+        return $this->hasMany('inspiration\Order');
+    }
+
+    public function hasLikes(): hasMany
+    {
+        return $this->hasMany('inspiration\Like');
+    }
+    public function hasReviews(): HasMany
+    {
+        return $this->hasMany('inspiration\Review');
     }
 
     /**
@@ -80,7 +90,7 @@ class User extends Authenticatable
 
     public function buyEmail($options)
     {
-        $order = Order::with('users')->where('id',$options->id)->first()->users;
+        $order = Order::with('users')->where('id', $options->id)->first()->users;
 
         $order->notify(new \inspiration\Notifications\BuyIdea());
     }
@@ -91,7 +101,7 @@ class User extends Authenticatable
         Log::debug('$options');
         Log::debug($options);
 
-        $order = Order::with('users')->where('id',$options->id)->first()->users;
+        $order = Order::with('users')->where('id', $options->id)->first()->users;
         Log::debug('$order');
         Log::debug($order);
         $order->notify(new \inspiration\Notifications\SaleIdea());
@@ -103,7 +113,7 @@ class User extends Authenticatable
         Log::debug('$options');
         Log::debug($options);
 
-        $review = Review::with('users')->where('id',$options->id)->first()->users;
+        $review = Review::with('users')->where('id', $options->id)->first()->users;
         Log::debug('$review');
         Log::debug($review);
         $review->notify(new \inspiration\Notifications\PostReview());
