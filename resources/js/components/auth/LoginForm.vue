@@ -8,11 +8,11 @@
     <div class="c-auth__inner">
       <div class="c-auth__title">ログイン</div>
       <div class="c-auth__form">
-        <form method="POST" :action="endpointLogin">
+        <form id="form" method="POST" :action="endpointLogin">
           <input type="hidden" name="_token" :value="csrf" />
 
           <!-- メールアドレス -->
-          <div class="c-auth__formGroup">
+          <div class="c-auth__formGroup js-validTarget">
             <label for="email" class="c-auth__formLabel">
               メールアドレス
               <span class="c-icon__formLabel c-icon__formLabel--required">必須</span>
@@ -25,6 +25,7 @@
                 name="email"
                 v-model="email"
                 required
+                email
                 autocomplete="email"
               />
 
@@ -35,7 +36,7 @@
           </div>
 
           <!-- パスワード -->
-          <div class="c-auth__formGroup">
+          <div class="c-auth__formGroup js-validTarget">
             <label for="password" class="c-auth__formLabel">
               パスワード
               <span class="c-icon__formLabel c-icon__formLabel--required">必須</span>
@@ -57,7 +58,7 @@
           </div>
 
           <!-- ログインしたままにする -->
-          <div class="c-auth__formGroup p-login__formGroup p-login__formGroup--remember">
+          <div class="c-auth__formGroup js-validTarget p-login__formGroup p-login__formGroup--remember">
             <input
               class="p-login__formInput p-login__formInput--remember"
               type="checkbox"

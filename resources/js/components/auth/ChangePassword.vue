@@ -8,7 +8,7 @@
           <input type="hidden" name="_token" :value="csrf" />
 
           <!-- 現在のパスワード -->
-          <div class="c-auth__formGroup">
+          <div class="c-auth__formGroup js-validTarget">
             <label for="current" class>現在のパスワード</label>
             <div class="c-auth__formItem">
               <input
@@ -32,7 +32,7 @@
           </div>
 
           <!-- 新しいパスワード　-->
-          <div class="c-auth__formGroup">
+          <div class="c-auth__formGroup js-validTarget">
             <label for="password" class>新しいパスワード</label>
             <div class="c-auth__formItem">
               <input
@@ -57,7 +57,7 @@
           </div>
 
           <!-- 新しいパスワード 確認　-->
-          <div class="c-auth__formGroup">
+          <div class="c-auth__formGroup js-validTarget">
             <label for="confirm" class>新しいパスワード（再入力）</label>
             <div class="c-auth__formItem">
               <input

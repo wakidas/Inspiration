@@ -1,17 +1,17 @@
 <template>
   <div class="p-create__inner">
     <div class="p-create__title">アイデア投稿</div>
-    <form :action="endpoint" method="POST" enctype="multipart/form-data">
+    <form id="form" :action="endpoint" method="POST" enctype="multipart/form-data">
       <input type="hidden" name="_token" :value="csrf" />
 
       <!-- タイトル -->
-      <div class="p-create__formGroup">
+      <div class="p-create__formGroup js-validTarget">
         <label class="p-create__formLabel">
           タイトル
           <span class="c-icon__formLabel c-icon__formLabel--required">必須</span>
         </label>
         <div class="p-create__formItem">
-          <input type="text" class="p-create__formInput" name="title" v-model="title" required />
+          <input id="idea_title" type="text" class="p-create__formInput" name="title" v-model="title" required maxlength=50 placeholder="50以内で記入お願いします"/>
           <span class="c-error" role="alert" v-for="value in error.title" :key="value.title">
             <strong>{{ value }}</strong>
           </span>
@@ -19,7 +19,7 @@
       </div>
 
       <!--　カテゴリ -->
-      <div class="p-create__formGroup">
+      <div class="p-create__formGroup js-validTarget">
         <label class="p-create__formLabel">
           カテゴリー
           <span class="c-icon__formLabel c-icon__formLabel--required">必須</span>
@@ -46,7 +46,7 @@
       </div>
 
       <!-- 説明 -->
-      <div class="p-create__formGroup">
+      <div class="p-create__formGroup js-validTarget">
         <label class="p-create__formLabel">
           説明
           <span class="c-icon__formLabel c-icon__formLabel--required">必須</span>
@@ -54,10 +54,13 @@
         <div class="p-create__formItem">
           <textarea
             name="description"
+            id="idea_description"
             type="text"
             class="p-create__formInput p-create__formInput--description"
             v-model="description"
             required
+            maxlength=140
+            placeholder="140以内で記入お願いします"
           ></textarea>
           <span
             class="c-error"
@@ -70,7 +73,7 @@
         </div>
       </div>
       <!-- アイデアの内容 -->
-      <div class="p-create__formGroup">
+      <div class="p-create__formGroup js-validTarget">
         <label class="p-create__formLabel">
           アイデアの内容
           <span class="c-icon__formLabel c-icon__formLabel--required">必須</span>
@@ -90,14 +93,14 @@
       </div>
 
       <!-- 価格 -->
-      <div class="p-create__formGroup">
+      <div class="p-create__formGroup js-validTarget">
         <label class="p-create__formLabel">
           価格
           <span class="c-icon__formLabel c-icon__formLabel--required">必須</span>
         </label>
         <div class="p-create__formItem p-create__formItem--price">
           <div class="p-create__priceWrap">
-            <input name="price" type="number" class="p-create__formInput" v-model="price" required />
+            <input name="price" type="number" class="p-create__formInput" v-model="price" required digits />
             <span class="p-create__price__text">円</span>
           </div>
           <span class="c-error" role="alert" v-for="value in error.price" :key="value.price">
@@ -107,7 +110,7 @@
       </div>
 
       <!-- 画像 -->
-      <div class="p-create__formGroup">
+      <div class="p-create__formGroup js-validTarget">
         <label class="p-create__formLabel">
           サムネイル画像
           <span class="c-icon__formLabel c-icon__formLabel--optional">任意</span>
@@ -260,6 +263,6 @@ export default {
   mounted() {
     this.setImgFlg();
     this.setInitialBackgroundImage();
-  }
+  },
 };
 </script>

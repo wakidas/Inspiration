@@ -33,6 +33,13 @@
             margin-top: 16px;
             display: flex;
         }
+         // jquery.validateによるエラー文
+        label.error{
+            display: block;
+            color: red;
+            margin-top: 8px;
+            font-size: 13px;
+        }
     }
     .c-auth__formItem{
         margin-top: 8px;

@@ -4,11 +4,11 @@
       <div class="p-usersEdit__title">
           プロフィール編集
       </div>
-      <form :action="endpoint" method="POST" enctype="multipart/form-data" class="p-usersEdit__form">
+      <form id="form" :action="endpoint" method="POST" enctype="multipart/form-data" class="p-usersEdit__form">
         <input type="hidden" name="_token" :value="csrf" />
 
         <!-- 画像 -->
-        <div class="p-usersEdit__formGroup p-usersEdit__formGroup--img">
+        <div class="p-usersEdit__formGroup p-usersEdit__formGroup--img js-validTarget">
           <label class="p-usersEdit__formLabel">
             画像
             <span class="c-icon__formLabel c-icon__formLabel--optional">任意</span>
@@ -44,7 +44,7 @@
         </div>
 
         <!-- 名前 -->
-        <div class="p-usersEdit__formGroup">
+        <div class="p-usersEdit__formGroup js-validTarget">
           <label class="p-usersEdit__formLabel">
             名前
             <span class="c-icon__formLabel c-icon__formLabel--required">必須</span>
@@ -58,7 +58,7 @@
         </div>
 
         <!-- コメント -->
-        <div class="p-usersEdit__formGroup">
+        <div class="p-usersEdit__formGroup js-validTarget">
           <label class="p-usersEdit__formLabel">
             自己紹介
             <span class="c-icon__formLabel c-icon__formLabel--optional">任意</span>

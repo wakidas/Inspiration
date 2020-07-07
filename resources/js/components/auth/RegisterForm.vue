@@ -8,11 +8,11 @@
     <div class="c-auth__inner">
       <div class="c-auth__title">新規登録</div>
       <div class="c-auth__form">
-        <form method="POST" :action="endpointRegiter">
+        <form id="form" method="POST" :action="endpointRegiter">
           <input type="hidden" name="_token" :value="csrf" />
 
           <!-- ユーザー名 -->
-          <div class="c-auth__formGroup">
+          <div class="c-auth__formGroup js-validTarget">
             <label for="email" class="c-auth__formLabel">
               ユーザー名
               <span class="c-icon__formLabel c-icon__formLabel--required">必須</span>
@@ -34,7 +34,7 @@
             </div>
           </div>
           <!-- メールアドレス -->
-          <div class="c-auth__formGroup">
+          <div class="c-auth__formGroup js-validTarget">
             <label for="email" class="c-auth__formLabel">
               メールアドレス
               <span class="c-icon__formLabel c-icon__formLabel--required">必須</span>
@@ -47,6 +47,7 @@
                 name="email"
                 v-model="email"
                 required
+                email
                 autocomplete="email"
               />
 
@@ -57,7 +58,7 @@
           </div>
 
           <!-- パスワード -->
-          <div class="c-auth__formGroup">
+          <div class="c-auth__formGroup js-validTarget">
             <label for="password" class="c-auth__formLabel">
               パスワード
               <span class="c-icon__formLabel c-icon__formLabel--required">必須</span>
@@ -79,7 +80,7 @@
           </div>
 
           <!-- パスワード 再入力 -->
-          <div class="c-auth__formGroup">
+          <div class="c-auth__formGroup js-validTarget">
             <label for="password_confirm" class="c-auth__formLabel">
               パスワード（再入力）
               <span class="c-icon__formLabel c-icon__formLabel--required">必須</span>
@@ -92,6 +93,7 @@
                 name="password_confirmation"
                 v-model="password_confirmation"
                 required
+                equalTo="#password"
               />
             </div>
           </div>

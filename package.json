@@ -31,5 +31,7 @@
         "vue-template-compiler": "^2.6.11",
         "vuejs-datepicker": "^1.6.2"
     },
-    "dependencies": {}
+    "dependencies": {
+        "vee-validate": "^3.3.7"
+    }
 }

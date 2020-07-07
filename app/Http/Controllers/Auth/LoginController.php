@@ -53,18 +53,15 @@ class LoginController extends Controller
     {
         $intended = session('url.intended');
         if (parse_url($intended, PHP_URL_PATH) == '/') {
-            // ↓↓元々
             $user_id = Auth::user()->id;
-            return redirect()->route('users.show',$user_id)->with('flash_message', 'ログインしました');
-            // ↑↑元々
+            return redirect()->route('users.show', $user_id)->with('flash_message', 'ログインしました');
         } else {
             return redirect($intended)->with('flash_message', 'ログインしました');
-            // return redirect('/')->with('flash_message', 'ログインしました');
         }
     }
 
     protected function loggedOut()
     {
-        return redirect('/')->with('flash_message', 'ログアウトしました');
+        return redirect()->route('home')->with('flash_message', 'ログアウトしました');
     }
 }

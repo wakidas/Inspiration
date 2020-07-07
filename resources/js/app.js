@@ -11,6 +11,9 @@ window.Vue = require('vue');
 require('./components/footerFixed');
 require('./components/drawerMenu');
 require('./components/setBodyBgColor');
+require('./components/jquery.validate/jquery.validate.js');
+require('./components/jquery.validate/localization/messages_ja.js');
+require('./components/validate');
 
 require('./components/filter');
 // =====================================

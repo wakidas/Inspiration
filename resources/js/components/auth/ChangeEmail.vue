@@ -8,7 +8,7 @@
           <input type="hidden" name="_token" :value="csrf" />
 
           <!-- メールアドレス -->
-          <div class="c-auth__formGroup">
+          <div class="c-auth__formGroup js-validTarget">
             <label for="email" class>新しいメールアドレスを入力してください。</label>
             <div class="c-auth__formItem">
               <input

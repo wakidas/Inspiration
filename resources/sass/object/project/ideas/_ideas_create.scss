@@ -13,6 +13,13 @@
     .p-create__formGroup{
         text-align: left;
         margin-top: 24px;
+         // jquery.validateによるエラー文
+        label.error{
+            display: block;
+            color: red;
+            margin-top: 8px;
+            font-size: 13px;
+        }
     }
     .p-create__formItem{
         margin-top: 8px;
@@ -49,6 +56,11 @@
         border: 1px solid #eee;
         background: #fff;
         font-size: 16px;
+        &.p-create__formInput--category{
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+        }
         &.p-create__formInput--description{
             height: 110px;
         }
