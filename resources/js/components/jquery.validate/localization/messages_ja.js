@@ -22,7 +22,7 @@ $.extend( $.validator.messages, {
 	number: "有効な数字を入力してください。",
 	digits: "数字のみを入力してください。",
 	creditcard: "有効なクレジットカード番号を入力してください。",
-	equalTo: "同じ値をもう一度入力してください。",
+	equalTo: "再入力した値が一致しません。",
 	extension: "有効な拡張子を含む値を入力してください。",
 	maxlength: $.validator.format( "{0} 文字以内で入力してください。" ),
 	minlength: $.validator.format( "{0} 文字以上で入力してください。" ),

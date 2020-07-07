@@ -4,7 +4,7 @@
       <div class="c-auth__title">メールアドレス変更</div>
 
       <div class="c-auth__form">
-        <form method="POST" :action="endpoint">
+        <form id="form" method="POST" :action="endpoint">
           <input type="hidden" name="_token" :value="csrf" />
 
           <!-- メールアドレス -->
@@ -18,6 +18,7 @@
                 name="new_email"
                 v-model="new_email"
                 required
+                email
                 autocomplete="email"
                 placeholder="新しいメールアドレス"
               />

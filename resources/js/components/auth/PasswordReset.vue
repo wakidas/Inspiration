@@ -4,7 +4,7 @@
       <div class="c-auth__title">パスワード変更</div>
 
       <div class="c-auth__form">
-        <form method="POST" :action="endpoint">
+        <form id="form" method="POST" :action="endpoint">
           <input type="hidden" name="_token" :value="csrf" />
 
           <!-- 現在のパスワード -->
@@ -66,6 +66,7 @@
                 name="new-password_confirmation"
                 v-model="newPasswordConfirmation"
                 required
+                equalTo="#password"
               />
 
               <span

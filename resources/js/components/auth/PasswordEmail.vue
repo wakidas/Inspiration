@@ -3,7 +3,7 @@
     <div class="c-auth__inner">
       <div class="c-auth__title">パスワードをリセットする</div>
       <div class="c-auth__form">
-        <form method="POST" :action="endpoint">
+        <form id="form" method="POST" :action="endpoint">
           <input type="hidden" name="_token" :value="csrf" />
 
           <!-- メールアドレス -->
@@ -17,6 +17,7 @@
                 name="email"
                 v-model="email"
                 required
+                email
                 autocomplete="email"
               />
 
