@@ -8,14 +8,16 @@
  *  http://blog.webcreativepark.net
  *
  *--------------------------------------------------------------------------*/
-
-new function(){
-
-	var footerId = "footer";
-	//メイン
-	function footerFixed(){
-		//ドキュメントの高さ
-		var dh = document.getElementsByTagName("body")[0].clientHeight;
+const $footer = $('#footer')
+if ($footer.length > 0) {
+	
+	new function(){
+		
+		var footerId = "footer";
+		//メイン
+		function footerFixed(){
+			//ドキュメントの高さ
+			var dh = document.getElementsByTagName("body")[0].clientHeight;
 		//フッターのtopからの位置
 		document.getElementById(footerId).style.top = "0px";
 		var ft = document.getElementById(footerId).offsetTop;
@@ -32,10 +34,10 @@ new function(){
 			document.getElementById(footerId).style.top = (wh-fh-ft-1)+"px";
 		}
 	}
-
+	
 	//文字サイズ
 	function checkFontSize(func){
-
+		
 		//判定要素の追加
 		var e = document.createElement("div");
 		var s = document.createTextNode("S");
@@ -64,11 +66,13 @@ new function(){
 			elm.attachEvent("on"+listener,fn);
 		}
 	}
-
+	
 	addEvent(window,"load",footerFixed);
 	addEvent(window,"load",function(){
 		checkFontSize(footerFixed);
 	});
 	addEvent(window,"resize",footerFixed);
+	
+}
 
 }
