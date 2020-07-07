@@ -21,6 +21,7 @@ require('./components/filter');
 // =====================================
 //共通
 import FlashMessage from "./components/FlashMessage";
+import FlashMessageReview from "./components/FlashMessageReview";
 
 //ユーザー認証関係
 import RegisterForm from "./components/auth/RegisterForm";
@@ -51,6 +52,7 @@ const app = new Vue({
     el: "#app",
     components: {
         FlashMessage,
+        FlashMessageReview,
         LoginForm,
         PasswordEmail,
         PasswordReset,

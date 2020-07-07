@@ -50,7 +50,7 @@
             <span class="c-icon__formLabel c-icon__formLabel--required">必須</span>
           </label>
           <div class="p-usersEdit__formItem">
-            <input type="text" class="p-usersEdit__formInput" name="name" v-model="name" required />
+            <input type="text" class="p-usersEdit__formInput" name="name" placeholder="50文字以内で入力してください" v-model="name" required />
             <span class="c-error" role="alert" v-for="value in error.name" :key="value.name">
               <strong>{{ value }}</strong>
             </span>
@@ -67,7 +67,7 @@
             <textarea
             name="comment" 
             class="p-usersEdit__formInput p-usersEdit__formInput--comment"
-            v-model="comment"
+            v-model="comment" placeholder="140文字以内で入力してください"
           ></textarea>
             <span class="c-error" role="alert" v-for="value in error.comment" :key="value.comment">
               <strong>{{ value }}</strong>

@@ -1792,6 +1792,17 @@ a:visited {
   max-width: 700px;
 }
 
+.p-ideasShowReview .p-ideasShowReview__comment {
+  margin-top: 16px;
+}
+
+.p-ideasShowReview .p-ideasShowReview__comment label.error {
+  display: block;
+  color: red;
+  margin-top: 8px;
+  font-size: 13px;
+}
+
 .p-ideasShowReview .p-ideasShowReview__comment__textarea {
   width: 100%;
 }

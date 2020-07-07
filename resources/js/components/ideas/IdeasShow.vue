@@ -47,23 +47,30 @@
           <ul class="p-ideasShowReview">
             <li>
               <div class="p-ideasShowReview__title">レビューを投稿する</div>
-              <form action="/reviews/create" method="POST">
+              <form id="form" action="/reviews/create" method="POST">
                 <input type="hidden" name="_token" :value="csrf" />
                 <input type="hidden" name="idea_id" :value="idea.id" />
                 <input type="hidden" name="user_id" :value="userId" />
 
-                <div class="p-ideasShowReview__rate">
-                  <input type="hidden" name="rate" :value="rating" />
+                <div class="p-ideasShowReview__rate js-validTarget">
+                  <input type="hidden" class="" name="rate" :value="rating"/>
                   <star-rating v-model="rating" :star-size="30" :fixed-points="1"></star-rating>
+                  <span class="c-error" role="alert" v-for="value in error.rate" :key="value.rate">
+                    <strong>{{ value }}</strong>
+                  </span>
                 </div>
-                <div class="p-ideasShowReview__comment">
+                <div class="p-ideasShowReview__comment js-validTarget">
                   <textarea
                     class="p-ideasShowReview__comment__textarea"
                     name="comment"
-                    id
                     cols="30"
                     rows="10"
+                    v-model="comment"
+                    required
                   ></textarea>
+                  <span class="c-error" role="alert" v-for="value in error.comment" :key="value.comment">
+                    <strong>{{ value }}</strong>
+                  </span>
                 </div>
                 <!-- 送信ボタン -->
                 <div class="p-ideasShowReview__submit">
@@ -114,6 +121,10 @@ import StarRating from "vue-star-rating";
 export default {
   name: "IdeasShow",
   props: {
+    old: {
+    },
+    errors: {
+    },
     idea: {
       type: Object
     },
@@ -160,7 +171,14 @@ export default {
       Authorized: this.authorized,
       isLikedBy: this.initialIsLikedBy,
       isOrderedBy: false,
-      rating: 0
+      rating: this.old.rate ? Number(this.old.rate) : 0,
+      comment: this.old.comment
+        ? this.old.comment
+        : '',
+      error: {
+        rate: this.errors.rate,
+        comment: this.errors.comment,
+      }
     };
   },
   computed: {

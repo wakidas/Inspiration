@@ -3,6 +3,8 @@
 namespace inspiration\Http\Controllers;
 
 use Illuminate\Http\Request;
+use inspiration\Http\Requests\CreateIdeaRequest;
+
 use inspiration\Category;
 use inspiration\Idea;
 use inspiration\User;
@@ -30,21 +32,21 @@ class IdeasController extends Controller
         Log::debug('$request');
         Log::debug($request);
 
-        
+
         // 検索機能
-        
+
         $post_category = $request->get('category') ? $request->get('category') : "";
         $post_price = $request->get('price') ? $request->get('price') : "";
         $post_date = $request->get('date') ? $request->get('date') : "";
-        
+
         $postData = [];
         $postData['category'] = $post_category;
         $postData['price'] = $post_price;
         $postData['date'] = $post_date;
-        
-        if (!empty($post_category) || !empty($post_price) || !empty($post_date)){
+
+        if (!empty($post_category) || !empty($post_price) || !empty($post_date)) {
             $ideas = Idea::getSearchData($request)->paginate(10);
-        }else{
+        } else {
             $ideas = Idea::paginate(10);
         }
 
@@ -77,7 +79,7 @@ class IdeasController extends Controller
      * @var object $idea  newされた新規アイデアのインスタンス
      * @return Response アイデア一覧ページの表示
      */
-    public function store(Request $request)
+    public function store(CreateIdeaRequest $request)
     {
         Log::debug('$request');
         Log::debug($request);
@@ -95,7 +97,7 @@ class IdeasController extends Controller
 
         $idea->save();
 
-        return redirect()->route('ideas.index')->with('flash_message', 'アイデアを投稿しました！');
+        return redirect()->route('ideas.show', $idea->id)->with('flash_message', 'アイデアを投稿しました！');
     }
 
     /**

@@ -5,6 +5,7 @@ namespace inspiration\Http\Controllers;
 use Illuminate\Http\Request;
 use inspiration\Review;
 use inspiration\User;
+use inspiration\Http\Requests\CreateReviewRequest;
 
 use Illuminate\Support\Facades\Auth;
 
@@ -21,7 +22,7 @@ class ReviewsController extends Controller
      * @var object $idea  newされた新規アイデアのインスタンス
      * @return Response アイデア詳細ページの表示
      */
-    public function store(Request $request)
+    public function store(CreateReviewRequest $request)
     {
         Log::debug('$request');
         Log::debug($request);

@@ -3,6 +3,7 @@
 namespace inspiration\Http\Controllers;
 
 use Illuminate\Http\Request;
+use inspiration\Http\Requests\CreateUserRequest;
 use inspiration\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -51,7 +52,7 @@ class UserController extends Controller
      * @var array $user ユーザー
      * @return Response ユーザー詳細ページの表示
      */
-    public function update(Request $request, $id)
+    public function update(CreateUserRequest $request, $id)
     {
         Log::debug('$request');
         Log::debug($request);
