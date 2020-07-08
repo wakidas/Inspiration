@@ -32,7 +32,6 @@ class IdeasController extends Controller
         Log::debug('$request');
         Log::debug($request);
 
-
         // 検索機能
 
         $post_category = $request->get('category') ? $request->get('category') : "";
@@ -196,14 +195,16 @@ class IdeasController extends Controller
 
     public function buy(Request $request, $id)
     {
+        $idea = Idea::find($id);
+        if ($idea->user->id === Auth::user()->id) {
+            return redirect()->route('ideas.show', $id)->with('flash_message', '自分のアイデアは購入できません。');
+        }
         Log::debug('buy!!! $request');
         Log::debug($request);
 
-        $idea = Idea::find($id);
         $idea->orders()->attach($request->user()->id);
 
         //購入者にメール送信する
-        Log::debug('buyメール送るよ');
         $order = Order::latest()->first();
         // $order->with('ideas','users')->get();
         Log::debug('$order');

@@ -46,6 +46,9 @@
             :authorized="this.authorized"
             :endpoint="this.endpoint"
             :endpoint-buy="endpointBuy"
+            :user-id="this.userId"
+            :idea-user="this.ideaUser"
+            v-if="checkMyIdea"
           ></IdeasShowButtons>
         </li>
         <li class="p-ideasShow__item p-ideasShow__item--review">
@@ -118,6 +121,9 @@
             :authorized="this.authorized"
             :endpoint="this.endpoint"
             :endpoint-buy="endpointBuy"
+            :user-id="this.userId"
+            :idea-user="this.ideaUser"
+            v-if="checkMyIdea"
           ></IdeasShowButtons>
         </li>
       </ul>
@@ -138,6 +144,9 @@ export default {
     errors: {
     },
     idea: {
+      type: Object
+    },
+    ideaUser: {
       type: Object
     },
     userId: {
@@ -202,6 +211,10 @@ export default {
       return this.Idea.img !== null
         ? "/storage/" + this.Idea.img
         : "/images/noimage.png";
+    },
+    checkMyIdea(){
+      this.userId === this.ideaUser.id ? this.isMyIdea = true : this.isMyIdea = false;
+      return this.isMyIdea
     }
   },
   methods: {

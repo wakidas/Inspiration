@@ -8,6 +8,7 @@
         @click="clickLike"
       >{{ likeButtonText }}</a>
     </div>
+    <div class="" >
     <div class="p-ideasShow__buy p-ideasShow__buy--ordered" v-if="isOrderedBy">
       <button class="p-ideasShow__button p-ideasShow__button--buy">{{buyButtonText}}</button>
     </div>
@@ -16,6 +17,7 @@
         <input type="hidden" name="_token" :value="csrf" />
         <button class="p-ideasShow__button p-ideasShow__button--buy" type="submit">{{buyButtonText}}</button>
       </form>
+    </div>
     </div>
   </div>
 </template>
@@ -46,13 +48,23 @@ export default {
     },
     endpointBuy: {
       type: String
-    }
+    },
+    userId: {
+      type: Number
+    },
+    idea: {
+      type: Object
+    },
+    ideaUser: {
+      type: Object
+    },
   },
   data() {
     return {
       csrf: document
         .querySelector('meta[name="csrf-token"]')
-        .getAttribute("content")
+        .getAttribute("content"),
+      isMyIdea:''
     };
   },
   computed: {
@@ -63,6 +75,10 @@ export default {
     },
     buyButtonText() {
       return this.isOrderedBy ? "購入済みです" : "購入する";
+    },
+    checkMyIdea(){
+      this.userId === this.ideaUser.id ? this.isMyIdea = true : this.isMyIdea = false;
+      return this.isMyIdea
     }
   },
   methods: {
