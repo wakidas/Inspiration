@@ -1,7 +1,21 @@
 .p-ideasShowReview{
     max-width: 700px;
+    list-style: none;
+    .p-ideasShowReview__title{
+        font-size: 18px;
+    }
+    .p-ideasShowReview__rateDate{
+        font-size: 14px;
+        margin-top: 8px;
+        display: flex;
+        align-items: baseline;
+    }
+    .p-ideasShowReview__created{
+        margin-left: 8px
+    }
     .p-ideasShowReview__comment{
         margin-top: 16px;
+        height: 120px;
         // jquery.validateによるエラー文
         label.error{
             display: block;
@@ -12,6 +26,44 @@
     }
     .p-ideasShowReview__comment__textarea{
         width: 100%;
+        height: 100%;
+    }
+    .p-ideasShowReview__item{
+        &.p-ideasShowReview__item--post{
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 24px;
+        }
+        &.p-ideasShowReview__item--allTitle{
+            margin-top: 24px;
+        }
+    }
+    .p-ideasShowReview__list{
+        list-style: none;
+        li{
+            margin-top: 24px;
+        }
+    }
+    .p-ideasShowReview__user{
+        display: flex;
+        align-items: center;
+    }
+    .p-ideasShowReview__user__img{
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        overflow: hidden;
+        img{
+            width: 100%;
+            height: 100%;
+        }
+    }
+    .p-ideasShowReview__user__name{
+        margin-left: 8px;
+        font-size: 14px;
+    }
+    .p-ideasShowReview__body{
+        margin-top: 8px;
+        line-height: 1.35;
     }
     .p-ideasShowReview__submit{
         width: 100px;

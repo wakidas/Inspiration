@@ -63,7 +63,7 @@
             自己紹介
             <span class="c-icon__formLabel c-icon__formLabel--optional">任意</span>
           </label>
-          <div class="p-usersEdit__formItem">
+          <div class="p-usersEdit__formItem p-usersEdit__formItem--comment">
             <textarea
             name="comment" 
             class="p-usersEdit__formInput p-usersEdit__formInput--comment"

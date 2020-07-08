@@ -524,7 +524,7 @@ a:visited {
 .c-idea__card .c-idea__card__price {
   font-size: 22px;
   font-weight: bold;
-  color: #FFBC61;
+  color: #F99292;
 }
 
 .c-idea__card .c-idea__card__date {
@@ -1790,10 +1790,27 @@ a:visited {
 
 .p-ideasShowReview {
   max-width: 700px;
+  list-style: none;
+}
+
+.p-ideasShowReview .p-ideasShowReview__title {
+  font-size: 18px;
+}
+
+.p-ideasShowReview .p-ideasShowReview__rateDate {
+  font-size: 14px;
+  margin-top: 8px;
+  display: flex;
+  align-items: baseline;
+}
+
+.p-ideasShowReview .p-ideasShowReview__created {
+  margin-left: 8px;
 }
 
 .p-ideasShowReview .p-ideasShowReview__comment {
   margin-top: 16px;
+  height: 120px;
 }
 
 .p-ideasShowReview .p-ideasShowReview__comment label.error {
@@ -1805,6 +1822,51 @@ a:visited {
 
 .p-ideasShowReview .p-ideasShowReview__comment__textarea {
   width: 100%;
+  height: 100%;
+}
+
+.p-ideasShowReview .p-ideasShowReview__item.p-ideasShowReview__item--post {
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 24px;
+}
+
+.p-ideasShowReview .p-ideasShowReview__item.p-ideasShowReview__item--allTitle {
+  margin-top: 24px;
+}
+
+.p-ideasShowReview .p-ideasShowReview__list {
+  list-style: none;
+}
+
+.p-ideasShowReview .p-ideasShowReview__list li {
+  margin-top: 24px;
+}
+
+.p-ideasShowReview .p-ideasShowReview__user {
+  display: flex;
+  align-items: center;
+}
+
+.p-ideasShowReview .p-ideasShowReview__user__img {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.p-ideasShowReview .p-ideasShowReview__user__img img {
+  width: 100%;
+  height: 100%;
+}
+
+.p-ideasShowReview .p-ideasShowReview__user__name {
+  margin-left: 8px;
+  font-size: 14px;
+}
+
+.p-ideasShowReview .p-ideasShowReview__body {
+  margin-top: 8px;
+  line-height: 1.35;
 }
 
 .p-ideasShowReview .p-ideasShowReview__submit {
@@ -1819,8 +1881,15 @@ a:visited {
 
 .p-ideasShow .p-ideasShow__inner {
   max-width: 1000px;
-  padding: 0 16px;
+  padding: 0 64px;
   margin: 0 auto;
+  line-height: 1.35;
+}
+
+@media screen and (max-width: 768px) {
+  .p-ideasShow .p-ideasShow__inner {
+    padding: 0 16px;
+  }
 }
 
 .p-ideasShow .p-ideasShow__item {
@@ -1829,7 +1898,7 @@ a:visited {
 }
 
 .p-ideasShow .p-ideasShow__item.p-ideasShow__item--review {
-  padding: 36px 0;
+  padding: 24px 0;
   border-top: 1px solid #ccc;
   border-bottom: 1px solid #ccc;
 }
@@ -1851,7 +1920,7 @@ a:visited {
 .p-ideasShow .p-ideasShow__price {
   font-size: 24px;
   font-weight: bold;
-  color: #FFBC61;
+  color: #F99292;
 }
 
 .p-ideasShow .p-ideasShow__description {
@@ -1877,6 +1946,10 @@ a:visited {
   display: inline-block;
   width: 100%;
   height: 100%;
+}
+
+.p-ideasShow .p-ideasShow__likes {
+  color: #F99292;
 }
 
 .p-ideasShow .p-ideasShow__twitter__text {
@@ -2276,13 +2349,17 @@ a:visited {
   font-size: 13px;
 }
 
+.p-usersEdit .p-usersEdit__formLabel {
+  display: flex;
+  align-items: center;
+}
+
 .p-usersEdit .p-usersEdit__formItem {
   margin-top: 8px;
 }
 
-.p-usersEdit .p-usersEdit__formLabel {
-  display: flex;
-  align-items: center;
+.p-usersEdit .p-usersEdit__formItem.p-usersEdit__formItem--comment {
+  height: 120px;
 }
 
 .p-usersEdit .p-usersEdit__formItem.p-usersEdit__formItem--category {
@@ -2316,12 +2393,8 @@ a:visited {
   font-size: 16px;
 }
 
-.p-usersEdit .p-usersEdit__formInput.p-usersEdit__formInput--description {
-  height: 110px;
-}
-
-.p-usersEdit .p-usersEdit__formInput.p-usersEdit__formInput--body {
-  height: 300px;
+.p-usersEdit .p-usersEdit__formInput.p-usersEdit__formInput--comment {
+  height: 100%;
 }
 
 .p-usersEdit .p-usersEdit__imgInput {
@@ -2366,6 +2439,7 @@ a:visited {
 
 .p-usersEdit .p-usersEdit__submit {
   width: 30%;
+  min-width: 150px;
   height: 50px;
   margin: 64px auto 0;
 }

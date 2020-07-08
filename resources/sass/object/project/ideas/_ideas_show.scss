@@ -2,14 +2,18 @@
     padding-bottom: 64px;
     .p-ideasShow__inner{
         max-width: 1000px;
-        padding: 0 16px;
+        padding: 0 64px;
         margin: 0 auto;
+        line-height: 1.35;
+        @include mq(md) {
+            padding: 0 16px;
+        }
     }
     .p-ideasShow__item{
         list-style: none;
         margin-top: 24px;
         &.p-ideasShow__item--review{
-            padding: 36px 0;
+            padding: 24px 0;
             border-top: 1px solid #ccc;
             border-bottom: 1px solid #ccc;
         }
@@ -28,7 +32,7 @@
     .p-ideasShow__price{
         font-size: 24px;
         font-weight: bold;
-        color: $main-cl;
+        color: $accent-cl;
     }
     .p-ideasShow__description{
         font-size: 20px;
@@ -49,6 +53,9 @@
                 height: 100%;
             }
         }
+    }
+    .p-ideasShow__likes{
+        color: $accent-cl;
     }
     .p-ideasShow__twitter__text{
         margin-left: 16px;

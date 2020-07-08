@@ -70,6 +70,11 @@ class Idea extends Model
         return $this->belongsTo('inspiration\Category', 'category_id', 'id', 'category_id');
     }
 
+    public function getCountLikesAttribute(): int
+    {
+        return $this->likes->count();
+    }
+
     public static function getSearchData($request)
     {
         $ideas = Idea::query();
