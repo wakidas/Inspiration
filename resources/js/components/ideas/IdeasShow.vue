@@ -53,7 +53,7 @@
         </li>
         <li class="p-ideasShow__item p-ideasShow__item--review">
           <ul class="p-ideasShowReview">
-            <li class="p-ideasShowReview__item p-ideasShowReview__item--post">
+            <li class="p-ideasShowReview__item p-ideasShowReview__item--post" v-if="checkMyIdea">
               <div class="p-ideasShowReview__title">レビューを投稿する</div>
               <form id="form" action="/reviews/create" method="POST">
                 <input type="hidden" name="_token" :value="csrf" />
