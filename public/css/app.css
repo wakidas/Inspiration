@@ -1819,6 +1819,7 @@ a:visited {
 
 .p-ideasShow .p-ideasShow__inner {
   max-width: 1000px;
+  padding: 0 16px;
   margin: 0 auto;
 }
 
@@ -1836,6 +1837,7 @@ a:visited {
 .p-ideasShow .p-ideasShow__img {
   width: 50%;
   margin: 0 auto;
+  max-width: 350px;
 }
 
 .p-ideasShow .p-ideasShow__img img {
@@ -1858,6 +1860,27 @@ a:visited {
 
 .p-ideasShow .p-ideasShow__body {
   font-size: 18px;
+}
+
+.p-ideasShow .p-ideasShow__twitter {
+  display: flex;
+  align-items: center;
+}
+
+.p-ideasShow .p-ideasShow__twitter a {
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+}
+
+.p-ideasShow .p-ideasShow__twitter a img {
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+}
+
+.p-ideasShow .p-ideasShow__twitter__text {
+  margin-left: 16px;
 }
 
 .p-ideasShow .p-ideasShow__buttons {

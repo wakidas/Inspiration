@@ -29,6 +29,11 @@
           <div class="p-ideasShow__body">{{ Idea.body }}</div>
         </li>
         <li class="p-ideasShow__item">
+          <div class="p-ideasShow__twitter"><a target="_blank" :href="'https://twitter.com/intent/tweet?url='+endpointForTwitter"><img src="/images/tw-icon.svg" alt="twitterシェア"></a>
+          <span class="p-ideasShow__twitter__text">SHARE</span>
+          </div>
+        </li>
+        <li class="p-ideasShow__item">
           <div class="p-ideasShow__like"></div>
         </li>
         <li class="p-ideasShow__item">
@@ -157,6 +162,9 @@ export default {
       type: String
     },
     endpointBuy: {
+      type: String
+    },
+    endpointForTwitter: {
       type: String
     }
   },

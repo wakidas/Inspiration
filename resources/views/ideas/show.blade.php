@@ -13,7 +13,8 @@
         :authorized='@json(Auth::check())' endpoint="{{ route('ideas.like', $idea->id) }}"
         endpoint-buy="{{ route('ideas.buy', $idea->id) }}"
         :initial-is-ordered-by='@json($idea->isOrderedBy(Auth::user()))' :reviews='@json($reviews)'
-        :old="{{ json_encode(Session::getOldInput()) }}" :errors="{{ $errors }}">
+        :old="{{ json_encode(Session::getOldInput()) }}" :errors="{{ $errors }}"
+        endpoint-for-twitter="{{ route('ideas.show',$idea->id) }}">
     </Ideas-show>
 </div>
 
