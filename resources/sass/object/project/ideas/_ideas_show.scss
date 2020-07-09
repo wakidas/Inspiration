@@ -12,6 +12,9 @@
     .p-ideasShow__item{
         list-style: none;
         margin-top: 24px;
+        &.p-ideasShow__item--body{
+            margin-top: 80px;
+        }
         &.p-ideasShow__item--review{
             padding: 24px 0;
             border-top: 1px solid #ccc;
@@ -28,6 +31,28 @@
     }
     .p-ideasShow__title{
         font-size: 24px;
+    }
+    .p-ideasShow__toIdeaUser{
+        display: inline-block;
+        padding: 8px 8px 8px 0;
+    }
+    .p-ideasShow__user{
+        display: flex;
+        align-items: center;
+    }
+    .p-ideasShow__user__img{
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        overflow: hidden;
+        img{
+            width: 100%;
+            height: 100%;
+        }
+    }
+    .p-ideasShow__user__name{
+        margin-left: 8px;
+        font-size: 14px;
     }
     .p-ideasShow__price{
         font-size: 24px;

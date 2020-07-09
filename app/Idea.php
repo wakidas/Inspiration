@@ -59,6 +59,13 @@ class Idea extends Model
             : false;
     }
 
+    public function isReviewedBy(?User $user): bool
+    {
+        return $user
+            ? (bool) $this->reviews->where('id', $user->id)->count()
+            : false;
+    }
+
     public function reviews(): HasMany
     {
         return $this->hasMany('inspiration\Review');

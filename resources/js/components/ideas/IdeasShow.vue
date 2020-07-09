@@ -12,9 +12,22 @@
         </li>
         <li class="p-ideasShow__item">
           <div class="p-ideasShow__date">
-            <div class="p-ideasShow__created">投稿日: {{Idea.updated_at|formatDatetime}}</div>
+            <div class="p-ideasShow__created">更新日: {{Idea.updated_at|formatDatetime}}</div>
             <div class="p-ideasShow__updated">投稿日: {{Idea.created_at|formatDatetime}}</div>
           </div>
+        </li>
+        <li class="p-ideasShow__item">
+          <a :href="endpointToUserPage" class="p-ideasShow__toIdeaUser">
+            <div class="p-ideasShow__user">
+              <div class="p-ideasShow__user__img">
+                <img
+                  :src="ideaUser.img!== null?'/storage/'+ideaUser.img:'/images/noavatar.png'"
+                  alt
+                />
+              </div>
+              <div class="p-ideasShow__user__name">{{ ideaUser.name }}</div>
+            </div>
+          </a>
         </li>
         <li class="p-ideasShow__item">
           <div class="p-ideasShow__price">¥ {{ Idea.price | addComma }}</div>
@@ -25,16 +38,9 @@
         <li class="p-ideasShow__item">
           <div class="p-ideasShow__description">{{ Idea.description }}</div>
         </li>
-        <li class="p-ideasShow__item">
-          <div class="p-ideasShow__body">{{ Idea.body }}</div>
-        </li>
-        <li class="p-ideasShow__item">
-          <div class="p-ideasShow__likes">気になるリスト登録数：{{ countLikes }}</div>
-        </li>
-        <li class="p-ideasShow__item">
-          <div class="p-ideasShow__twitter"><a target="_blank" :href="'https://twitter.com/intent/tweet?url='+endpointForTwitter"><img src="/images/tw-icon.svg" alt="twitterシェア"></a>
-          <span class="p-ideasShow__twitter__text">SHARE</span>
-          </div>
+        <li class="p-ideasShow__item p-ideasShow__item--body">
+          <div class="p-ideasShow__body" v-if="isOrderedBy || isMyIdea">{{ Idea.body }}</div>
+          <div class="p-ideasShow__body" v-else>アイデアの内容は、購入したユーザーのみご覧いただけます。</div>
         </li>
         <li class="p-ideasShow__item">
           <IdeasShowButtons
@@ -48,20 +54,34 @@
             :endpoint-buy="endpointBuy"
             :user-id="this.userId"
             :idea-user="this.ideaUser"
-            v-if="checkMyIdea"
+            v-if="!checkMyIdea"
           ></IdeasShowButtons>
+        </li>
+        <li class="p-ideasShow__item">
+          <div class="p-ideasShow__likes">気になるリスト登録数：{{ countLikes }}</div>
+        </li>
+        <li class="p-ideasShow__item">
+          <div class="p-ideasShow__twitter">
+            <a target="_blank" :href="'https://twitter.com/intent/tweet?url='+endpointForTwitter">
+              <img src="/images/tw-icon.svg" alt="twitterシェア" />
+            </a>
+            <span class="p-ideasShow__twitter__text">SHARE</span>
+          </div>
         </li>
         <li class="p-ideasShow__item p-ideasShow__item--review">
           <ul class="p-ideasShowReview">
-            <li class="p-ideasShowReview__item p-ideasShowReview__item--post" v-if="checkMyIdea">
+            <li
+              class="p-ideasShowReview__item p-ideasShowReview__item--post"
+              v-if="!checkMyIdea && isOrderedBy"
+            >
               <div class="p-ideasShowReview__title">レビューを投稿する</div>
               <form id="form" action="/reviews/create" method="POST">
                 <input type="hidden" name="_token" :value="csrf" />
                 <input type="hidden" name="idea_id" :value="idea.id" />
                 <input type="hidden" name="user_id" :value="userId" />
 
-                <div class="p-ideasShowReview__rate js-validTarget">
-                  <input type="hidden" class="" name="rate" :value="rating"/>
+                <div class="p-ideasShowReview__rate js-validTarget" v-if="!isReviewedBy">
+                  <input type="hidden" class name="rate" :value="rating" />
                   <star-rating v-model="rating" :star-size="20" :fixed-points="1"></star-rating>
                   <span class="c-error" role="alert" v-for="value in error.rate" :key="value.rate">
                     <strong>{{ value }}</strong>
@@ -75,13 +95,21 @@
                     rows="10"
                     v-model="comment"
                     required
+                    :disabled="{true:isReviewedBy}"
+                    :placeholder="placeholder"
                   ></textarea>
-                  <span class="c-error" role="alert" v-for="value in error.comment" :key="value.comment">
+                  <span
+                    class="c-error"
+                    role="alert"
+                    v-for="value in error.comment"
+                    c
+                    :key="value.comment"
+                  >
                     <strong>{{ value }}</strong>
                   </span>
                 </div>
                 <!-- 送信ボタン -->
-                <div class="p-ideasShowReview__submit">
+                <div class="p-ideasShowReview__submit" v-if="!isReviewedBy">
                   <button type="submit" class="c-button__submit">投稿する</button>
                 </div>
               </form>
@@ -99,11 +127,20 @@
                       :star-size="15"
                       :fixed-points="1"
                     ></star-rating>
-                  <div class="p-ideasShowReview__created">投稿日： {{ item.created_at|formatDatetime }}</div>
+                    <div
+                      class="p-ideasShowReview__created"
+                    >投稿日： {{ item.created_at|formatDatetime }}</div>
                   </div>
                   <div class="p-ideasShowReview__user">
-                    <div class="p-ideasShowReview__user__img"><img :src="item.user.img!== null?'/storage/'+item.user.img:'/images/noavatar.png'" alt=""></div>
-                    <div class="p-ideasShowReview__user__name">{{ item.user.name }}</div>
+                    <a href>
+                      <div class="p-ideasShowReview__user__img">
+                        <img
+                          :src="item.user.img!== null?'/storage/'+item.user.img:'/images/noavatar.png'"
+                          alt
+                        />
+                      </div>
+                      <div class="p-ideasShowReview__user__name">{{ item.user.name }}</div>
+                    </a>
                   </div>
                   <div class="p-ideasShowReview__body">{{ item.comment }}</div>
                 </li>
@@ -123,7 +160,7 @@
             :endpoint-buy="endpointBuy"
             :user-id="this.userId"
             :idea-user="this.ideaUser"
-            v-if="checkMyIdea"
+            v-if="!checkMyIdea"
           ></IdeasShowButtons>
         </li>
       </ul>
@@ -139,10 +176,8 @@ import StarRating from "vue-star-rating";
 export default {
   name: "IdeasShow",
   props: {
-    old: {
-    },
-    errors: {
-    },
+    old: {},
+    errors: {},
     idea: {
       type: Object
     },
@@ -170,6 +205,10 @@ export default {
       type: Boolean,
       default: false
     },
+    initialIsReviewedBy: {
+      type: Boolean,
+      default: false
+    },
     authorized: {
       type: Boolean,
       default: false
@@ -181,6 +220,9 @@ export default {
       type: String
     },
     endpointForTwitter: {
+      type: String
+    },
+    endpointToUserPage: {
       type: String
     }
   },
@@ -195,14 +237,14 @@ export default {
       Authorized: this.authorized,
       isLikedBy: this.initialIsLikedBy,
       countLikes: this.initialCountLikes,
-      isOrderedBy: false,
+      isOrderedBy: this.initialIsOrderedBy,
+      isReviewedBy: this.initialIsReviewedBy,
+      placeholder: this.initialIsReviewedBy ? "すでにレビュー投稿済みです" : "",
       rating: this.old.rate ? Number(this.old.rate) : 0,
-      comment: this.old.comment
-        ? this.old.comment
-        : '',
+      comment: this.old.comment ? this.old.comment : "",
       error: {
         rate: this.errors.rate,
-        comment: this.errors.comment,
+        comment: this.errors.comment
       }
     };
   },
@@ -212,9 +254,11 @@ export default {
         ? "/storage/" + this.Idea.img
         : "/images/noimage.png";
     },
-    checkMyIdea(){
-      this.userId === this.ideaUser.id ? this.isMyIdea = true : this.isMyIdea = false;
-      return this.isMyIdea
+    checkMyIdea() {
+      this.userId === this.ideaUser.id
+        ? (this.isMyIdea = true)
+        : (this.isMyIdea = false);
+      return this.isMyIdea;
     }
   },
   methods: {

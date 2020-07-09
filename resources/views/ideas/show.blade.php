@@ -15,7 +15,9 @@
         endpoint="{{ route('ideas.like', $idea->id) }}" endpoint-buy="{{ route('ideas.buy', $idea->id) }}"
         :initial-is-ordered-by='@json($idea->isOrderedBy(Auth::user()))' :reviews='@json($reviews)'
         :old="{{ json_encode(Session::getOldInput()) }}" :errors="{{ $errors }}"
-        endpoint-for-twitter="{{ route('ideas.show',$idea->id) }}">
+        endpoint-for-twitter="{{ route('ideas.show',$idea->id) }}"
+        :initial-is-reviewed-by='@json($idea->isReviewedBy(Auth::user()))'
+        endpoint-to-user-page="{{ route('users.show',$idea->user->id) }}">
     </Ideas-show>
 </div>
 
