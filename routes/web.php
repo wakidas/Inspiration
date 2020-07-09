@@ -35,6 +35,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::put('/{id}/like', 'IdeasController@like')->name('like');
         Route::delete('/{id}/like', 'IdeasController@unlike')->name('unlike');
         Route::post('/{id}/buy', 'IdeasController@buy')->name('buy');
+        Route::post('/{id}/delete', 'IdeasController@delete')->name('delete');
     });
 
     //プレフィックス：comments

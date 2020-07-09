@@ -17,7 +17,8 @@
         :old="{{ json_encode(Session::getOldInput()) }}" :errors="{{ $errors }}"
         endpoint-for-twitter="{{ route('ideas.show',$idea->id) }}"
         :initial-is-reviewed-by='@json($idea->isReviewedBy(Auth::user()))'
-        endpoint-to-user-page="{{ route('users.show',$idea->user->id) }}">
+        endpoint-idea-user="{{ route('users.show',$idea->user->id) }}"
+        endpoint-edit="{{ route('ideas.edit',$idea->id) }}" endpoint-delete="{{ route('ideas.delete',$idea->id) }}">
     </Ideas-show>
 </div>
 

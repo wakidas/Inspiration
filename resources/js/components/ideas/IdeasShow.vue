@@ -2,11 +2,19 @@
   <section class="p-ideasShow">
     <div class="p-ideasShow__inner">
       <ul>
-        <li class="p-ideasShow__item">
+        <li class="p-ideasShow__item p-ideasShow__item--img">
           <div class="p-ideasShow__img">
             <img :src="ideaImg" alt="サムネイル画像" />
           </div>
         </li>
+
+        <!-- 編集・削除ボタン -->
+        <ideas-action-buttons
+          :endpoint-edit="endpointEdit"
+          :endpoint-delete="endpointDelete"
+          v-if="isMyIdea"
+        ></ideas-action-buttons>
+
         <li class="p-ideasShow__item">
           <div class="p-ideasShow__title">{{ Idea.title }}</div>
         </li>
@@ -17,7 +25,7 @@
           </div>
         </li>
         <li class="p-ideasShow__item">
-          <a :href="endpointToUserPage" class="p-ideasShow__toIdeaUser">
+          <a :href="endpointIdeaUser" class="p-ideasShow__toIdeaUser">
             <div class="p-ideasShow__user">
               <div class="p-ideasShow__user__img">
                 <img
@@ -131,8 +139,8 @@
                       class="p-ideasShowReview__created"
                     >投稿日： {{ item.created_at|formatDatetime }}</div>
                   </div>
-                  <div class="p-ideasShowReview__user">
-                    <a href>
+                  <a :href="'/users/'+item.user_id" class="p-ideasShow__toReviewUser">
+                    <div class="p-ideasShowReview__user">
                       <div class="p-ideasShowReview__user__img">
                         <img
                           :src="item.user.img!== null?'/storage/'+item.user.img:'/images/noavatar.png'"
@@ -140,8 +148,8 @@
                         />
                       </div>
                       <div class="p-ideasShowReview__user__name">{{ item.user.name }}</div>
-                    </a>
-                  </div>
+                    </div>
+                  </a>
                   <div class="p-ideasShowReview__body">{{ item.comment }}</div>
                 </li>
               </ul>
@@ -170,6 +178,8 @@
 
 <script>
 import IdeasShowButtons from "./IdeasShowButtons";
+import IdeasActionButtons from "./IdeasActionButtons";
+
 import axios from "axios";
 import StarRating from "vue-star-rating";
 
@@ -222,7 +232,13 @@ export default {
     endpointForTwitter: {
       type: String
     },
-    endpointToUserPage: {
+    endpointIdeaUser: {
+      type: String
+    },
+    endpointEdit: {
+      type: String
+    },
+    endpointDelete: {
       type: String
     }
   },
@@ -239,6 +255,8 @@ export default {
       countLikes: this.initialCountLikes,
       isOrderedBy: this.initialIsOrderedBy,
       isReviewedBy: this.initialIsReviewedBy,
+      isMyIdea: "",
+      endpointReviewUser: "",
       placeholder: this.initialIsReviewedBy ? "すでにレビュー投稿済みです" : "",
       rating: this.old.rate ? Number(this.old.rate) : 0,
       comment: this.old.comment ? this.old.comment : "",
@@ -259,6 +277,9 @@ export default {
         ? (this.isMyIdea = true)
         : (this.isMyIdea = false);
       return this.isMyIdea;
+    },
+    endpointReviewUser() {
+      return "/ideas/" + this.r;
     }
   },
   methods: {
@@ -277,6 +298,7 @@ export default {
   },
   components: {
     IdeasShowButtons,
+    IdeasActionButtons,
     StarRating
   }
 };

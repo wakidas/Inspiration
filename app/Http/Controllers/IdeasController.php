@@ -106,6 +106,17 @@ class IdeasController extends Controller
      */
     public function edit($id)
     {
+        //自分以外のユーザーがアクセスした場合は元の画面へ遷移
+        if (Auth::id() !== Idea::find($id)->user->id) {
+            return redirect()->back()->with('flash_message', __('権限がありません'));
+        }
+
+        //数値以外がpostされた場合は元の画面へ遷移
+        if (!ctype_digit($id)) {
+            return redirect()->back()->with('flash_message', __('もう一度やり直してください'));
+        }
+
+
         $idea = Idea::find($id);
 
         return view('ideas.edit', [
@@ -195,6 +206,10 @@ class IdeasController extends Controller
 
     public function buy(Request $request, $id)
     {
+        if (!ctype_digit($id)) {
+            return redirect()->back()->with('flash_message', __('もう一度やり直してください'));
+        }
+
         $idea = Idea::find($id);
         if ($idea->user->id === Auth::user()->id) {
             return redirect()->route('ideas.show', $id)->with('flash_message', '自分のアイデアは購入できません。');
@@ -213,5 +228,22 @@ class IdeasController extends Controller
         User::find($order->ideas->user_id)->saleEmail($order);
 
         return redirect()->route('ideas.show', $id)->with('flash_message', 'アイデアを購入しました！');
+    }
+
+    public function delete($id)
+    {
+        //自分以外のユーザーがアクセスした場合は元の画面へ遷移
+        if (Auth::id() !== Idea::find($id)->user->id) {
+            return redirect()->back()->with('flash_message', __('権限がありません'));
+        }
+
+        //数値以外がpostされた場合は元の画面へ遷移
+        if (!ctype_digit($id)) {
+            return redirect()->back()->with('flash_message', __('もう一度やり直してください'));
+        }
+
+        Idea::find($id)->delete(); // softDelete
+
+        return redirect()->route('ideas.index')->with('flash_message', 'アイデアを削除しました！');
     }
 }

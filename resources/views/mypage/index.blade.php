@@ -37,7 +37,7 @@
         {{-- 投稿したアイデア --}}
         <div class="p-mypage__ideas">
             <div class="p-mypage__ideas__title">投稿したアイデア(最新5件表示)<span class="p-mypage__ideas__toAll"><a
-                        href="{{ route('mypage.myIdea') }}">>>全件表示</a></span></div>
+                        href="{{ route('mypage.myIdeas') }}">>>全件表示</a></span></div>
             <div class="p-mypage__ideas__items">
                 @foreach ($myIdeas as $myIdea)
                 <mypage-ideas :idea='@json($myIdea)' :user='@json($myIdea->user)'

@@ -16,6 +16,7 @@ require('./components/jquery.validate/localization/messages_ja.js');
 require('./components/validate');
 
 require('./components/filter');
+
 // =====================================
 // Vueコンポーネントのインポート
 // =====================================

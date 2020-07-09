@@ -12,6 +12,11 @@
     .p-ideasShow__item{
         list-style: none;
         margin-top: 24px;
+        &.p-ideasShow__item--action{
+            display: flex;
+            flex-direction: row-reverse;
+            margin-top: 8px;
+        }
         &.p-ideasShow__item--body{
             margin-top: 80px;
         }
@@ -27,6 +32,15 @@
         max-width: 350px;
         img{
             width: 100%;
+        }
+    }
+    .p-ideasShow__action{
+        img{
+            width: 30px;
+            height: 30px;
+        }
+        &:not(:first-of-type){
+            margin-right: 24px;
         }
     }
     .p-ideasShow__title{
