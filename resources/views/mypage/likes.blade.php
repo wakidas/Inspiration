@@ -10,7 +10,7 @@
         <mypage-tabs current-page="likes"></mypage-tabs>
     </div>
     {{-- 購入アイデア --}}
-    <div class="p-mypage__ideas">
+    <div class="l-mypage__items p-mypage__ideas">
         <div class="p-mypage__ideas__title">気になるリスト一覧</div>
         <div class="p-mypage__ideas__items">
             @foreach ($likes as $like)
@@ -19,6 +19,9 @@
             </mypage-ideas>
 
             @endforeach
+        </div>
+        <div class="c-pagination">
+            {{ $likes->appends(request()->input())->links() }}
         </div>
     </div>
 </div>

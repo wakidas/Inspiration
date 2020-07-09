@@ -1,11 +1,17 @@
 .p-create{
     padding:40px;
+    @include mq(sm) {
+        padding: 40px 16px;
+    }
     .p-create__inner{
         background: #fff;
         max-width: 1000px;
         margin: 0 auto;
         padding: 32px;
         box-sizing: border-box;
+        @include mq(sm) {
+            padding: 32px 24px;
+        }
     }
     .p-create__title{
         font-size: 24px;
@@ -82,6 +88,10 @@
         display: inline-block;
         position: relative;
         border: 1px solid #eee;
+        cursor: pointer;
+        &:hover{
+            opacity: 0.7;
+        }
     }
     .p-create__imgDelete{
         background: #999;
@@ -108,9 +118,14 @@
         background-size: contain;
         background-position: center;
         position: relative;
+        cursor: pointer;
+        &:hover{
+            opacity: 0.7;
+        }
     }
     .p-create__submit{
         width: 30%;
+        min-width: 200px;
         height: 50px;
         margin: 64px auto 0;
     }

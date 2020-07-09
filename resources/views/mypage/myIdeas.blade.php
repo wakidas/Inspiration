@@ -10,7 +10,7 @@
         <mypage-tabs current-page="myIdeas"></mypage-tabs>
     </div>
     {{-- 投稿したアイデア --}}
-    <div class="p-mypage__ideas">
+    <div class="l-mypage__items p-mypage__ideas">
         <div class="p-mypage__ideas__title">投稿したアイデア一覧</div>
         <div class="p-mypage__ideas__items">
             @foreach ($myIdeas as $myIdea)
@@ -18,6 +18,9 @@
                 endpoint="{{ route('ideas.show',$myIdea->id) }}" type="myIdeas">
             </mypage-ideas>
             @endforeach
+        </div>
+        <div class="c-pagination">
+            {{ $myIdeas->appends(request()->input())->links() }}
         </div>
     </div>
 </div>

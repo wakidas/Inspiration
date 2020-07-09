@@ -10,7 +10,7 @@
         <mypage-tabs current-page="reviews"></mypage-tabs>
     </div>
     {{-- レビュー一覧 --}}
-    <div class="p-mypage__reviews">
+    <div class="l-mypage__items p-mypage__reviews">
         <div class="p-mypage__reviews__title">投稿されたレビュー一覧</div>
         <div class="p-mypage__reviews__items">
             @foreach ($reviews as $review)

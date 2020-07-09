@@ -111,7 +111,7 @@ class IdeasController extends Controller
             return redirect()->back()->with('flash_message', __('権限がありません'));
         }
 
-        //数値以外がpostされた場合は元の画面へ遷移
+        //数値以外が渡された場合は元の画面へ遷移
         if (!ctype_digit($id)) {
             return redirect()->back()->with('flash_message', __('もう一度やり直してください'));
         }

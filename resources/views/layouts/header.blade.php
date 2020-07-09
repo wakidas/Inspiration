@@ -28,7 +28,7 @@
                         </div>
                         <ul class="p-header__drawer" id="js-drawer__menu">
                             <li class="p-header__drawer__item">
-                                <a class="p-header__drawer__link" href="{{ route('users.show',$user->id)}}">マイページ</a>
+                                <a class="p-header__drawer__link" href="{{ route('mypage.index')}}">マイページ</a>
                             </li>
                             <li class="p-header__drawer__item">
                                 <a class="p-header__drawer__link" href="{{ route('ideas.index') }}">アイデア一覧</a>

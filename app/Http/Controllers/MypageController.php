@@ -33,7 +33,7 @@ class MypageController extends Controller
     public function boughts()
     {
         $user = Auth::user();
-        $boughts = $user->hasOrders()->with(['ideas', 'users'])->get();
+        $boughts = $user->hasOrders()->with(['ideas', 'users'])->paginate(10);
         return view('mypage.boughts', [
             'user' => $user,
             'boughts' => $boughts,
@@ -42,7 +42,7 @@ class MypageController extends Controller
     public function likes()
     {
         $user = Auth::user();
-        $likes = $user->hasLikes()->with('ideas')->get();
+        $likes = $user->hasLikes()->with('ideas')->paginate(10);
         return view('mypage.likes', [
             'user' => $user,
             'likes' => $likes,
@@ -51,7 +51,7 @@ class MypageController extends Controller
     public function myIdeas()
     {
         $user = Auth::user();
-        $myIdeas = $user->ideas()->take(5)->get();
+        $myIdeas = $user->ideas()->take(5)->paginate(10);
 
         return view('mypage.myIdeas', [
             'user' => $user,
@@ -62,7 +62,7 @@ class MypageController extends Controller
     public function reviews()
     {
         $user = Auth::user();
-        $reviews = $user->hasReviews()->with('ideas')->get();
+        $reviews = $user->hasReviews()->with('ideas')->paginate(10);
 
         return view('mypage.reviews', [
             'user' => $user,

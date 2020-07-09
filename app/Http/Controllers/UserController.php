@@ -39,6 +39,16 @@ class UserController extends Controller
      */
     public function edit($id)
     {
+        //自分以外のユーザーがアクセスした場合は元の画面へ遷移
+        if (Auth::id() !== (int) $id) {
+            return redirect()->back()->with('flash_message', __('権限がありません'));
+        }
+
+        //数値以外が渡された場合は元の画面へ遷移
+        if (!ctype_digit($id)) {
+            return redirect()->back()->with('flash_message', __('もう一度やり直してください'));
+        }
+
         $user = User::find($id);
 
         return view('users.edit', [
@@ -85,6 +95,16 @@ class UserController extends Controller
 
     public function delete($id)
     {
+        //自分以外のユーザーがアクセスした場合は元の画面へ遷移
+        if (Auth::id() !== (int) $id) {
+            return redirect()->back()->with('flash_message', __('権限がありません'));
+        }
+
+        //数値以外がpostされた場合は元の画面へ遷移
+        if (!ctype_digit($id)) {
+            return redirect()->back()->with('flash_message', __('もう一度やり直してください'));
+        }
+
         User::find($id)->delete(); // softDelete
 
         return redirect()->route('users.delete.complete');

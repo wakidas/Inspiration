@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="l-main">
-    <div class="p-mypage" id="js-mypage">
+    <div class="l-mypage__items p-mypage" id="js-mypage">
         <users-profile :user='@json($user)' :is-auth-check='@json($user->count()>0)'
             endpoint={{ route('users.edit',$user->id) }}>></users-profile>
         <mypage-tabs current-page="index"></mypage-tabs>

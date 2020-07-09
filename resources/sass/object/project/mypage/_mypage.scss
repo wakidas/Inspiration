@@ -14,7 +14,7 @@
     .p-tabs__item{
         border: 1px solid $main-cl;
         min-width: 110px;
-        width: 20%;
+        width: 19.8%;
         height: 50px;
         display: flex;
         justify-content: center;
@@ -26,8 +26,16 @@
         &.is-active{
             background: $main-cl;
         }
+        a{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+        }
     }
 }
+
 .p-mypage__ideas{
     padding: 0 16px;
     max-width: 600px;
@@ -49,6 +57,7 @@
         font-size: 14px;
         @include mq(sm) {
             margin-top: 16px;
+            margin-left: 0;
         }
     }
     .p-mypage__ideas__items{
@@ -74,18 +83,28 @@
     .p-mypage__ideas__ideaImg{
         display: flex;
         width: 100px;
+        height: 100px;
         justify-content: center;
         align-items: center;
         flex-shrink: 0;
+        overflow: hidden;
         img{
             width: 100%;
+            height: 100%;
         }
     }
     .p-mypage__ideas__center{
         width: 100%;
+        margin-left: 24px;
+        @include mq(sm) {
+            margin-left: 0;
+        }
     }
     .p-mypage__ideas__ideaTitle{
         font-weight: bold;
+        @include mq(sm) {
+            margin-top: 16px;
+        }
     }
     .p-mypage__ideas__ideaDescription{
         display: -webkit-box;
@@ -98,6 +117,7 @@
     .p-mypage__ideas__user{
         display: flex;
         align-items: center;
+        margin-top: 8px;
     }
     .p-mypage__ideas__userImg{
         display: flex;
@@ -121,15 +141,20 @@
     }
     .p-mypage__ideas__button{
         line-height: 1.1;
-        padding: 6px 12px;
         background: $main-cl;
         border-radius: 15px;
-        @include mq(sm) {
-            font-size: 14px;
-        }
         a{
+            box-sizing: border-box;
+            padding: 6px 24px;
+            display: inline-block;
+            width: 100%;
+            height: 100%;
             &:visited{
                 color: currentColor;
+            }
+            @include mq(sm) {
+                font-size: 14px;
+                padding: 6px 18px;
             }
         }
         &.p-mypage__ideas__button--unlike{

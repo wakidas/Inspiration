@@ -4,6 +4,8 @@
 
 @section('content')
 <div class="l-main">
-    <mypage-settings :user='@json($user)'></mypage-settings>
+    <div class="l-settings">
+        <mypage-settings :user='@json($user)'></mypage-settings>
+    </div>
 </div>
 @endsection

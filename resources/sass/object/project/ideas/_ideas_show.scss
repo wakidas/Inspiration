@@ -12,6 +12,9 @@
     .p-ideasShow__item{
         list-style: none;
         margin-top: 24px;
+        &.p-ideasShow__item--img{
+            
+        }
         &.p-ideasShow__item--action{
             display: flex;
             flex-direction: row-reverse;

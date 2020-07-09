@@ -6,6 +6,10 @@
         font-size: 18px;
         display: flex;
         align-items: flex-end;
+        @include mq(sm) {
+            align-items: initial;
+            flex-direction: column;
+        }
     }
     .p-mypage__reviews__toAll{
         display: inline-block;
@@ -39,18 +43,31 @@
     .p-mypage__reviews__userName{
         margin-left: 16px;
     }
+    .p-mypage__reviews__reviewComment{
+        margin-top: 8px;
+    }
     .p-mypage__reviews__idea{
         margin-top: 24px;
     }
     .p-mypage__reviews__toIdeaShow{
         margin-top: 8px;
         line-height: 1.1;
-        padding: 6px 12px;
-        background: #FFBC61;
-        border-radius: 15px;
         display: inline-block;
-        @include mq(sm) {
-            font-size: 14px;
+        background: $main-cl;
+        border-radius: 15px;
+        a{
+            box-sizing: border-box;
+            padding: 6px 24px;
+            display: inline-block;
+            width: 100%;
+            height: 100%;
+            &:visited{
+                color: currentColor;
+            }
+            @include mq(sm) {
+                font-size: 14px;
+                padding: 6px 18px;
+            }
         }
     }
 }

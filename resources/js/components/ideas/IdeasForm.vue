@@ -11,7 +11,16 @@
           <span class="c-icon__formLabel c-icon__formLabel--required">必須</span>
         </label>
         <div class="p-create__formItem">
-          <input id="idea_title" type="text" class="p-create__formInput" name="title" v-model="title" required maxlength=50 placeholder="50以内で記入お願いします"/>
+          <input
+            id="idea_title"
+            type="text"
+            class="p-create__formInput"
+            name="title"
+            v-model="title"
+            required
+            maxlength="50"
+            placeholder="50字以内で記入お願いします"
+          />
           <span class="c-error" role="alert" v-for="value in error.title" :key="value.title">
             <strong>{{ value }}</strong>
           </span>
@@ -59,8 +68,8 @@
             class="p-create__formInput p-create__formInput--description"
             v-model="description"
             required
-            maxlength=140
-            placeholder="140以内で記入お願いします"
+            maxlength="140"
+            placeholder="140字以内で記入お願いします"
           ></textarea>
           <span
             class="c-error"
@@ -100,7 +109,14 @@
         </label>
         <div class="p-create__formItem p-create__formItem--price">
           <div class="p-create__priceWrap">
-            <input name="price" type="number" class="p-create__formInput" v-model="price" required digits />
+            <input
+              name="price"
+              type="number"
+              class="p-create__formInput"
+              v-model="price"
+              required
+              digits
+            />
             <span class="p-create__price__text">円</span>
           </div>
           <span class="c-error" role="alert" v-for="value in error.price" :key="value.price">
@@ -236,8 +252,8 @@ export default {
       let deleteFlg = $("#js-img__deleteFlg");
       let fileReader = new FileReader();
 
-      fileReader.onload = (event)=> {
-        this.uploadImage =  "url('" + event.target.result + "')";
+      fileReader.onload = event => {
+        this.uploadImage = "url('" + event.target.result + "')";
       };
       // 画像読み込み
       fileReader.readAsDataURL(file);
@@ -263,6 +279,6 @@ export default {
   mounted() {
     this.setImgFlg();
     this.setInitialBackgroundImage();
-  },
+  }
 };
 </script>
