@@ -1577,11 +1577,6 @@ a:hover {
   display: inline-block;
   position: relative;
   border: 1px solid #eee;
-  cursor: pointer;
-}
-
-.p-create .p-create__imgWrap:hover {
-  opacity: 0.7;
 }
 
 .p-create .p-create__imgDelete {
@@ -1930,6 +1925,10 @@ a:hover {
   width: 100%;
 }
 
+.p-ideasShow .p-ideasShow__action a {
+  display: inline-block;
+}
+
 .p-ideasShow .p-ideasShow__action img {
   width: 30px;
   height: 30px;
@@ -1982,6 +1981,20 @@ a:hover {
 
 .p-ideasShow .p-ideasShow__body {
   font-size: 18px;
+}
+
+.p-ideasShow .p-ideasShow__avgRate {
+  display: flex;
+  align-items: center;
+}
+
+.p-ideasShow .p-ideasShow__avgRate__link {
+  display: inline-block;
+  padding: 8px 16px 8px 0;
+}
+
+.p-ideasShow .p-ideasShow__avgRate__item:not(:first-of-type) {
+  margin-left: 8px;
 }
 
 .p-ideasShow .p-ideasShow__twitter {
@@ -2429,6 +2442,10 @@ a:hover {
 
 .p-mypage__ideas .p-mypage__ideas__button.p-mypage__ideas__button--unlike a:visited {
   color: currentColor;
+}
+
+.p-mypage__ideas .p-mypage__ideas__button.p-mypage__ideas__button--myIdeas {
+  margin-left: 16px;
 }
 
 .p-usersEdit {

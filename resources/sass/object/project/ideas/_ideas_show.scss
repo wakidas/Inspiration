@@ -12,9 +12,6 @@
     .p-ideasShow__item{
         list-style: none;
         margin-top: 24px;
-        &.p-ideasShow__item--img{
-            
-        }
         &.p-ideasShow__item--action{
             display: flex;
             flex-direction: row-reverse;
@@ -38,6 +35,9 @@
         }
     }
     .p-ideasShow__action{
+        a{
+            display: inline-block;
+        }
         img{
             width: 30px;
             height: 30px;
@@ -81,6 +81,19 @@
     }
     .p-ideasShow__body{
         font-size: 18px;
+    }
+    .p-ideasShow__avgRate{
+        display: flex;
+        align-items: center;
+    }
+    .p-ideasShow__avgRate__link{
+        display: inline-block;
+        padding: 8px 16px 8px 0;
+    }
+    .p-ideasShow__avgRate__item{
+        &:not(:first-of-type){
+            margin-left: 8px;
+        }
     }
     .p-ideasShow__twitter{
         display: flex;

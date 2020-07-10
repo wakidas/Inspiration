@@ -12,6 +12,7 @@
         <ideas-action-buttons
           :endpoint-edit="endpointEdit"
           :endpoint-delete="endpointDelete"
+          :is-ordered-at-least-one="isOrderedAtLeastOne"
           v-if="isMyIdea"
         ></ideas-action-buttons>
 
@@ -69,6 +70,24 @@
           <div class="p-ideasShow__likes">気になるリスト登録数：{{ countLikes }}</div>
         </li>
         <li class="p-ideasShow__item">
+          <a href="#reviews" class="p-ideasShow__avgRate__link">
+            <div class="p-ideasShow__avgRate">
+              <div class="p-ideasShow__avgRate__item">{{ fixedRate }}</div>
+              <div class="p-ideasShow__avgRate__item">
+                <star-rating
+                  v-model="this.Rate"
+                  :read-only="true"
+                  :star-size="15"
+                  :fixed-points="1"
+                  :show-rating="false"
+                  :increment="0.1"
+                ></star-rating>
+              </div>
+              <div class="p-ideasShow__avgRate__item">( {{ this.ReviewCount }} )</div>
+            </div>
+          </a>
+        </li>
+        <li class="p-ideasShow__item">
           <div class="p-ideasShow__twitter">
             <a target="_blank" :href="'https://twitter.com/intent/tweet?url='+endpointForTwitter">
               <img src="/images/tw-icon.svg" alt="twitterシェア" />
@@ -77,7 +96,7 @@
           </div>
         </li>
         <li class="p-ideasShow__item p-ideasShow__item--review">
-          <ul class="p-ideasShowReview">
+          <ul id="reviews" class="p-ideasShowReview">
             <li
               class="p-ideasShowReview__item p-ideasShowReview__item--post"
               v-if="!checkMyIdea && isOrderedBy"
@@ -215,6 +234,9 @@ export default {
       type: Boolean,
       default: false
     },
+    isOrderedAtLeastOne: {
+      type: Boolean
+    },
     initialIsReviewedBy: {
       type: Boolean,
       default: false
@@ -222,6 +244,12 @@ export default {
     authorized: {
       type: Boolean,
       default: false
+    },
+    avgRate: {
+      type: Number
+    },
+    reviewCount: {
+      type: Number
     },
     endpoint: {
       type: String
@@ -256,6 +284,8 @@ export default {
       isOrderedBy: this.initialIsOrderedBy,
       isReviewedBy: this.initialIsReviewedBy,
       isMyIdea: "",
+      Rate: this.avgRate,
+      ReviewCount: this.reviewCount,
       endpointReviewUser: "",
       placeholder: this.initialIsReviewedBy ? "すでにレビュー投稿済みです" : "",
       rating: this.old.rate ? Number(this.old.rate) : 0,
@@ -280,6 +310,9 @@ export default {
     },
     endpointReviewUser() {
       return "/ideas/" + this.r;
+    },
+    fixedRate() {
+      return this.Rate ? this.Rate.toFixed(1) : "";
     }
   },
   methods: {

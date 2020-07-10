@@ -17,8 +17,10 @@
         :old="{{ json_encode(Session::getOldInput()) }}" :errors="{{ $errors }}"
         endpoint-for-twitter="{{ route('ideas.show',$idea->id) }}"
         :initial-is-reviewed-by='@json($idea->isReviewedBy(Auth::user()))'
+        :avg-rate='@json($idea->reviews->avg("rate"))' :review-count='@json($idea->reviews->count())'
         endpoint-idea-user="{{ route('users.show',$idea->user->id) }}"
-        endpoint-edit="{{ route('ideas.edit',$idea->id) }}" endpoint-delete="{{ route('ideas.delete',$idea->id) }}">
+        endpoint-edit="{{ route('ideas.edit',$idea->id) }}" endpoint-delete="{{ route('ideas.delete',$idea->id) }}"
+        :is-ordered-at-least-one='@json($idea->orders->count()>0)'>
     </Ideas-show>
 </div>
 

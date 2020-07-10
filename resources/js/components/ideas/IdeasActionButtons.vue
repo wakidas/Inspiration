@@ -1,7 +1,7 @@
 <template>
   <li class="p-ideasShow__item p-ideasShow__item--action">
     <div class="p-ideasShow__action">
-      <a :href="endpointEdit">
+      <a href="javascript:void(0)" @click="this.edit">
         <img src="/images/idea-edit.svg" alt="編集ボタン" />
       </a>
     </div>
@@ -24,6 +24,9 @@ export default {
     },
     endpointDelete: {
       type: String
+    },
+    isOrderedAtLeastOne: {
+      type: Boolean
     }
   },
   data() {
@@ -35,15 +38,26 @@ export default {
   },
   computed: {},
   methods: {
-    delete(e) {
-      e.preventDefault();
-      const confirm_result = window.confirm(
-        "このアイデアを削除します。よろしいですか？"
-      );
-      if (confirm_result) {
-        $("#idea-delete").submit();
+    edit(e) {
+      if (this.isOrderedAtLeastOne) {
+        alert("1人以上のユーザーに購入されています。編集はできません。");
       } else {
-        return false;
+        location.href = this.endpointEdit;
+      }
+    },
+    delete(e) {
+      if (this.isOrderedAtLeastOne) {
+        alert("1人以上のユーザーに購入されています。削除はできません。");
+      } else {
+        e.preventDefault();
+        const confirm_result = window.confirm(
+          "このアイデアを削除します。よろしいですか？"
+        );
+        if (confirm_result) {
+          $("#idea-delete").submit();
+        } else {
+          return false;
+        }
       }
     }
   }

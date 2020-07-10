@@ -6,6 +6,8 @@ use inspiration\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
 
+use Illuminate\Support\Facades\Log;
+
 class LoginController extends Controller
 {
     /*
@@ -20,6 +22,13 @@ class LoginController extends Controller
     */
 
     use AuthenticatesUsers;
+
+    /**
+     * Where to redirect users after verification.
+     *
+     * @var string
+     */
+    protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.
@@ -44,6 +53,8 @@ class LoginController extends Controller
         } else {
             $intended = '/';
         }
+        Log::debug('$intended');
+        Log::debug($intended);
         session(['url.intended' => $intended]);
         // ここまで追加
         return view('auth.login');
@@ -52,7 +63,7 @@ class LoginController extends Controller
     protected function authenticated()
     {
         $intended = session('url.intended');
-        if (parse_url($intended, PHP_URL_PATH) == '/') {
+        if (parse_url($intended, PHP_URL_PATH) == '/' || 'login') {
             $user_id = Auth::user()->id;
             return redirect()->route('users.show', $user_id)->with('flash_message', 'ログインしました');
         } else {
@@ -62,6 +73,6 @@ class LoginController extends Controller
 
     protected function loggedOut()
     {
-        return redirect()->route('home')->with('flash_message', 'ログアウトしました');
+        return redirect('/')->with('flash_message', 'ログアウトしました');
     }
 }

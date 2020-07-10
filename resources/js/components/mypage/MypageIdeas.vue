@@ -18,7 +18,10 @@
     <div class="p-mypage__ideas__spHalfBottom">
       <div
         class="p-mypage__ideas__buttons"
-        :class="{'p-mypage__ideas__buttons--likes' : type === 'likes'}"
+        :class="{
+          'p-mypage__ideas__buttons--likes' : type === 'likes',
+          'p-mypage__ideas__buttons--myideas' : type === 'myIdeas'
+          }"
       >
         <div class="p-mypage__ideas__button">
           <a :href="endpoint">詳細を見る</a>
@@ -28,6 +31,12 @@
           v-if="type === 'likes'"
         >
           <a href="javascript:void(0)" @click="unlike">気になるを解除する</a>
+        </div>
+        <div
+          class="p-mypage__ideas__button p-mypage__ideas__button--myIdeas"
+          v-if="type === 'myIdeas'"
+        >
+          <a :href="endpointEdit">編集する</a>
         </div>
       </div>
     </div>
@@ -67,6 +76,9 @@ export default {
       return this.idea.img !== null
         ? "/storage/" + this.idea.img
         : "/images/noimage.png";
+    },
+    endpointEdit() {
+      return "/ideas/" + this.idea.id + "/edit";
     }
   },
   methods: {

@@ -88,10 +88,6 @@
         display: inline-block;
         position: relative;
         border: 1px solid #eee;
-        cursor: pointer;
-        &:hover{
-            opacity: 0.7;
-        }
     }
     .p-create__imgDelete{
         background: #999;

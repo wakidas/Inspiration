@@ -81,7 +81,7 @@ class ChangeEmailController extends Controller
                     ->where('token', $token)
                     ->delete();
             }
-            return redirect('/home')->with('flash_message', 'メールアドレスの更新に失敗しました。');
+            return redirect('/mypage')->with('flash_message', 'メールアドレスの更新に失敗しました。');
         }
     }
 
