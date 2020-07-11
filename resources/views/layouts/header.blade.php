@@ -19,12 +19,8 @@
                     @endguest
                     @auth
                     <li class="p-header__nav__item">
-                        <div class="p-header__icon is-inactive" id="js-drawer__click-target">
-                            @if($user->img)
-                            <img src="{{ asset('storage/' . $user->img) }}" alt="プロフィール画像" />
-                            @else
-                            <img src="{{ asset('/images/noavatar.png') }}" alt="{{ $user->name. ' のプロフィール画像' }}">
-                            @endif
+                        <div class="p-header__icon is-inactive" id="js-drawer__click-target"
+                            style="background-image: url({{ ($user->img)?'/storage/'.$user->img:'/images/noavatar.png' }})">
                         </div>
                         <ul class="p-header__drawer" id="js-drawer__menu">
                             <li class="p-header__drawer__item">

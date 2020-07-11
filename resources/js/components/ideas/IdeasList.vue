@@ -3,9 +3,7 @@
     <a :href="endpoint">
       <div class="c-idea__card__inner">
         <div class="c-idea__card__category">{{Category.name}}</div>
-        <div class="c-idea__card__img">
-          <img :src="ideaImg" alt />
-        </div>
+        <div class="c-idea__card__img" :style="'background-image: url('+ideaImg+')'"></div>
         <div class="c-idea__card__priceAndDate">
           <div class="c-idea__card__price">¥ {{ Idea.price | addComma }}</div>
           <div class="c-idea__card__date">

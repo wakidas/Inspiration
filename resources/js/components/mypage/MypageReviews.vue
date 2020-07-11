@@ -1,9 +1,7 @@
 <template>
   <div class="p-mypage__reviews__item">
     <div class="p-mypage__reviews__user">
-      <div class="p-mypage__reviews__userImg">
-        <img :src="userImg" alt />
-      </div>
+      <div class="p-mypage__reviews__userImg" :style="'background-image: url('+userImg+')'"></div>
       <div class="p-mypage__reviews__userName">{{ user.name}}</div>
     </div>
     <div class="p-mypage__reviews__reviewRate">

@@ -1,16 +1,12 @@
 <template>
   <div class="p-mypage__ideas__item">
     <div class="p-mypage__ideas__spHalfTop">
-      <div class="p-mypage__ideas__ideaImg">
-        <img :src="ideaImg" alt />
-      </div>
+      <div class="p-mypage__ideas__ideaImg" :style="'background-image: url('+ideaImg+')'"></div>
       <div class="p-mypage__ideas__center">
         <div class="p-mypage__ideas__ideaTitle">{{ idea.title}}</div>
         <div class="p-mypage__ideas__ideaDescription">{{ idea.description}}</div>
         <div class="p-mypage__ideas__user">
-          <div class="p-mypage__ideas__userImg">
-            <img :src="userImg" alt />
-          </div>
+          <div class="p-mypage__ideas__userImg" :style="'background-image: url('+userImg+')'"></div>
           <div class="p-mypage__ideas__userName">{{ user.name}}</div>
         </div>
       </div>

@@ -28,12 +28,7 @@
         <li class="p-ideasShow__item">
           <a :href="endpointIdeaUser" class="p-ideasShow__toIdeaUser">
             <div class="p-ideasShow__user">
-              <div class="p-ideasShow__user__img">
-                <img
-                  :src="ideaUser.img!== null?'/storage/'+ideaUser.img:'/images/noavatar.png'"
-                  alt
-                />
-              </div>
+              <div class="p-ideasShow__user__img" :style="'background-image: url('+userImg+')'"></div>
               <div class="p-ideasShow__user__name">{{ ideaUser.name }}</div>
             </div>
           </a>
@@ -163,12 +158,19 @@
                   </div>
                   <a :href="'/users/'+item.user_id" class="p-ideasShow__toReviewUser">
                     <div class="p-ideasShowReview__user">
-                      <div class="p-ideasShowReview__user__img">
-                        <img
-                          :src="item.user.img!== null?'/storage/'+item.user.img:'/images/noavatar.png'"
-                          alt
-                        />
-                      </div>
+                      <!-- ↓↓ユーザー画像の有無によって表示出し分け -->
+                      <div
+                        class="p-ideasShowReview__user__img"
+                        v-if="item.user.img!== null"
+                        :style="'background-image: url(/storage/'+item.user.img"
+                      ></div>
+                      <div
+                        class="p-ideasShowReview__user__img"
+                        :style="'background-image: url(/images/noavatar.png'"
+                        v-else
+                      ></div>
+                      <!-- ↑↑ユーザー画像の有無によって表示出し分け -->
+
                       <div class="p-ideasShowReview__user__name">{{ item.user.name }}</div>
                     </div>
                   </a>
@@ -305,6 +307,11 @@ export default {
       return this.Idea.img !== null
         ? "/storage/" + this.Idea.img
         : "/images/noimage.png";
+    },
+    userImg() {
+      return this.ideaUser.img !== null
+        ? "/storage/" + this.ideaUser.img
+        : "/images/noavatar.png";
     },
     checkMyIdea() {
       this.userId === this.ideaUser.id

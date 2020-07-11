@@ -39,11 +39,12 @@
         display: flex;
         width: 50px;
         height: 50px;
+        border-radius: 50%;
         justify-content: center;
         align-items: center;
-        img{
-            width: 100%;
-        }
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
     }
     .p-mypage__reviews__userName{
         margin-left: 16px;
