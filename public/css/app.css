@@ -1645,6 +1645,7 @@ a:hover {
 }
 
 .p-ideasList .p-ideasList__noItem {
+  margin-top: 32px;
   width: 100%;
   text-align: center;
 }
