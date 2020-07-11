@@ -89,7 +89,10 @@
         </li>
         <li class="p-ideasShow__item">
           <div class="p-ideasShow__twitter">
-            <a target="_blank" :href="'https://twitter.com/intent/tweet?url='+endpointForTwitter">
+            <a
+              target="_blank"
+              :href="'https://twitter.com/intent/tweet?text=Inspiration そのアイデア、形にしませんか%3F&url='+endpointForTwitter"
+            >
               <img src="/images/tw-icon.svg" alt="twitterシェア" />
             </a>
             <span class="p-ideasShow__twitter__text">SHARE</span>

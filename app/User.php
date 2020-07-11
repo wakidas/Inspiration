@@ -138,7 +138,7 @@ class User extends Authenticatable
      */
     public function saleEmail($options)
     {
-        $order = Order::with('users')->where('id', $options->id)->first()->users;
+        $order = User::find($options->ideas->user_id);
         $order->notify(new \inspiration\Notifications\SaleIdea());
     }
 
