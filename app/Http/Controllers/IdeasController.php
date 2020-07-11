@@ -138,7 +138,7 @@ class IdeasController extends Controller
      * @var object $idea  newされた新規アイデアのインスタンス
      * @return Response アイデア一覧ページの表示
      */
-    public function update(Request $request, $id)
+    public function update(CreateIdeaRequest $request, $id)
     {
         $user = Auth::user();
         $postImg = $request->img;

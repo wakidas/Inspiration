@@ -38,8 +38,9 @@ class CreateReviewRequest extends FormRequest
     public function messages()
     {
         return [
+            'comment.required' => '入力必須です。',
             'rate.min' => '評価を選択してください。',
-            'image.max' => '評価は１から５の間で入力してください',
+            'rate.max' => '評価は１から５の間で入力してください',
         ];
     }
 }

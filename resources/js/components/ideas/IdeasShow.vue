@@ -122,7 +122,7 @@
                     rows="10"
                     v-model="comment"
                     required
-                    :disabled="{true:isReviewedBy}"
+                    :disabled="disabled"
                     :placeholder="placeholder"
                   ></textarea>
                   <span
@@ -288,6 +288,7 @@ export default {
       ReviewCount: this.reviewCount,
       endpointReviewUser: "",
       placeholder: this.initialIsReviewedBy ? "すでにレビュー投稿済みです" : "",
+      disabled: this.initialIsReviewedBy ? true : false,
       rating: this.old.rate ? Number(this.old.rate) : 0,
       comment: this.old.comment ? this.old.comment : "",
       error: {
@@ -307,9 +308,6 @@ export default {
         ? (this.isMyIdea = true)
         : (this.isMyIdea = false);
       return this.isMyIdea;
-    },
-    endpointReviewUser() {
-      return "/ideas/" + this.r;
     },
     fixedRate() {
       return this.Rate ? this.Rate.toFixed(1) : "";

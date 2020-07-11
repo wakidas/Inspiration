@@ -90,18 +90,6 @@ class Idea extends Model
     }
 
     /**
-     * アイデアに特定のユーザーがレビュー済みかどうかの判定
-     *
-     * @return boolean
-     */
-    public function isReviewedBy(?User $user): bool
-    {
-        return $user
-            ? (bool) $this->reviews->where('id', $user->id)->count()
-            : false;
-    }
-
-    /**
      * アイデアに紐づくレビュー情報
      *
      * @return object
@@ -110,6 +98,19 @@ class Idea extends Model
     {
         return $this->hasMany('inspiration\Review');
     }
+
+    /**
+     * アイデアに特定のユーザーがレビュー済みかどうかの判定
+     *
+     * @return boolean
+     */
+    public function isReviewedBy(?User $user): bool
+    {
+        return $user
+            ? (bool) $this->reviews->where('user_id', $user->id)->count()
+            : false;
+    }
+
 
     /**
      * アイデアに気になるリスト登録数取得メソッド

@@ -44,6 +44,18 @@ class CreateIdeaRequest extends FormRequest
     public function messages()
     {
         return [
+            'title.required' => 'タイトルは入力必須です。',
+            'title.string' => 'タイトルは文字列のみ有効です。',
+            'title.max' => 'タイトルは50文字以内で入力してください。',
+            'category_id.required' => 'カテゴリーは選択必須です。',
+            'category_id.integer' => '選択されたカテゴリーが正しくありません',
+            'description.required' => '説明は入力必須です。',
+            'description.string' => '説明は文字列のみ有効です。',
+            'description.max' => '説明は140文字以内で入力してください。',
+            'body.required' => 'アイデアの内容は入力必須です。',
+            'body.string' => 'アイデアの内容は文字列のみ有効です。',
+            'price.required' => '金額は入力必須です。',
+            'price.string' => '金額が正しくありません。',
             'image.image' => 'アップロードできるのは画像のみです',
             'image.max' => '画像は2MB以下のサイズにしてください。',
         ];
