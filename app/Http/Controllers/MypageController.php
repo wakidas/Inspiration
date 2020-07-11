@@ -3,6 +3,7 @@
 namespace inspiration\Http\Controllers;
 
 use Illuminate\Support\Facades\Auth;
+use inspiration\Review;
 
 /**
  * マイページ用コントローラー
@@ -30,7 +31,7 @@ class MypageController extends Controller
         $boughts = $user->hasOrders()->with(['ideas', 'users'])->take(5)->get();
         $likes = $user->hasLikes()->with('ideas')->take(5)->get();
         $myIdeas = $user->ideas()->take(5)->get();
-        $reviews = $user->hasReviews()->with('ideas')->take(5)->get();
+        $reviews = Review::with('ideas', 'users')->get()->where('ideas.user_id', $user->id)->take(5);
 
         return view('mypage.index', [
             'isAuthCheck' => $isAuthCheck,
@@ -113,7 +114,8 @@ class MypageController extends Controller
     public function reviews()
     {
         $user = Auth::user();
-        $reviews = $user->hasReviews()->with('ideas')->paginate(10);
+        $reviews = Review::with('ideas', 'users')->get()->where('ideas.user_id', $user->id);
+
 
         return view('mypage.reviews', [
             'user' => $user,

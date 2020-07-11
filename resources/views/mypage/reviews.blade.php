@@ -16,7 +16,7 @@
             @if ($reviews->count()>0)
             @foreach ($reviews as $review)
             <mypage-reviews :review='@json($review)' :user='@json($review->user)'
-                endpoint="{{ route('ideas.show',$review->id) }}" type="review">
+                endpoint="{{ route('ideas.show',$review->idea->id) }}" type="review">
             </mypage-reviews>
             @endforeach
             @else

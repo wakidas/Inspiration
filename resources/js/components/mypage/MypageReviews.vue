@@ -39,7 +39,7 @@ export default {
   },
   computed: {
     userImg() {
-      return this.user.img !== null
+      return this.review.users.img !== null
         ? "/storage/" + this.user.img
         : "/images/noavatar.png";
     },
