@@ -23,6 +23,9 @@
             <div class="c-mypage__ideas__noitem">現在ありません</div>
             @endif
         </div>
+        <div class="c-pagination">
+            {{ $reviews->appends(request()->input())->links() }}
+        </div>
     </div>
 </div>
 @endsection

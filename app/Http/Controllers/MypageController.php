@@ -31,7 +31,7 @@ class MypageController extends Controller
         $boughts = $user->hasOrders()->with(['ideas', 'users'])->take(5)->get();
         $likes = $user->hasLikes()->with('ideas')->take(5)->get();
         $myIdeas = $user->ideas()->take(5)->get();
-        $reviews = Review::with('ideas', 'users')->get()->where('ideas.user_id', $user->id)->take(5);
+        $reviews = $user->hasReviews()->with('ideas')->take(5)->get();
 
         return view('mypage.index', [
             'isAuthCheck' => $isAuthCheck,
@@ -96,7 +96,7 @@ class MypageController extends Controller
     public function myIdeas()
     {
         $user = Auth::user();
-        $myIdeas = $user->ideas()->take(5)->paginate(10);
+        $myIdeas = $user->ideas()->paginate(10);
 
         return view('mypage.myIdeas', [
             'user' => $user,
@@ -114,7 +114,7 @@ class MypageController extends Controller
     public function reviews()
     {
         $user = Auth::user();
-        $reviews = Review::with('ideas', 'users')->get()->where('ideas.user_id', $user->id);
+        $reviews = Review::with('ideas', 'users')->get()->where('ideas.user_id', $user->id)->paginate(10);
 
 
         return view('mypage.reviews', [
