@@ -1636,7 +1636,7 @@ a:hover {
 
 .p-ideasList {
   background: #fff;
-  padding: 64px 10px 64px;
+  padding: 64px 10px 120px;
 }
 
 .p-ideasList .p-ideasList__inner {
@@ -1659,7 +1659,7 @@ a:hover {
 }
 
 .p-ideasList .p-ideasList__noItem {
-  margin-top: 32px;
+  margin: 32px 0;
   width: 100%;
   text-align: center;
 }
