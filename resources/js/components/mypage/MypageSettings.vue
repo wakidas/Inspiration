@@ -4,9 +4,7 @@
       <div class="p-settings__title">アカウント設定</div>
       <ul class="p-settings__items">
         <li class="p-settings__list p-settings__list--img">
-          <div class="p-settings__imgWrap">
-            <img :src="userImg" alt />
-          </div>
+          <div class="p-settings__imgWrap" :style="'background-image: url('+userImg+')'"></div>
           <a
             :href="endpointToUsersEdit"
             class="c-link__settings__toEdit c-link__settings__toEdit--img"

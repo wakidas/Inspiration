@@ -36,9 +36,7 @@
           </div>
         </div>
         <div class="c-idea__card__user">
-          <div class="c-idea__card__user__img">
-            <img :src="userImg" alt />
-          </div>
+          <div class="c-idea__card__user__img" :style="'background-image: url('+userImg+')'"></div>
           <div class="c-idea__card__user__name">{{ User.name }}</div>
         </div>
       </div>

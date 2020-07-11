@@ -24,7 +24,6 @@
             @endif
         </div>
         <div class="c-pagination">
-            {{ $reviews->appends(request()->input())->links() }}
         </div>
     </div>
 </div>
