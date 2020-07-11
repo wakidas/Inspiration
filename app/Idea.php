@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\Log;
 
 /**
  * 注文テーブルのモデルクラス
@@ -159,6 +161,7 @@ class Idea extends Model
             $price_from = $request->price['from'] ? $request->price['from'] : "";
             $price_untill = $request->price['untill'] ? $request->price['untill'] : "";
 
+
             if (!empty($price_from) && !empty($price_untill)) {
                 $ideas->whereBetween("price", [$price_from, $price_untill]);
             } else if (!empty($price_from)) {
@@ -171,6 +174,17 @@ class Idea extends Model
         if (!empty($request->get('date'))) {
             $date_from = $request->date['from'] ? $request->date['from'] : "";
             $date_untill = $request->date['untill'] ? $request->date['untill'] : "";
+
+            //日付の時間を00:00:00に設定
+            if (!empty($date_untill)) {
+                $date_untill = new Carbon($date_untill);
+                $date_untill->setTime(23, 59, 59);
+            }
+            //日付の時間を23:59:59に設定
+            if (!empty($date_from)) {
+                $date_from = new Carbon($date_from);
+                $date_from->setTime(00, 00, 00);
+            }
 
             if (!empty($date_from) && !empty($date_untill)) {
                 $ideas->whereBetween("created_at", [$date_from, $date_untill]);

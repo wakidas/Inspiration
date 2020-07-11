@@ -10,6 +10,7 @@ use inspiration\User;
 use inspiration\Order;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Log;
 
 /**
  * アイデア用コントローラー

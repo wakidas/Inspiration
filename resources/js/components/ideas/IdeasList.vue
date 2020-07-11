@@ -9,7 +9,7 @@
         <div class="c-idea__card__priceAndDate">
           <div class="c-idea__card__price">¥ {{ Idea.price | addComma }}</div>
           <div class="c-idea__card__date">
-            <div class="c-idea__card__created">投稿日: {{ formatDatetime(Idea.updated_at) }}</div>
+            <div class="c-idea__card__created">投稿日: {{ formatDatetime(Idea.created_at) }}</div>
             <div class="c-idea__card__updated">更新日: {{ formatDatetime(Idea.updated_at) }}</div>
           </div>
         </div>
@@ -88,7 +88,9 @@ export default {
   },
   computed: {
     userImg() {
-      return this.User.img !== null ? "/storage/" + this.User.img : "/images/noavatar.png";
+      return this.User.img !== null
+        ? "/storage/" + this.User.img
+        : "/images/noavatar.png";
     },
     ideaImg() {
       return this.Idea.img !== null
@@ -103,7 +105,7 @@ export default {
         return moment(date).format("YY/MM/DD");
       };
     },
-    fixedRate(){
+    fixedRate() {
       return this.Rate ? this.Rate.toFixed(1) : "";
     }
   },
