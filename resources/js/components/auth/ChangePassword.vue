@@ -84,7 +84,7 @@
 
           <!-- 送信ボタン -->
           <div class="c-auth__submit">
-            <button type="submit" class="c-button__submit">メール送信</button>
+            <button type="submit" class="c-button__submit">パスワード変更</button>
           </div>
         </form>
       </div>

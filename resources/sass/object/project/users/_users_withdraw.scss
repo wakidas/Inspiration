@@ -23,11 +23,12 @@
     }
     .p-withdraw__delete{
         background: $main-cl;
-        border: none;
         border-radius: 5px;
         padding: 4px 8px;
         button{
+            background: $main-cl;
             font-size: 16px;
+
         }
     }
      .p-withdraw__cansel{

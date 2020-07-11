@@ -183,6 +183,13 @@ input::placeholder {
   color: #aaaaaa;
 }
 
+button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border: none;
+}
+
 div,
 span,
 p,
@@ -2695,12 +2702,12 @@ a:hover {
 
 .p-withdraw .p-withdraw__delete {
   background: #FFBC61;
-  border: none;
   border-radius: 5px;
   padding: 4px 8px;
 }
 
 .p-withdraw .p-withdraw__delete button {
+  background: #FFBC61;
   font-size: 16px;
 }
 
