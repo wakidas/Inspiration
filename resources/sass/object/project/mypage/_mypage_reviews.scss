@@ -6,6 +6,7 @@
         font-size: 18px;
         display: flex;
         align-items: flex-end;
+        justify-content: space-between;
         @include mq(sm) {
             align-items: initial;
             flex-direction: column;
@@ -16,6 +17,10 @@
         margin-left: 8px;
         color: #999;
         font-size: 14px;
+        @include mq(sm) {
+            margin-top: 16px;
+            margin-left: 0;
+        }
     }
     .p-mypage__reviews__items{
         margin-top: 16px;

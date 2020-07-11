@@ -13,11 +13,15 @@
     <div class="l-mypage__items p-mypage__ideas">
         <div class="p-mypage__ideas__title">購入アイデア一覧</div>
         <div class="p-mypage__ideas__items">
+            @if ($boughts->count()>0)
             @foreach ($boughts as $bought)
             <mypage-ideas :idea='@json($bought->ideas)' :user='@json($bought->ideas->user)'
                 endpoint="{{ route('ideas.show',$bought->ideas->id) }}" type="bought">
             </mypage-ideas>
             @endforeach
+            @else
+            <div class="c-mypage__ideas__noitem">現在ありません</div>
+            @endif
         </div>
         <div class="c-pagination">
             {{ $boughts->appends(request()->input())->links() }}
