@@ -6,7 +6,7 @@
 <div class="l-main">
     <div class="p-mypage" id="js-mypage">
         <users-profile :user='@json($user)' :is-auth-check='@json($user->count()>0)'
-            endpoint={{ route('users.edit',$user->id) }}>></users-profile>
+            endpoint={{ route('users.edit',$user->id) }}></users-profile>
         <mypage-tabs current-page="likes"></mypage-tabs>
     </div>
     {{-- 購入アイデア --}}
@@ -16,7 +16,8 @@
             @if ($likes->count()>0)
             @foreach ($likes as $like)
             <mypage-ideas :idea='@json($like->ideas)' :user='@json($like->ideas->user)'
-                endpoint="{{ route('ideas.show',$like->ideas->id) }}" type="likes">
+                endpoint="{{ route('ideas.show',$like->ideas->id) }}"
+                endpoint-like="{{ route('ideas.like', $like->ideas->id) }}" type="likes">
             </mypage-ideas>
             @endforeach
             @else
