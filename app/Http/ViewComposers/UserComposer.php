@@ -14,6 +14,12 @@ class UserComposer
         $this->auth = $auth;
     }
 
+    /**
+     * ログインユーザー 情報の取得メソッド
+     * 
+     * @param object $view viewファイルデータ
+     * @return void
+     */
     public function compose(View $view)
     {
         $view->with('user', $this->auth->user());

@@ -2,20 +2,25 @@
 
 namespace inspiration\Http\Controllers;
 
-use Illuminate\Http\Request;
 use inspiration\Http\Requests\CreateUserRequest;
 use inspiration\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\Log;
 
+/**
+ * ユーザー用コントローラー
+ * 
+ * ユーザーのCRUDに関連するメソッド群を記載
+ */
 class UserController extends Controller
 {
-
     /**
      * ユーザー詳細ページへアクセスする
      *
+     * @param int $id リクエストデータ
+     * @var object $this_user ユーザーデータ
      * @var array $ideas ユーザーが投稿したアイデア一覧
+     * @var boolean $isAuthCheck ユーザーが自分かどうかのチェック
      * @return Response ユーザー詳細ページの表示
      */
     public function show($id)
@@ -34,7 +39,8 @@ class UserController extends Controller
     /**
      * ユーザーの編集メソッド
      * 
-     * @var array $user ユーザー
+     * @param int $id リクエストデータ
+     * @var array $user ユーザーデータ
      * @return Response アイデア編集ページの表示
      */
     public function edit($id)
@@ -59,14 +65,15 @@ class UserController extends Controller
     /**
      * ユーザーの更新メソッド
      * 
-     * @var array $user ユーザー
+     * @param array $request リクエストデータ
+     * @param int $id ユーザーid
+     * @var array $user ユーザーデータ
+     * @var array $postImg リクエストデータ（画像）
+     * @var boolean $deleteFlg 画像削除フラグ
      * @return Response ユーザー詳細ページの表示
      */
     public function update(CreateUserRequest $request, $id)
     {
-        Log::debug('$request');
-        Log::debug($request);
-
         $user = User::find($id);
         $user->name = $request->name;
         $user->comment = $request->comment;
@@ -87,12 +94,21 @@ class UserController extends Controller
         return redirect()->route('users.show', $id)->with('flash_message', 'プロフィールを更新しました！');
     }
 
-
+    /**
+     * ユーザーの削除メソッド（確認画面）
+     * 
+     * @return Response ユーザー削除確認ページの表示
+     */
     public function deleteConfirm()
     {
         return view('users.deleteConfirm');
     }
 
+    /**
+     * ユーザーの削除メソッド
+     * 
+     * @return Response ユーザー削除完了ページの表示
+     */
     public function delete($id)
     {
         //自分以外のユーザーがアクセスした場合は元の画面へ遷移
@@ -105,11 +121,16 @@ class UserController extends Controller
             return redirect()->back()->with('flash_message', __('もう一度やり直してください'));
         }
 
-        User::find($id)->delete(); // softDelete
+        User::find($id)->delete();
 
         return redirect()->route('users.delete.complete');
     }
 
+    /**
+     * ユーザーの削除メソッド（完了）
+     * 
+     * @return Response ユーザー削除完了ページの表示
+     */
     public function deleteComplete()
     {
         return view('users.deleteComplete');

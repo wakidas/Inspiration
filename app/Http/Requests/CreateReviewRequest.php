@@ -30,6 +30,11 @@ class CreateReviewRequest extends FormRequest
         ];
     }
 
+    /**
+     * Get the validation messages.
+     *
+     * @return array
+     */
     public function messages()
     {
         return [

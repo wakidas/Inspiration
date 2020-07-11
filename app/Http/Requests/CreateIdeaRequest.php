@@ -26,8 +26,6 @@ class CreateIdeaRequest extends FormRequest
      */
     public function rules(Request $request)
     {
-        Log::debug('$request');
-        Log::debug($request);
         return [
             'title' => 'required|string|max:50',
             'category_id' => 'required|integer',
@@ -38,6 +36,11 @@ class CreateIdeaRequest extends FormRequest
         ];
     }
 
+    /**
+     * Get the validation messages.
+     *
+     * @return array
+     */
     public function messages()
     {
         return [

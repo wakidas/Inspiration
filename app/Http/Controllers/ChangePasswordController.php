@@ -9,7 +9,9 @@ use Illuminate\Support\Facades\Hash;
 class ChangePasswordController extends Controller
 {
     /**
-     * パスワード変更画面 表示
+     *　パスワード変更入力ページ表示メソッド
+     * 
+     * @return Response パスワード変更入力ページ表示
      */
     public function index()
     {
@@ -17,7 +19,12 @@ class ChangePasswordController extends Controller
     }
 
     /**
-     * パスワード変更 処理
+     *　パスワード変更メソッド
+     * 
+     * @param array $request リクエストデータ
+     * @var array $validated_data バリデーションデータ
+     * @var object $user ユーザーデータ
+     * @return Response パスワード変更入力ページ表示
      */
     public function changePassword(Request $request)
     {

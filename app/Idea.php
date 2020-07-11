@@ -8,8 +8,9 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-use Illuminate\Support\Facades\Log;
-
+/**
+ * 注文テーブルのモデルクラス
+ */
 class Idea extends Model
 {
     /**
@@ -24,22 +25,41 @@ class Idea extends Model
         'title', 'category_id', 'description', 'body', 'price'
     ];
 
+    /**
+     * アイデアに紐づくユーザー情報
+     *
+     * @return object
+     */
     public function user(): BelongsTo
     {
-        //記事と記事を書いたユーザ＝は多対1の関係なのでその場合は「belongsTo」メソッドを使用する。
         return $this->belongsTo('inspiration\User');
     }
 
+    /**
+     * アイデアと気になるに多対多で紐づくユーザー情報
+     *
+     * @return object
+     */
     public function likes(): BelongsToMany
     {
         return $this->belongsToMany('inspiration\User', 'likes')->withTimestamps();
     }
 
-    public function category()
+    /**
+     * アイデアに紐づくカテゴリー情報
+     *
+     * @return object
+     */
+    public function category(): BelongsTo
     {
         return $this->belongsTo('inspiration\Category');
     }
 
+    /**
+     * アイデアが特定のユーザーの気になるリストに入っているかどうかの判定
+     *
+     * @return boolean
+     */
     public function isLikedBy(?User $user): bool
     {
         return $user
@@ -47,11 +67,21 @@ class Idea extends Model
             : false;
     }
 
+    /**
+     * アイデアと注文に多対多で紐づくユーザー情報
+     *
+     * @return object
+     */
     public function orders(): BelongsToMany
     {
         return $this->belongsToMany('inspiration\User', 'orders')->withTimestamps();
     }
 
+    /**
+     * アイデアを特定のユーザーが購入済みかどうかの判定
+     *
+     * @return boolean
+     */
     public function isOrderedBy(?User $user): bool
     {
         return $user
@@ -59,6 +89,11 @@ class Idea extends Model
             : false;
     }
 
+    /**
+     * アイデアに特定のユーザーがレビュー済みかどうかの判定
+     *
+     * @return boolean
+     */
     public function isReviewedBy(?User $user): bool
     {
         return $user
@@ -66,22 +101,38 @@ class Idea extends Model
             : false;
     }
 
+    /**
+     * アイデアに紐づくレビュー情報
+     *
+     * @return object
+     */
     public function reviews(): HasMany
     {
         return $this->hasMany('inspiration\Review');
     }
 
-
-    public function categories()
-    {
-        return $this->belongsTo('inspiration\Category', 'category_id', 'id', 'category_id');
-    }
-
+    /**
+     * アイデアに気になるリスト登録数取得メソッド
+     *
+     * @return int
+     */
     public function getCountLikesAttribute(): int
     {
         return $this->likes->count();
     }
 
+    /**
+     * アイデア一覧ページでの検索結果取得メソッド
+     *
+     * @param object $request アイデアモデル
+     * @var object $ideas アイデアモデルのクエリ
+     * @var object $categorieIds リクエストデータ（カテゴリー）
+     * @var object $price_from リクエストデータ（最低金額）
+     * @var object $price_untill リクエストデータ（最高金額）
+     * @var object $date_from リクエストデータ（開始日）
+     * @var object $date_untill リクエストデータ（終了日）
+     * @return object
+     */
     public static function getSearchData($request)
     {
         $ideas = Idea::query();

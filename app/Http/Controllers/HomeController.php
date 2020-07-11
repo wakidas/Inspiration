@@ -7,18 +7,9 @@ use Illuminate\Http\Request;
 class HomeController extends Controller
 {
     /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-    }
-
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Contracts\Support\Renderable
+     *　トップページ表示メソッド
+     * 
+     * @return Response トップページの表示
      */
     public function index()
     {

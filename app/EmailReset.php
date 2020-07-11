@@ -6,6 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 use inspiration\Notifications\ChangeEmail;
 use Illuminate\Notifications\Notifiable;
 
+/**
+ * メールアドレス変更テーブルのモデルクラス
+ */
 class EmailReset extends Model
 {
 

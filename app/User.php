@@ -3,17 +3,17 @@
 namespace inspiration;
 
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use inspiration\Notifications\PasswordResetNotification;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\Relations\HasOne;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 use Illuminate\Support\Facades\Log;
 
+/**
+ * ユーザーテーブルのモデルクラス
+ */
 class User extends Authenticatable
 {
     use Notifiable;
@@ -53,24 +53,51 @@ class User extends Authenticatable
     protected $table = 'users';
     protected $dates = ['deleted_at'];
 
-
+    /**
+     * ユーザーに紐づくアイデア情報
+     *
+     * @return array
+     */
     public function ideas(): HasMany
     {
         return $this->hasMany('inspiration\Idea');
     }
+
+    /**
+     * ユーザーに紐づく注文情報
+     *
+     * @return array
+     */
     public function orders(): BelongsToMany
     {
         return $this->belongsToMany('inspiration\User', 'orders')->withTimestamps();
     }
-    public function hasOrders() //: BelongsTo
+
+    /**
+     * ユーザーに紐づく注文情報
+     *
+     * @return array
+     */
+    public function hasOrders(): hasMany
     {
         return $this->hasMany('inspiration\Order');
     }
 
+    /**
+     * ユーザーに紐づく気になるリスト情報
+     *
+     * @return array
+     */
     public function hasLikes(): hasMany
     {
         return $this->hasMany('inspiration\Like');
     }
+
+    /**
+     * ユーザーに紐づくレビュー情報
+     *
+     * @return array
+     */
     public function hasReviews(): HasMany
     {
         return $this->hasMany('inspiration\Review');
@@ -79,7 +106,7 @@ class User extends Authenticatable
     /**
      * パスワードリセット通知の送信をオーバーライド
      *
-     * @param  string  $token
+     * @param  string  $token トークン
      * @return void
      */
     public function sendPasswordResetNotification($token)
@@ -87,35 +114,45 @@ class User extends Authenticatable
         $this->notify(new PasswordResetNotification($token));
     }
 
-
+    /**
+     * アイデア購入者へメール送信するメソッド
+     *
+     * @param int $option 購入ユーザーid
+     * @var object $order 購入された対象の注文データ
+     * 
+     * @return void
+     */
     public function buyEmail($options)
     {
         $order = Order::with('users')->where('id', $options->id)->first()->users;
-
         $order->notify(new \inspiration\Notifications\BuyIdea());
     }
 
+    /**
+     * アイデア販売者へメール送信するメソッド
+     *
+     * @param int $option 販売ユーザーid
+     * @var object $order 購入された対象の注文データ
+     * 
+     * @return void
+     */
     public function saleEmail($options)
     {
-        Log::debug('<<<<<<<< User.php  saleEmail  >>>>>>>>>');
-        Log::debug('$options');
-        Log::debug($options);
-
         $order = Order::with('users')->where('id', $options->id)->first()->users;
-        Log::debug('$order');
-        Log::debug($order);
         $order->notify(new \inspiration\Notifications\SaleIdea());
     }
 
+    /**
+     * レビュー投稿時アイデア販売者へメール送信するメソッド
+     *
+     * @param int $option 販売ユーザーid
+     * @var object $order 投稿されたレビューデータ
+     * 
+     * @return void
+     */
     public function postReview($options)
     {
-        Log::debug('<<<<<<<< User.php  postReview  >>>>>>>>>');
-        Log::debug('$options');
-        Log::debug($options);
-
         $review = Review::with('users')->where('id', $options->id)->first()->users;
-        Log::debug('$review');
-        Log::debug($review);
         $review->notify(new \inspiration\Notifications\PostReview());
     }
 }

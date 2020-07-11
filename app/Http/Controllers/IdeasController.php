@@ -5,16 +5,14 @@ namespace inspiration\Http\Controllers;
 use Illuminate\Http\Request;
 use inspiration\Http\Requests\CreateIdeaRequest;
 
-use inspiration\Category;
 use inspiration\Idea;
 use inspiration\User;
 use inspiration\Order;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\Log;
 
 /**
- * アイデアのCRUD用コントローラー
+ * アイデア用コントローラー
  * 
  * アイデアのCRUDに関連するメソッド群を記載
  */
@@ -23,17 +21,17 @@ class IdeasController extends Controller
     /**
      * アイデア一覧ページへアクセスする
      *
+     * @param array $request リクエストデータ
+     * @var object $post_category リクエストデータ（カテゴリー）
+     * @var object $post_price リクエストデータ（価格）
+     * @var object $post_date リクエストデータ（登録日）
+     * @var array $postData リクエストデータ（カテゴリー・価格・登録日のデータ配列）
      * @var array $ideas アイデア一覧データ
      * @return Response アイデア一覧ページの表示
      */
     public function index(Request $request)
     {
-        Log::debug('「「「「「「「「「「「　　index   」」」」」」」」」」」」」」');
-        Log::debug('$request');
-        Log::debug($request);
-
         // 検索機能
-
         $post_category = $request->get('category') ? $request->get('category') : "";
         $post_price = $request->get('price') ? $request->get('price') : "";
         $post_date = $request->get('date') ? $request->get('date') : "";
@@ -59,6 +57,7 @@ class IdeasController extends Controller
      * アイデアの新規投稿画面へアクセス
      *
      * @var array $ideas アイデア一覧データ
+     * 
      * @return Response アイデア投稿ページの表示
      */
     public function create()
@@ -72,16 +71,14 @@ class IdeasController extends Controller
     /**
      * アイデアの新規登録メソッド
      *
-     * @param array $request バリデーション通過したpostの内容
+     * @param array $request バリデーション通過したリクエストデータ
      * @var object $user ログインユーザー情報
-     * @var object $postImg postされた画像の情報
+     * @var object $postImg リクエストデータ（画像）
      * @var object $idea  newされた新規アイデアのインスタンス
      * @return Response アイデア一覧ページの表示
      */
     public function store(CreateIdeaRequest $request)
     {
-        Log::debug('$request');
-        Log::debug($request);
         $user = Auth::user();
         $postImg = $request->img;
 
@@ -102,13 +99,22 @@ class IdeasController extends Controller
     /**
      * アイデアの編集メソッド
      * 
+     * @param array $request バリデーション通過したリクエストデータ
+     * @var object $ideas 対象アイデアデータ
      * @return Response アイデア編集ページの表示
      */
     public function edit($id)
     {
+        $idea = Idea::find($id);
+
         //自分以外のユーザーがアクセスした場合は元の画面へ遷移
         if (Auth::id() !== Idea::find($id)->user->id) {
             return redirect()->back()->with('flash_message', __('権限がありません'));
+        }
+
+        //一人以上のユーザーが購入している場合は編集できない
+        if ($idea->orders->count() > 0) {
+            return redirect()->back()->with('flash_message', __('一人以上のユーザーに購入されています。編集はできません。'));
         }
 
         //数値以外が渡された場合は元の画面へ遷移
@@ -116,8 +122,6 @@ class IdeasController extends Controller
             return redirect()->back()->with('flash_message', __('もう一度やり直してください'));
         }
 
-
-        $idea = Idea::find($id);
 
         return view('ideas.edit', [
             'idea' => $idea,
@@ -127,16 +131,15 @@ class IdeasController extends Controller
     /**
      * アイデアの更新メソッド
      *
-     * @param array $request バリデーション通過したpostの内容
+     * @param array $request バリデーション通過したリクエストデータ
      * @var object $user ログインユーザー情報
-     * @var object $postImg postされた画像の情報
+     * @var object $postImg リクエストデータ
+     * @var boolean $deleteFlg リクエストデータ（削除フラグ）
      * @var object $idea  newされた新規アイデアのインスタンス
      * @return Response アイデア一覧ページの表示
      */
     public function update(Request $request, $id)
     {
-        Log::debug('$request');
-        Log::debug($request);
         $user = Auth::user();
         $postImg = $request->img;
         $deleteFlg = $request->deleteFlg;
@@ -157,13 +160,15 @@ class IdeasController extends Controller
 
         $idea->save();
 
-        return redirect()->route('ideas.index')->with('flash_message', 'アイデアを投稿しました！');
+        return redirect()->route('ideas.show', $id)->with('flash_message', 'アイデアを投稿しました！');
     }
 
     /**
      * アイデア詳細ページへアクセスする
      *
-     * @var array $idea アイデアデータ
+     * @param int $id アイデアid
+     * @var object $idea アイデアデータ
+     * @var array $reviews アイデアのレビュー
      * @return Response アイデア詳細ページの表示
      */
     public function show($id)
@@ -180,8 +185,9 @@ class IdeasController extends Controller
     /**
      * いいね登録
      *
-     * 
-     * 
+     * @param int $id アイデアid
+     * @var object $idea アイデアデータ
+     * @return int アイデアのいいね数
      */
     public function like(Request $request, $id)
     {
@@ -194,6 +200,13 @@ class IdeasController extends Controller
         ];
     }
 
+    /**
+     * いいね削除
+     *
+     * @param int $id アイデアid
+     * @var object $idea アイデアデータ
+     * @return int アイデアのいいね数
+     */
     public function unlike(Request $request, $id)
     {
         $idea = Idea::find($id);
@@ -204,37 +217,56 @@ class IdeasController extends Controller
         ];
     }
 
+    /**
+     * アイデア購入
+     *
+     * @param int $id アイデアid
+     * @var object $idea アイデアデータ
+     * @var object $order 注文データ
+     * @return Response アイデア詳細ページの表示
+     */
     public function buy(Request $request, $id)
     {
+        //数値以外が渡された場合は元の画面へ遷移
         if (!ctype_digit($id)) {
             return redirect()->back()->with('flash_message', __('もう一度やり直してください'));
         }
 
+        //自分以外のユーザーがアクセスした場合は元の画面へ遷移
         $idea = Idea::find($id);
         if ($idea->user->id === Auth::user()->id) {
             return redirect()->route('ideas.show', $id)->with('flash_message', '自分のアイデアは購入できません。');
         }
-        Log::debug('buy!!! $request');
-        Log::debug($request);
 
         $idea->orders()->attach($request->user()->id);
 
         //購入者にメール送信する
         $order = Order::latest()->first();
-        // $order->with('ideas','users')->get();
-        Log::debug('$order');
-        Log::debug($order);
         User::find($order->user_id)->buyEmail($order);
         User::find($order->ideas->user_id)->saleEmail($order);
 
         return redirect()->route('ideas.show', $id)->with('flash_message', 'アイデアを購入しました！');
     }
 
+    /**
+     * アイデア削除
+     *
+     * @param int $id アイデアid
+     * @var object $idea アイデアデータ
+     * @return Response アイデア一覧ページの表示
+     */
     public function delete($id)
     {
+        $idea = Idea::find($id);
+
         //自分以外のユーザーがアクセスした場合は元の画面へ遷移
         if (Auth::id() !== Idea::find($id)->user->id) {
             return redirect()->back()->with('flash_message', __('権限がありません'));
+        }
+
+        //一人以上のユーザーが購入している場合は編集できない
+        if ($idea->orders->count() > 0) {
+            return redirect()->back()->with('flash_message', __('一人以上のユーザーに購入されています。編集はできません。'));
         }
 
         //数値以外がpostされた場合は元の画面へ遷移
@@ -242,7 +274,7 @@ class IdeasController extends Controller
             return redirect()->back()->with('flash_message', __('もう一度やり直してください'));
         }
 
-        Idea::find($id)->delete(); // softDelete
+        $idea->delete(); // softDelete
 
         return redirect()->route('ideas.index')->with('flash_message', 'アイデアを削除しました！');
     }

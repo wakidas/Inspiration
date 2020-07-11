@@ -13,6 +13,12 @@ class CategoryComposer
         //
     }
 
+    /**
+     * カテゴリー情報の取得メソッド
+     * 
+     * @param object $view viewファイルデータ
+     * @return void
+     */
     public function compose(View $view)
     {
         $view->with('categories', Category::all());

@@ -13,11 +13,22 @@ use Illuminate\Support\Facades\Log;
 
 class ChangeEmailController extends Controller
 {
+    /**
+     *　メールアドレス変更ページ表示メソッド
+     * 
+     * @return Response メールアドレス変更ページの表示
+     */
     public function index()
     {
         return view('auth.changeEmail');
     }
 
+    /**
+     *　メールアドレス変更メール送信メソッド
+     * 
+     * @param array $request リクエストデータ
+     * @return Response マイページの表示
+     */
     public function sendChangeEmailLink(Request $request)
     {
         $new_email = $request->new_email;
@@ -51,8 +62,9 @@ class ChangeEmailController extends Controller
     /**
      * メールアドレスの再設定処理
      *
+     * @param array $request リクエストデータ
      * @param Request $request
-     * @param [type] $token
+     * @param string $token
      */
     public function reset(Request $request, $token)
     {

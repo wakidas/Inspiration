@@ -4,6 +4,9 @@ namespace inspiration;
 
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * カテゴリーテーブルのモデルクラス
+ */
 class Category extends Model
 {
     /**
@@ -13,6 +16,9 @@ class Category extends Model
      */
     protected $table = 'categories';
 
+    /**
+     * カテゴリーに紐づくアイデア情報
+     */
     public function ideas()
     {
         return $this->belongsToMany('inspiration\Idea');

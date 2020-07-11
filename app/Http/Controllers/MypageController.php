@@ -2,11 +2,27 @@
 
 namespace inspiration\Http\Controllers;
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
+/**
+ * マイページ用コントローラー
+ * 
+ * マイページ 表示に関連するメソッド群を記載
+ */
 class MypageController extends Controller
 {
+    /**
+     * マイページの一覧表示メソッド
+     *
+     * @var object $user ユーザーデータ
+     * @var boolean $isAuthCheck ログインしているかどうかのチェック
+     * @var array $boughts 購入した商品データ
+     * @var array $likes 気になるリストの商品データ
+     * @var array $myIdeas 投稿した商品データ
+     * @var array $reviews 投稿されたレビーデータ
+     * 
+     * @return Response マイページ一覧表示の表示
+     */
     public function index()
     {
         $user = Auth::user();
@@ -25,11 +41,23 @@ class MypageController extends Controller
         ]);
     }
 
+    /**
+     * アカウント設定メソッド
+     * 
+     * @return Response マイページ一覧表示の表示
+     */
     public function settings()
     {
         return view('mypage.settings');
     }
 
+    /**
+     *　購入商品一覧メソッド
+     * 
+     * @var object $user ユーザーデータ
+     * @var array $boughts 購入商品データ
+     * @return Response 購入商品一覧ページの表示
+     */
     public function boughts()
     {
         $user = Auth::user();
@@ -39,6 +67,14 @@ class MypageController extends Controller
             'boughts' => $boughts,
         ]);
     }
+
+    /**
+     *　気になるリストの商品一覧メソッド
+     * 
+     * @var object $user ユーザーデータ
+     * @var array $likes 気になるリストの商品データ
+     * @return Response 気になるリストの商品一覧ページの表示
+     */
     public function likes()
     {
         $user = Auth::user();
@@ -48,6 +84,14 @@ class MypageController extends Controller
             'likes' => $likes,
         ]);
     }
+
+    /**
+     *　投稿した商品一覧メソッド
+     * 
+     * @var object $user ユーザーデータ
+     * @var array $myIdeas 気になるリストの商品データ
+     * @return Response 気になるリストの商品一覧ページの表示
+     */
     public function myIdeas()
     {
         $user = Auth::user();
@@ -59,6 +103,13 @@ class MypageController extends Controller
         ]);
     }
 
+    /**
+     *　レビュー一覧メソッド
+     * 
+     * @var object $user ユーザーデータ
+     * @var array $reviews レビューデータ
+     * @return Response レビューデータ一覧ページの表示
+     */
     public function reviews()
     {
         $user = Auth::user();
