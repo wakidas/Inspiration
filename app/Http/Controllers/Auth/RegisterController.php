@@ -29,7 +29,18 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected function redirectTo()
+    // protected function redirectTo()
+    // {
+    //     return redirect()->route('ideas.index')->with('flash_message', 'ユーザー登録しました！');
+    // }
+    /**
+     * The user has been registered.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  mixed  $user
+     * @return mixed
+     */
+    protected function registered()
     {
         return redirect()->route('ideas.index')->with('flash_message', 'ユーザー登録しました！');
     }
