@@ -1,31 +1,26 @@
 <template>
   <div class="c-auth">
     <div class="c-auth__inner">
-      <div class="c-auth__title">パスワード変更</div>
+      <div class="c-auth__title">パスワードをリセットする</div>
 
       <div class="c-auth__form">
         <form id="form" method="POST" :action="endpoint">
           <input type="hidden" name="_token" :value="csrf" />
-
-          <!-- 現在のパスワード -->
+          <input type="hidden" name="token" :value="propsToken" />
+          <!-- メールアドレス -->
           <div class="c-auth__formGroup js-validTarget">
-            <label for="current" class>現在のパスワード</label>
+            <label for="current" class>メールアドレス</label>
             <div class="c-auth__formItem">
               <input
                 id="current"
-                type="password"
+                type="email"
                 class="c-auth__formInput"
-                name="current-password"
-                v-model="currentPassword"
+                name="email"
+                v-model="email"
                 required
               />
 
-              <span
-                class="c-error"
-                role="alert"
-                v-for="value in error.currentPassword"
-                :key="value.currentPassword"
-              >
+              <span class="c-error" role="alert" v-for="value in error.email" :key="value.email">
                 <strong>{{ value }}</strong>
               </span>
             </div>
@@ -39,8 +34,8 @@
                 id="password"
                 type="password"
                 class="c-auth__formInput"
-                name="new-password"
-                v-model="newPassword"
+                name="password"
+                v-model="password"
                 required
               />
 
@@ -57,14 +52,14 @@
 
           <!-- 新しいパスワード 確認　-->
           <div class="c-auth__formGroup js-validTarget">
-            <label for="confirm" class>新しいパスワード（再入力）</label>
+            <label for="password_confirmation" class>新しいパスワード（再入力）</label>
             <div class="c-auth__formItem">
               <input
                 id="confirm"
                 type="password"
                 class="c-auth__formInput"
-                name="new-password_confirmation"
-                v-model="newPasswordConfirmation"
+                name="password_confirmation"
+                v-model="passwordConfirmation"
                 required
                 equalTo="#password"
               />
@@ -82,7 +77,7 @@
 
           <!-- 送信ボタン -->
           <div class="c-auth__submit">
-            <button type="submit" class="c-button__submit">メール送信</button>
+            <button type="submit" class="c-button__submit">パスワードを設定</button>
           </div>
         </form>
       </div>
@@ -92,17 +87,22 @@
 
 <script>
 export default {
-  props: ["old", "errors", "endpoint"],
+  props: ["old", "errors", "endpoint", "token"],
   data: function() {
     return {
       csrf: document
         .querySelector('meta[name="csrf-token"]')
         .getAttribute("content"),
-      currentPassword: "",
-      newPassword: "",
-      newPasswordConfirmation: "",
+      propsToken: this.token,
+      email: this.old.email ? this.old.email : "",
+      password: this.old.password ? this.old.password : "",
+      passwordConfirmation: this.old.passwordConfirmation
+        ? this.old.passwordConfirmation
+        : "",
       error: {
-        new_email: this.errors.new_email
+        email: this.errors.email,
+        password: this.errors.password,
+        passwordConfirmation: this.errors.passwordConfirmation
       }
     };
   }
