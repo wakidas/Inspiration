@@ -56,6 +56,16 @@ class Idea extends Model
     }
 
     /**
+     * アイデアに紐づくカテゴリー情報
+     *
+     * @return array
+     */
+    public function categories()
+    {
+        return $this->belongsTo('inspiration\Category', 'category_id', 'id', 'category_id');
+    }
+
+    /**
      * アイデアが特定のユーザーの気になるリストに入っているかどうかの判定
      *
      * @return boolean
