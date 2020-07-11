@@ -158,6 +158,9 @@ input {
   box-sizing: border-box;
   border: none;
   font-size: 16px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
 }
 
 input::-webkit-input-placeholder {
