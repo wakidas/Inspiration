@@ -127,7 +127,7 @@ export default {
           let appHeight = $app.innerHeight();
           let footerHeight = $footer.innerHeight();
 
-          $list.height(windowHeight - appHeight - footerHeight);
+          $list.height(windowHeight - appHeight);
         }
       });
     }
