@@ -45,6 +45,21 @@ class CategoryTableSeeder extends Seeder
                 'updated_at' => Carbon::now(),
             ],
             [
+                'name' => 'プログラミング学習',
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ],
+            [
+                'name' => 'AI',
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ],
+            [
+                'name' => 'AR・VR',
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ],
+            [
                 'name' => 'その他',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
