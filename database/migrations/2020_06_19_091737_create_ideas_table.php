@@ -17,7 +17,7 @@ class CreateIdeasTable extends Migration
             $table->bigIncrements('id');
             $table->string('title');
             $table->string('description');
-            $table->string('body');
+            $table->longText('body');
             $table->unsignedBigInteger('category_id');
             $table->unsignedBigInteger('user_id');
             $table->string('img')->nullable();
