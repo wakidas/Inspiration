@@ -2,6 +2,7 @@
 @include('layouts.header')
 @include('layouts.footer')
 @section('title','アイデア一覧')
+@section('description','アイデア一覧　そのアイデア、形にしませんか？「Webサービスのアイデアはあるけど、実装スキルがない」「実装スキルはあるけど、サービスのアイデアはない」Webサービスアイデア販売プラットフォーム　Inspiration')
 
 @section('content')
 <div class="l-main">

@@ -3,6 +3,7 @@
 @include('layouts.footer')
 @include('layouts.meta_sns')
 @section('title','アイデア詳細')
+@section('description',$idea->description)
 
 @section('content')
 
