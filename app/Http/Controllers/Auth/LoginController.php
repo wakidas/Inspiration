@@ -53,8 +53,6 @@ class LoginController extends Controller
         } else {
             $intended = '/';
         }
-        Log::debug('$intended');
-        Log::debug($intended);
         session(['url.intended' => $intended]);
         // ここまで追加
         return view('auth.login');

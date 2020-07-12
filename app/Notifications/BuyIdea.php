@@ -44,9 +44,7 @@ class BuyIdea extends Notification
      */
     public function toMail($notifiable)
     {
-        Log::debug('notifiable');
-        Log::debug($notifiable);
-        $order = Order::with('ideas','users')->latest()->first();
+        $order = Order::with('ideas', 'users')->latest()->first();
 
         return (new MailMessage)
             ->subject($this->title)
