@@ -1,6 +1,7 @@
 @extends('layouts.app')
 @include('layouts.header')
 @include('layouts.footer')
+@section('title','アカウント設定')
 
 @section('content')
 <div class="l-main">

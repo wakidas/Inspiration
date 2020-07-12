@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@section('title','ユーザー登録')
 
 @section('content')
 <div class="l-register">

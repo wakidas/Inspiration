@@ -1,6 +1,7 @@
 @extends('layouts.app')
 @include('layouts.header')
 @include('layouts.footer')
+@section('title','ユーザーページ')
 
 @section('content')
 <div class="l-main">

@@ -1,6 +1,7 @@
 @extends('layouts.app')
 @include('layouts.header')
 @include('layouts.footer')
+@section('title','パスワードリセット')
 
 @section('content')
 <div class="l-passReset">

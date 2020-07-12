@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @include('layouts.footer')
+@section('title','ログイン')
 
 @section('content')
 <div class="l-login">

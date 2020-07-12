@@ -11,8 +11,8 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Inspiration') }}</title>
-
+    <title>Inspiration | @yield('title')</title>
+    <meta name=”description” content="{{ @yield('description') }}" />
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
 

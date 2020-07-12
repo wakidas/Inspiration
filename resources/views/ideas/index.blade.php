@@ -1,6 +1,7 @@
 @extends('layouts.app')
 @include('layouts.header')
 @include('layouts.footer')
+@section('title','アイデア一覧')
 
 @section('content')
 <div class="l-main">
