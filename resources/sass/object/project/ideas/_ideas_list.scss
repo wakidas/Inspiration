@@ -1,6 +1,6 @@
 .p-ideasList{
     background: #fff;
-    padding: 64px 10px 64px;
+    padding: 64px 10px 120px;
     .p-ideasList__inner{
         display: flex;
         flex-wrap: wrap;
@@ -16,7 +16,7 @@
         text-align: center;
     }
     .p-ideasList__noItem{
-        margin-top: 32px;
+        margin: 32px 0;
         width: 100%;
         text-align: center;
     }
