@@ -13,6 +13,7 @@
 
     <title>Inspiration | @yield('title')</title>
     <meta name=”description” content="@yield('description')" />
+    <meta name=”keywords” content="アイデア, webサービスアイデア, ビジネスアイデア, 実装スキル, アイデア販売, 販売" />
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
 
