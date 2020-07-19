@@ -45,6 +45,12 @@
         &:not(:first-of-type){
             margin-right: 24px;
         }
+        &.p-ideasShow__action--delete{
+            cursor: pointer;
+            &:hover{
+                opacity: 0.7;
+            }
+        }
     }
     .p-ideasShow__title{
         font-size: 24px;
@@ -140,6 +146,10 @@
         }
         &.p-ideasShow__button--buy{
             background: $main-cl;
+            cursor: pointer;
+            &:hover{
+                opacity: 0.7;
+            }
         }
     }
     .p-ideasShow__buy{

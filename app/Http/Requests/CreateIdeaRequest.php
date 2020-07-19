@@ -31,7 +31,7 @@ class CreateIdeaRequest extends FormRequest
             'category_id' => 'required|integer',
             'description' => 'required|string|max:140',
             'body' => 'required|string',
-            'price' => 'required|integer',
+            'price' => 'required|min:0|max:9999999999|integer',
             'image' => 'nullable|image|max:2048',
         ];
     }
@@ -55,6 +55,8 @@ class CreateIdeaRequest extends FormRequest
             'body.required' => 'アイデアの内容は入力必須です。',
             'body.string' => 'アイデアの内容は文字列のみ有効です。',
             'price.required' => '金額は入力必須です。',
+            'price.min' => '金額は0円以上で入力してください。',
+            'price.max' => '金額は9999999999円以下で入力してください。',
             'price.string' => '金額が正しくありません。',
             'image.image' => 'アップロードできるのは画像のみです',
             'image.max' => '画像は2MB以下のサイズにしてください。',

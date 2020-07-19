@@ -60,13 +60,7 @@ class LoginController extends Controller
 
     protected function authenticated()
     {
-        $intended = session('url.intended');
-        if (parse_url($intended, PHP_URL_PATH) == '/' || 'login') {
-            $user_id = Auth::user()->id;
-            return redirect()->route('users.show', $user_id)->with('flash_message', 'ログインしました');
-        } else {
-            return redirect($intended)->with('flash_message', 'ログインしました');
-        }
+        return redirect()->route('mypage.index')->with('flash_message', 'ログインしました');
     }
 
     protected function loggedOut()

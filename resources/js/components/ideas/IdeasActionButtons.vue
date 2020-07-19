@@ -5,7 +5,7 @@
         <img src="/images/idea-edit.svg" alt="編集ボタン" />
       </a>
     </div>
-    <div class="p-ideasShow__action" @click="this.delete">
+    <div class="p-ideasShow__action p-ideasShow__action--delete" @click="this.delete">
       <form id="idea-delete" method="POST" :action="endpointDelete">
         <input type="hidden" name="_token" :value="csrf" />
         <img src="/images/idea-delete.svg" alt="削除ボタン" />

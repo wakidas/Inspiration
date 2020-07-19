@@ -116,6 +116,8 @@
               v-model="price"
               required
               digits
+              min="0"
+              max="9999999999"
             />
             <span class="p-create__price__text">円</span>
           </div>
@@ -155,7 +157,7 @@
               />
             </label>
           </div>
-          <span class="c-error" role="alert" v-for="value in error.price" :key="value.price">
+          <span class="c-error" role="alert" v-for="value in error.img" :key="value.img">
             <strong>{{ value }}</strong>
           </span>
         </div>
@@ -163,7 +165,12 @@
 
       <!-- 送信ボタン -->
       <div class="p-create__submit">
-        <button type="submit" class="c-button__submit">投稿する</button>
+        <button
+          type="button"
+          id="js-validate__target"
+          class="c-button__submit"
+          @click="formSubmit"
+        >投稿する</button>
       </div>
     </form>
   </div>
@@ -212,11 +219,13 @@ export default {
       imgFlg: "",
       uploadImage: "",
       deleteFlg: "",
+      submitEnable: true,
       error: {
         title: this.errors.title,
         category: this.errors.category,
         body: this.errors.body,
-        price: this.errors.price
+        price: this.errors.price,
+        img: this.errors.img
       }
     };
   },
@@ -274,6 +283,10 @@ export default {
       this.setImgFlg();
       this.uploadImage = "url('/images/noimage.png')";
       this.deleteFlg = 1;
+    },
+    formSubmit() {
+      $("#js-validate__target").prop("disabled", true);
+      $("#form").submit();
     }
   },
   mounted() {

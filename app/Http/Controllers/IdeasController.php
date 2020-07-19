@@ -94,6 +94,9 @@ class IdeasController extends Controller
 
         $idea->save();
 
+        // 二重送信対策
+        $request->session()->regenerateToken();
+
         return redirect()->route('ideas.show', $idea->id)->with('flash_message', 'アイデアを投稿しました！');
     }
 
@@ -175,6 +178,12 @@ class IdeasController extends Controller
     public function show($id)
     {
         $idea = Idea::find($id);
+
+        //アイデアが存在しないURLにアクセスした場合、404エラーを返す
+        if ($idea === null) {
+            abort(404);
+        }
+
         $reviews = Idea::with('reviews', 'reviews.user')->where('ideas.id', $id)->get();
 
         return view('ideas.show', [

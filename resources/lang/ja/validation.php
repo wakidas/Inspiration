@@ -157,6 +157,7 @@ return [
         'userId' => 'ユーザーID',
         'email' => 'メールアドレス',
         'password' => 'パスワード',
+        'price' => '価格',
     ],
 
 ];

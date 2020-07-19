@@ -8,16 +8,21 @@
         @click="clickLike"
       >{{ likeButtonText }}</a>
     </div>
-    <div class="" >
-    <div class="p-ideasShow__buy p-ideasShow__buy--ordered" v-if="isOrderedBy">
-      <button class="p-ideasShow__button p-ideasShow__button--buy">{{buyButtonText}}</button>
-    </div>
-    <div class="p-ideasShow__buy" v-else>
-      <form :action="endpointBuy" method="POST">
-        <input type="hidden" name="_token" :value="csrf" />
-        <button class="p-ideasShow__button p-ideasShow__button--buy" type="submit">{{buyButtonText}}</button>
-      </form>
-    </div>
+    <div class>
+      <div class="p-ideasShow__buy p-ideasShow__buy--ordered" v-if="isOrderedBy">
+        <button class="p-ideasShow__button p-ideasShow__button--buy">{{buyButtonText}}</button>
+      </div>
+      <div class="p-ideasShow__buy" v-else>
+        <form id="form" :action="endpointBuy" method="POST">
+          <input type="hidden" name="_token" :value="csrf" />
+          <button
+            class="p-ideasShow__button p-ideasShow__button--buy"
+            id="js-validate__target"
+            type="submit"
+            @click="formSubmit"
+          >{{buyButtonText}}</button>
+        </form>
+      </div>
     </div>
   </div>
 </template>
@@ -57,14 +62,14 @@ export default {
     },
     ideaUser: {
       type: Object
-    },
+    }
   },
   data() {
     return {
       csrf: document
         .querySelector('meta[name="csrf-token"]')
         .getAttribute("content"),
-      isMyIdea:''
+      isMyIdea: ""
     };
   },
   computed: {
@@ -76,9 +81,11 @@ export default {
     buyButtonText() {
       return this.isOrderedBy ? "購入済みです" : "購入する";
     },
-    checkMyIdea(){
-      this.userId === this.ideaUser.id ? this.isMyIdea = true : this.isMyIdea = false;
-      return this.isMyIdea
+    checkMyIdea() {
+      this.userId === this.ideaUser.id
+        ? (this.isMyIdea = true)
+        : (this.isMyIdea = false);
+      return this.isMyIdea;
     }
   },
   methods: {
@@ -100,6 +107,10 @@ export default {
     },
     async unlike() {
       this.$emit("unlike");
+    },
+    formSubmit() {
+      $("#js-validate__target").prop("disabled", true);
+      $("#form").submit();
     }
   }
 };

@@ -26,6 +26,12 @@ class UserController extends Controller
     public function show($id)
     {
         $this_user = User::find($id);
+
+        //ユーザーが存在しないURLにアクセスした場合、404エラーを返す
+        if ($this_user === null) {
+            abort(404);
+        }
+
         $ideas = $this_user->ideas;
         $isAuthCheck = Auth::id() === $this_user->id;
 

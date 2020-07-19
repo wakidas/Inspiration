@@ -135,7 +135,12 @@
                 </div>
                 <!-- 送信ボタン -->
                 <div class="p-ideasShowReview__submit" v-if="!isReviewedBy">
-                  <button type="submit" class="c-button__submit">投稿する</button>
+                  <button
+                    type="button"
+                    class="c-button__submit"
+                    @click="formSubmit"
+                    id="js-validate__target"
+                  >投稿する</button>
                 </div>
               </form>
             </li>
@@ -335,6 +340,10 @@ export default {
 
       this.isLikedBy = false;
       this.countLikes = response.data.countLikes;
+    },
+    formSubmit() {
+      $("#js-validate__target").prop("disabled", true);
+      $("#form").submit();
     }
   },
   components: {

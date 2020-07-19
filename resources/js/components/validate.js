@@ -6,6 +6,9 @@ $(function () {
         errorPlacement: function(error, element){
             error.appendTo(element.parents('.js-validTarget'));
         },
+        invalidHandler: function () {
+            $('#js-validate__target').prop('disabled', false);
+        }
         
     });
 });

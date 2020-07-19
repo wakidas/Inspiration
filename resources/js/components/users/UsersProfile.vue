@@ -4,6 +4,9 @@
     <div class="p-usersProfile__name">
       <p>{{User.name}}</p>
     </div>
+    <div class="p-usersProfile__comment">
+      <p>{{User.comment}}</p>
+    </div>
     <div class="p-usersProfile__edit" v-if="IsAuthCheck">
       <a :href="endpoint">編集</a>
     </div>

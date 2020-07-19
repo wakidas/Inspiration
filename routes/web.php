@@ -17,7 +17,6 @@ Auth::routes();
 //ログインユーザーのみ
 // =================================================
 Route::group(['middleware' => 'auth'], function () {
-    Route::get('/mypage', 'MypageController@index')->name('mypage');
 
     Route::prefix('users')->name('users.')->group(function () {
         Route::get('/{id}/edit', 'UserController@edit')->name('edit');
