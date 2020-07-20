@@ -34,7 +34,9 @@
     <div id="app">
         {{-- フラッシュメッセージ --}}
         @if (session('flash_message'))
-        <flash-message message="{{ session('flash_message') }}"></flash-message>
+        <flash-message message="{{ session('flash_message') }}" type="normal"></flash-message>
+        @elseif(session('error_message'))
+        <flash-message message="{{ session('error_message') }}" type="error"></flash-message>
         @endif
         @yield('content')
     </div>

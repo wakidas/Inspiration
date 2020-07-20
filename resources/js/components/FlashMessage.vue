@@ -2,7 +2,7 @@
   <div>
     <transition appear name="fade">
       <div class="c-flash" v-if="show">
-        <div class="c-flash__inner">
+        <div class="c-flash__inner" :class="{'error': type == 'error'}">
           <p class="c-flash__text">
             <img class="c-flash__img" src="/images/flash-check.svg" alt="チェック" />
             {{ Message }}
@@ -15,7 +15,14 @@
 
 <script>
 export default {
-  props: ["message"],
+  props: {
+    message: {
+      type: String
+    },
+    type: {
+      type: String
+    }
+  },
   data() {
     return {
       Message: this.message,

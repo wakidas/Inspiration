@@ -55,7 +55,7 @@ class ChangeEmailController extends Controller
             return redirect('/mypage')->with('flash_message', '確認メールを送信しました。');
         } catch (\Exception $e) {
             DB::rollback();
-            return redirect('/mypage')->with('flash_message', 'メール更新に失敗しました。');
+            return redirect('/mypage')->with('error_message', 'メール更新に失敗しました。');
         }
     }
 

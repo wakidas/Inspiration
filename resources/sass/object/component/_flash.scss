@@ -16,11 +16,14 @@
         box-sizing: border-box;
         padding: 16px;
         border-radius: 3px;
-        background: rgba(249,146,146,0.9);
+        background: rgba(137, 196, 255, 0.9);
         color: white;
         display: inline-block;
         text-align: left;
         line-height: 1.35;
+        &.error{
+            background: rgba(249,146,146,0.9);
+        }
     }
     .c-flash__text{
         display: flex;

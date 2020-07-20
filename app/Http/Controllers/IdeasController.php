@@ -113,17 +113,17 @@ class IdeasController extends Controller
 
         //自分以外のユーザーがアクセスした場合は元の画面へ遷移
         if (Auth::id() !== Idea::find($id)->user->id) {
-            return redirect()->back()->with('flash_message', __('権限がありません'));
+            return redirect()->back()->with('error_message', __('権限がありません'));
         }
 
         //一人以上のユーザーが購入している場合は編集できない
         if ($idea->orders->count() > 0) {
-            return redirect()->back()->with('flash_message', __('一人以上のユーザーに購入されています。編集はできません。'));
+            return redirect()->back()->with('error_message', __('一人以上のユーザーに購入されています。編集はできません。'));
         }
 
         //数値以外が渡された場合は元の画面へ遷移
         if (!ctype_digit($id)) {
-            return redirect()->back()->with('flash_message', __('もう一度やり直してください'));
+            return redirect()->back()->with('error_message', __('もう一度やり直してください'));
         }
 
 
@@ -239,13 +239,13 @@ class IdeasController extends Controller
     {
         //数値以外が渡された場合は元の画面へ遷移
         if (!ctype_digit($id)) {
-            return redirect()->back()->with('flash_message', __('もう一度やり直してください'));
+            return redirect()->back()->with('error_message', __('もう一度やり直してください'));
         }
 
         //自分以外のユーザーがアクセスした場合は元の画面へ遷移
         $idea = Idea::find($id);
         if ($idea->user->id === Auth::user()->id) {
-            return redirect()->route('ideas.show', $id)->with('flash_message', '自分のアイデアは購入できません。');
+            return redirect()->route('ideas.show', $id)->with('error_message', '自分のアイデアは購入できません。');
         }
 
         $idea->orders()->attach($request->user()->id);
@@ -271,21 +271,21 @@ class IdeasController extends Controller
 
         //自分以外のユーザーがアクセスした場合は元の画面へ遷移
         if (Auth::id() !== Idea::find($id)->user->id) {
-            return redirect()->back()->with('flash_message', __('権限がありません'));
+            return redirect()->back()->with('error_message', __('権限がありません'));
         }
 
         //一人以上のユーザーが購入している場合は編集できない
         if ($idea->orders->count() > 0) {
-            return redirect()->back()->with('flash_message', __('一人以上のユーザーに購入されています。編集はできません。'));
+            return redirect()->back()->with('error_message', __('一人以上のユーザーに購入されています。編集はできません。'));
         }
 
         //数値以外がpostされた場合は元の画面へ遷移
         if (!ctype_digit($id)) {
-            return redirect()->back()->with('flash_message', __('もう一度やり直してください'));
+            return redirect()->back()->with('error_message', __('もう一度やり直してください'));
         }
 
         $idea->delete(); // softDelete
 
-        return redirect()->route('ideas.index')->with('flash_message', 'アイデアを削除しました！');
+        return redirect()->route('ideas.index')->with('error_message', 'アイデアを削除しました！');
     }
 }

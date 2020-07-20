@@ -19,6 +19,9 @@
 
                 @endforeach
             </div>
+            <div class="c-pagination">
+                {{ $ideas->appends(request()->input())->links() }}
+            </div>
         </section>
     </div>
 </div>

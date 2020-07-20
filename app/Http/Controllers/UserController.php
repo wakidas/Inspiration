@@ -32,7 +32,7 @@ class UserController extends Controller
             abort(404);
         }
 
-        $ideas = $this_user->ideas;
+        $ideas = $this_user->ideas()->paginate(10);
         $isAuthCheck = Auth::id() === $this_user->id;
 
         return view('users.show', [
@@ -53,12 +53,12 @@ class UserController extends Controller
     {
         //自分以外のユーザーがアクセスした場合は元の画面へ遷移
         if (Auth::id() !== (int) $id) {
-            return redirect()->back()->with('flash_message', __('権限がありません'));
+            return redirect()->back()->with('error_message', __('権限がありません'));
         }
 
         //数値以外が渡された場合は元の画面へ遷移
         if (!ctype_digit($id)) {
-            return redirect()->back()->with('flash_message', __('もう一度やり直してください'));
+            return redirect()->back()->with('error_message', __('もう一度やり直してください'));
         }
 
         $user = User::find($id);
@@ -119,12 +119,12 @@ class UserController extends Controller
     {
         //自分以外のユーザーがアクセスした場合は元の画面へ遷移
         if (Auth::id() !== (int) $id) {
-            return redirect()->back()->with('flash_message', __('権限がありません'));
+            return redirect()->back()->with('error_message', __('権限がありません'));
         }
 
         //数値以外がpostされた場合は元の画面へ遷移
         if (!ctype_digit($id)) {
-            return redirect()->back()->with('flash_message', __('もう一度やり直してください'));
+            return redirect()->back()->with('error_message', __('もう一度やり直してください'));
         }
 
         User::find($id)->delete();
