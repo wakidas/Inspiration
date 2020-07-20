@@ -108,9 +108,17 @@ export default {
     async unlike() {
       this.$emit("unlike");
     },
-    formSubmit() {
-      $("#js-validate__target").prop("disabled", true);
-      $("#form").submit();
+    formSubmit(e) {
+      e.preventDefault();
+      const confirm_result = window.confirm(
+        "このアイデアを購入します。よろしいですか？"
+      );
+      if (confirm_result) {
+        $("#js-validate__target").prop("disabled", true);
+        $("#form").submit();
+      } else {
+        return false;
+      }
     }
   }
 };
