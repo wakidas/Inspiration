@@ -2,7 +2,7 @@
   <div>
     <transition appear name="fade">
       <div class="c-flash" v-if="show">
-        <div class="c-flash__inner">
+        <div class="c-flash__inner error">
           <p class="c-flash__text">
             <img class="c-flash__img" src="/images/flash-check.svg" alt="チェック" />
             レビューの投稿に失敗しました
